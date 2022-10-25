@@ -1,5 +1,5 @@
 
-#Restaurant Menu Builder and Finder
+# Restaurant Menu Builder and Finder
 
 A project to help restaurants quickly connect to their patrons.
 
