@@ -1,0 +1,41 @@
+{
+    "cards": [
+        {
+            "abbr": [
+                "TDIGWATT/PIDAIAF"
+              ],
+              "back": {
+                "destiny": "7",
+                "gametext": "This Deal Is Getting Worse All The Time:Deploy one Cloud City battleground site. May deploy Secret Plans and/or All Wrapped Up.{While} this side up, once during each of your deploy phases, may take Bespin system, Bespin: Cloud City, Dark Deal or Cloud City Occupation into hand from Reserve Deck; reshuffle. Your [Cloud City], [Jabba's Palace] and [Special Edition] characters are immune to Goo Nee Tay when deploying to Bespin Locations.{Flip} this card if Dark Deal on table and you occupy Bespin System and Bespin: Cloud City.Pray I Don't Alter It Any Further:{While} this side up, Surreptitious Glance may not cancel Dark Deal, The Planet That It's Farthest From is suspended if targeting Bespin. Opponent loses 8 Force when you play All Too Easy. At each Bespin location you control with an Imperial, your Force drains may not be modified by opponent. If you have an alien/imperial pair in battle, your total battle destiny is +2 (+4 if alien is an Ugnaught).{Flip} this card if Dark Deal is canceled, if opponent controls Bespin or if Bespin is 'blown away'.",
+                "icons": [
+                  "Premium"
+                ],
+                "imageUrl": "https://res.starwarsccg.org/cards/EnhancedCloudCity-Dark/large/prayidontalteritanyfurther.gif",
+                "title": "This Deal Is Getting Worse All The Time / Pray I Don't Alter It Any Further",
+                "type": "Objective"
+              },
+              "front": {
+                "destiny": "0",
+                "gametext": "This Deal Is Getting Worse All The Time:Deploy one Cloud City battleground site. May deploy Secret Plans and/or All Wrapped Up.{While} this side up, once during each of your deploy phases, may take Bespin system, Bespin: Cloud City, Dark Deal or Cloud City Occupation into hand from Reserve Deck; reshuffle. Your [Cloud City], [Jabba's Palace] and [Special Edition] characters are immune to Goo Nee Tay when deploying to Bespin Locations.{Flip} this card if Dark Deal on table and you occupy Bespin System and Bespin: Cloud City.Pray I Don't Alter It Any Further:{While} this side up, Surreptitious Glance may not cancel Dark Deal, The Planet That It's Farthest From is suspended if targeting Bespin. Opponent loses 8 Force when you play All Too Easy. At each Bespin location you control with an Imperial, your Force drains may not be modified by opponent. If you have an alien/imperial pair in battle, your total battle destiny is +2 (+4 if alien is an Ugnaught).{Flip} this card if Dark Deal is canceled, if opponent controls Bespin or if Bespin is 'blown away'.",
+                "icons": [
+                  "Premium"
+                ],
+                "imageUrl": "https://res.starwarsccg.org/cards/EnhancedCloudCity-Dark/large/thisdealisgettingworseallthetime.gif",
+                "title": "This Deal Is Getting Worse All The Time / Pray I Don't Alter It Any Further",
+                "type": "Objective"
+              },
+              "gempId": "109_12",
+              "id": 6699,
+              "legacy": false,
+              "printings": [
+                {
+                  "set": "109"
+                }
+              ],
+              "rarity": "PM",
+              "set": "109",
+              "side": "Dark"
+        }
+    ]
+    
+}

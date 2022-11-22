@@ -1,0 +1,19 @@
+{% extends 'swccg/layout.html' %}
+{% load static %}
+{% block body %}
+<div>
+    <!-- <form method="post" class="hidden" href="{% url 'card_save' %}">Save Database
+        {% csrf_token %}
+        <button>Save</button>
+    </form> -->
+    <form method="post" class="" href="{% url 'card_save' %}">find all keys
+        {% csrf_token %}
+        <button>Save</button>
+    </form>
+    {% for key, value in keys.items %}
+    <li>
+        {{key}} : {{value}}
+    </li>
+    {% endfor %}
+</div>
+{% endblock %}

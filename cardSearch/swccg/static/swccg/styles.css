@@ -1,0 +1,19 @@
+
+#searchResults {
+    overflow: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    width: 700px;
+    height: 1000px;
+    background-color: red;
+    grid-template-columns: repeat(auto-fill,minmax(160px, 1fr));
+}
+.cardResults {
+    display: grid;
+}
+.card {
+    height: fit-content;
+}
+.cardImage {
+    max-height: 100px;
+}

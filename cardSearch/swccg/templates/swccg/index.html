@@ -1,0 +1,37 @@
+{% extends 'swccg/layout.html' %}
+{% load static %}
+
+{% block body %}
+<div class="grid place-items-center md:mt-25">
+    <h1 class="text-4xl text-bold">Welcome to your Star Wars CCG Deckbuilder!</h1>
+    <a class="text-2xl font-semibold text-teal-400 md:mt-20" href="{% url 'deckbuild' %}">Build a Deck</a>
+</div>
+<div class="w-full">
+    <div class="w-1/2 float-left text-center">
+        <h2 class="text-2xl font-semibold text-red-400 md:mt-20 mb-4">Check out Recent Decks</h2>
+        <a class="text-2xl" href="{% url 'card_save' %}">Save Cards To DB</a>
+        <div class="border-solid">
+            <ul>
+            {% for deck in decklists|slice:":10" %}
+                <li class="text-bold mb-1">
+                    <a href="{% url 'deckview' deck.id %}">
+                        <span class="font-bold">{{ deck.name }}</span> <i>by {{ deck.author }}</i> - {{ deck.side }} side
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="w-1/2 float-right text-center md:mt-20">
+            <h1 class="text-2xl font-bold text-blue-400">Search Decks</h1><br>
+            <input id="searchChoice" type="text" placeholder="by name, author, or side">
+            <input type="submit" value="Search" id="deckSearch"><br>
+            <span id="resultCount"></span>
+        <div id="results">
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'swccg/index.js' %}"></script>
+{% endblock %}

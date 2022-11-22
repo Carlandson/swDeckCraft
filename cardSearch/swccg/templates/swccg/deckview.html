@@ -1,0 +1,25 @@
+{% extends 'swccg/layout.html' %}
+{% load static %}
+{% block body %}
+<a href="{% url 'index' %}"class="text-xl top-0 text-green-400">Return Home</a>
+<div id="deckviewer" class="ml-10">
+    <H1 class="text-4xl font-bold">{{ deck.name }}</H1>
+    <h2 class="text-xl mb-2">Constructed by {{ deck.author }}</h2>
+    <i class="ml-3 text-center">{{deck.side}} side</i>
+    <ul class="flex flex-col flex-wrap h-screen w-screen w-1/2 ml-2">
+        {% for key, value_list in type_lists.items %}
+        <li>
+            <ul class="mb-2">
+                <h1 class="text-xl mb-2">{{ key }} - {{ value_list|length }}</h1>
+                {% for value in value_list %}
+                    <li>
+                        {{ value }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

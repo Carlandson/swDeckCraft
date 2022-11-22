@@ -1,0 +1,1689 @@
+Character	2X-7KPR (Tooex)
+Effect	•3,720 To 1
+Character	•3B3-10
+Character	•3B3-1204
+Character	•3B3-21
+Character	•3B3-888
+Character	•4-LOM
+Character	•4-LOM With Concussion Rifle
+Character	•4-LOM With Concussion Rifle (V)
+Weapon	•4-LOM's Concussion Rifle
+Character	•5D6-RA-7 (Fivedesix)
+Character	•5D6-RA-7 (Fivedesix) (V)
+Effect	•A Bright Center To The Universe
+Interrupt	•A Dangerous Time
+Interrupt	•A Dark Time For The Rebellion
+Interrupt	•A Dark Time For The Rebellion & •Tarkin's Orders
+Interrupt	•A Dark Time For The Rebellion (V)
+Effect	•A Day Long Remembered
+Effect	•A Day Long Remembered (V)
+Effect	•A Disturbance In The Force
+Objective	A Great Tactician Creates Plans / The Result Is Often Resentment
+Interrupt	•A Lawless Time
+Effect	•A Million Voices Crying Out
+Interrupt	•A Real Hero
+Interrupt	•A Sith Legend
+Objective	A Stunning Move / A Valuable Hostage
+Interrupt	A Trophy Sacrificed
+Defensive Shield	•A Useless Gesture
+Defensive Shield	•A Useless Gesture (V)
+Vehicle	•AAT Assault Leader
+Weapon	AAT Laser Cannon
+Effect	•Ability, Ability, Ability
+Effect	Abyss
+Character	Abyssin
+Interrupt	•Abyssin Ornament
+Interrupt	•Abyssin Ornament & •Wounded Wookiee
+Interrupt	Accelerate
+Effect	•Accepting Trade Federation Control
+Interrupt	•According To My Design
+Starship	•Accuser
+Effect	•Activate The Droids
+Character	•Admiral Chiraneau
+Character	•Admiral Motti
+Character	•Admiral Motti (V)
+Character	•Admiral Ozzel
+Character	•Admiral Ozzel (V)
+Character	•Admiral Piett
+Character	•Admiral Piett (V)
+Character	•Admiral Trench
+Character	•••Advosze
+Character	•Aemon Gremm With Percussive Cannon
+Effect	•After Her!
+Character	•Agent Kallus
+Character	•Agent Kallus (AI)
+Objective	Agents of Black Sun / Vengeance of the Dark Prince
+Interrupt	•Aiiii! Aaa! Agggggggggg!
+Character	•Ak-rev
+Character	•Aks Moe
+Location	•Alderaan
+Effect	Alert My Star Destroyer!
+Effect	Alert My Star Destroyer! (V)
+Character	<>Alien Mob
+Interrupt	All Power To Weapons
+Effect	•All Too Easy
+Effect	•All Wrapped Up
+Effect	•Allegations Of Corruption
+Defensive Shield	•Allegations Of Corruption
+Character	•Allegiant General Pryde
+Starship	•Alpha 1
+Interrupt	Alter
+Interrupt	Alter
+Interrupt	Alter & Collateral Damage
+Interrupt	Alter & Collateral Damage (V)
+Interrupt	Alter (Coruscant) (V)
+Interrupt	Alter (Premiere) (V)
+Interrupt	•Always Thinking With Your Stomach
+Interrupt	••Always Two There Are
+Character	•Amanaman
+Character	Amanin
+Effect	•An Effective Demonstration
+Effect	•An Entire Legion Of My Best Troops
+Effect	•An Inkling Of Its Destructive Potential
+Location	•Anoat
+Character	Anoat Operative
+Weapon	Antipersonnel Laser Cannon
+Interrupt	•Any Methods Necessary
+Interrupt	•Any Methods Necessary (V)
+Interrupt	•Apology Accepted
+Interrupt	•Apology Accepted (V)
+Character	•••Aqualish
+Effect	•Aratech Corporation
+Effect	•Aratech Corporation (V)
+Character	•Arica
+Character	•Arica (V)
+Vehicle	•••Armored Attack Tank
+Character	•Asajj Ventress With Lightsabers
+Character	•Asajj Ventress With Lightsabers (AI)
+Weapon	Assault Rifle
+Location	<><><>Asteroid Field
+Effect	•Astromech Shortage
+Effect	•At Last We Are Getting Results
+Weapon	AT-AT Cannon
+Character	AT-AT Driver
+Weapon	AT-ST Dual Cannon
+Character	•••AT-ST Pilot
+Interrupt	•Atmospheric Assault
+Character	•Aurra Sing
+Character	•Aurra Sing (AI)
+Character	•Aurra Sing With Blaster Rifle
+Character	•Aurra Sing With Blaster Rifle (AI)
+Weapon	•Aurra Sing's Blaster Rifle
+Starship	•Avenger
+Starship	•Avenger (V)
+Effect	Awwww, Cannot Get Your Ship Out
+Character	•••B2 Battle Droid
+Effect	•Bad Feeling Have I
+Character	•Bala-Tik
+Character	•Bane Malar
+Effect	Baniss Keeg
+Character	•Baniss Keeg, Pilot Instructor
+Vehicle	Bantha
+Interrupt	Bantha Fodder
+Effect	••Bantha Herd
+Character	•Barada
+Character	•Baron Soontir Fel
+Character	•Barquin D'an
+Character	•Baskol Yeesrim
+Admiral's Order	•Battle Deployment
+Weapon	Battle Droid Blaster Rifle
+Character	•••Battle Droid Officer
+Character	Battle Droid Pilot
+Effect	•Battle Order
+Defensive Shield	•Battle Order
+Effect	•Battle Order & •First Strike
+Character	•BB-9E
+Character	•Beedo
+Effect	•Begin Landing Your Troops
+Effect	•Begin Landing Your Troops & •Fighters Straight Ahead
+Podracer	•Ben Quadinaros' Podracer
+Effect	Besieged
+Location	•Bespin
+Vehicle	Bespin Motors Void Spider THX 1138
+Location	•Bespin: Cloud City
+Starship	•Bestoon Legacy
+Character	•Bib Fortuna
+Character	•Bib Fortuna
+Location	<>Big One
+Location	<>Big One: Asteroid Cave Or Space Slug Belly
+Effect	•Biker Scout Gear
+Character	Biker Scout Trooper
+Starship	•Binder
+Device	Binders
+Starship	•Black 11
+Starship	•Black 2
+Starship	•Black 2 (V)
+Starship	•Black 3
+Starship	•Black 3 (V)
+Starship	•Black 4
+Starship	•Black 5
+Starship	•Black 6
+Starship	•••Black Squadron TIE
+Weapon	Black Sun Blaster
+Admiral's Order	•Black Sun Fleet
+Effect	•Blast Door Controls
+Interrupt	•Blast Points
+Interrupt	•Blasted Droid
+Effect	Blaster Rack
+Effect	Blaster Rack (V)
+Weapon	Blaster Rifle
+Weapon	Blaster Rifle (V)
+Device	Blaster Scope
+Vehicle	•Blizzard 1
+Vehicle	•Blizzard 1 (V)
+Vehicle	•Blizzard 2
+Vehicle	•Blizzard 2 (V)
+Vehicle	•Blizzard 4
+Vehicle	•Blizzard 8
+Vehicle	•Blizzard Scout 1
+Vehicle	•Blizzard Scout 1 (V)
+Vehicle	•••Blizzard Walker
+Starship	•Blockade Flagship
+Location	•Blockade Flagship: Bridge
+Location	•Blockade Flagship: Docking Bay
+Location	•Blockade Flagship: Hallway
+Starship	•Blockade Support Ship
+Interrupt	•Blow Parried
+Effect	•Blown Clear
+Character	•Boba Fett
+Character	•Boba Fett
+Character	•Boba Fett (V)
+Starship	•Boba Fett In Slave I
+Starship	•Boba Fett In Slave I (V)
+Character	•Boba Fett With Blaster Rifle
+Character	•Boba Fett, Bounty Hunter
+Weapon	•Boba Fett's Blaster Rifle
+Weapon	•Boba Fett's Blaster Rifle (V)
+Character	•Boelo
+Creature	Bog-wing
+Character	•Bok Askol
+Effect	<>Bombing Run
+Epic Event	Boonta Eve Podrace
+Weapon	Boosted TIE Cannon
+Interrupt	Boring Conversation Anyway
+Character	•Bossk
+Character	•Bossk (V)
+Starship	•Bossk In Hound's Tooth
+Starship	•Bossk In Hound's Tooth (V)
+Character	•Bossk With Mortar Gun
+Weapon	•Bossk's Mortar Gun
+Effect	Bounty
+Effect	•Bow To The First Order
+Character	•Brangus Glee
+Effect	•Breached Defenses
+Interrupt	•Brief Loss Of Control
+Objective	Bring Him Before Me / Take Your Father's Place
+Effect	•Broken Concentration
+Creature	•Bubo
+Character	•Burg
+Character	•Cad Bane
+Device	Caller
+Effect	Cane Adiss
+Character	•Captain Bewil
+Character	•Captain Bewil (V)
+Character	•Captain Daultay Dofine
+Character	•Captain Gilad Pellaeon
+Character	•Captain Godherdt
+Character	•Captain Jonus
+Starship	•Captain Jonus In Scimitar 2
+Character	•Captain Khurgee
+Character	•Captain Khurgee (V)
+Character	•Captain Lennox
+Character	•Captain Needa
+Character	•Captain Needa (V)
+Character	•Captain Peavey
+Character	•Captain Phasma
+Character	•Captain Phasma (AI)
+Character	•Captain Piett
+Character	•Captain Sarkli
+Character	•Captain Yorr
+Objective	Carbon Chamber Testing / My Favorite Decoration
+Effect	Carbon-Freezing
+Device	•Carbonite Chamber Console
+Device	•Carbonite Chamber Console (V)
+Location	•Carida
+Interrupt	•Cease Fire!
+Character	•Chall Bekan
+Interrupt	Charming To The Last
+Character	Chevin
+Character	•Chief Bast
+Character	•Chief Bast (V)
+Character	•Chief Retwin
+Starship	•Chimaera
+Starship	•Chimaera (V)
+Character	•Chokk
+Character	•Chyler
+Interrupt	•Close Call
+Interrupt	•Close Call (V)
+Effect	•Close The Blast Doors!
+Effect	•Closed Door
+Vehicle	Cloud Car
+Weapon	Cloud City Blaster
+Character	•••Cloud City Engineer
+Effect	•Cloud City Occupation
+Interrupt	•Cloud City Sabacc
+Character	Cloud City Trooper
+Location	•Cloud City: Carbonite Chamber
+Location	•Cloud City: Casino
+Location	•Cloud City: Chasm Walkway
+Location	•Cloud City: Dining Room
+Location	•Cloud City: Downtown Plaza
+Location	•Cloud City: East Platform (Docking Bay)
+Location	•Cloud City: Incinerator
+Location	•Cloud City: Interrogation Room
+Location	•Cloud City: Lower Corridor
+Location	•Cloud City: Port Town District
+Location	•Cloud City: Security Tower
+Location	•Cloud City: Security Tower (V)
+Location	•Cloud City: Upper Plaza Corridor
+Location	•Cloud City: Upper Walkway
+Location	•Cloud City: West Gallery
+Location	<><><>Clouds
+Effect	•Coarse And Rough And Irritating
+Interrupt	Cold Feet
+Interrupt	Cold Feet (V)
+Interrupt	•Collapsing Corridor
+Interrupt	Collateral Damage
+Effect	•Colo Claw Fish
+Character	•Colonel Davod Jon
+Character	•Colonel Dyer
+Character	•Colonel Jendon
+Starship	•Colonel Jendon In Onyx 1
+Character	•Colonel Wullf Yularen
+Character	•Colonel Wullf Yularen (V)
+Vehicle	•••Combat Cloud Car
+Interrupt	•Combat Readiness
+Interrupt	•Combat Readiness (V)
+Effect	•Combat Response
+Effect	•Combat Response (V)
+Defensive Shield	•Come Here You Big Coward
+Effect	•Come Here You Big Coward
+Effect	Come With Me
+Device	Comlink
+Character	•••Comm Chief
+Character	•Commander Brandei
+Character	•Commander Brandei (V)
+Character	•Commander Desanne
+Character	•Commander Gherant
+Character	•Commander Igar
+Character	•Commander Merrejk
+Character	•Commander Nemet
+Character	•Commander Nemet (V)
+Character	•Commander Praji
+Epic Event	Commence Primary Ignition
+Epic Event	Commence Primary Ignition (V)
+Interrupt	•Compact Firepower
+Interrupt	ComScan Detection
+Weapon	Concussion Missiles
+Effect	•Conduct Your Search
+Starship	•Conquest
+Starship	•Conquest (V)
+Interrupt	Control
+Interrupt	Control
+Interrupt	Control & Set For Stun
+Interrupt	•Coordinated Attack
+Character	•Corporal Avarik
+Character	•Corporal Derdram
+Character	•Corporal Drazin
+Character	•Corporal Drelosyn
+Character	•Corporal Grenwick
+Character	•Corporal Misik
+Character	•Corporal Oberk
+Character	•Corporal Prescott
+Character	•Corporal Vandolay
+Character	•Corporal Vandolay (V)
+Effect	<>Corrosive Damage
+Location	•Corulag
+Character	Corulag Operative
+Location	•Coruscant
+Location	•Coruscant
+Location	•Coruscant (V)
+Character	Coruscant Guard
+Character	Coruscant Guard (V)
+Location	•Coruscant: 500 Republica
+Location	•Coruscant: Docking Bay
+Location	•Coruscant: Docking Bay
+Location	•Coruscant: Galactic Senate
+Location	•Coruscant: Imperial City
+Location	•Coruscant: Imperial City (V)
+Location	•Coruscant: Imperial Square
+Location	•Coruscant: Private Platform (Docking Bay)
+Location	•Coruscant: The Works
+Location	•Coruscant: Xizor's Palace
+Character	•Count Dooku
+Interrupt	Counter Assault
+Interrupt	Counter Surprise Assault
+Interrupt	•Counterattack
+Objective	Court Of The Vile Gangster / I Shall Enjoy Watching You Die
+Interrupt	Crash Landing
+Weapon	•••Crimson Dawn Blaster
+Effect	•Crossfire
+Defensive Shield	•Crossfire
+Defensive Shield	•Crossfire (Endor) (V)
+Defensive Shield	•Crossfire (V)
+Effect	•Crush The Rebellion
+Effect	•Crush The Rebellion (V)
+Character	CZ-4
+Location	•Dagobah
+Location	•Dagobah: Cave
+Character	•Dannik Jerriko
+Character	•Dannik Jerriko (V)
+Location	•Dantooine
+Character	Dantooine Operative
+Character	•Danz Borin
+Interrupt	•Dark Collaboration
+Effect	•Dark Deal
+Effect	•Dark Forces
+Effect	•••Dark Hours
+Weapon	Dark Jedi Lightsaber
+Weapon	Dark Jedi Lightsaber (V)
+Interrupt	Dark Jedi Presence
+Interrupt	Dark Maneuvers
+Interrupt	Dark Maneuvers & Tallon Roll
+Interrupt	•Dark Rage
+Interrupt	•Dark Strike
+Effect	Dark Waters
+Weapon	•Darksaber
+Character	•Daroe
+Character	•Daroe (V)
+Character	•Darth Maul
+Character	•Darth Maul (AI)
+Character	•Darth Maul With Lightsaber
+Character	•Darth Maul, Lone Hunter
+Character	•Darth Maul, Young Apprentice
+Character	•Darth Maul, Young Apprentice (AI)
+Character	•Darth Sidious
+Character	•Darth Sidious (AI)
+Character	•Darth Tyranus
+Character	•Darth Vader
+Character	•Darth Vader (V)
+Character	•Darth Vader With Lightsaber
+Character	•Darth Vader, Betrayer Of The Jedi
+Character	•Darth Vader, Dark Lord Of The Sith
+Character	•Darth Vader, Emperor's Enforcer
+Weapon	•Darth Vader's Lightsaber
+Weapon	•Darth Vader's Lightsaber (V)
+Character	•Dathcha
+Character	•Dathcha (V)
+Location	•Dathomir: Maul's Chambers
+Character	•Daultay Dofine
+Character	•Daultay Dofine (V)
+Interrupt	•Dead Ewok
+Interrupt	Dead Jawa
+Effect	•Death Mark
+Effect	•Death Squadron
+Interrupt	•Death Squadron Assignment
+Starship	•••Death Squadron Star Destroyer
+Location	•Death Star
+Location	•Death Star (V)
+Starship	•Death Star Assault Squadron
+Character	•••Death Star Gunner
+Location	•Death Star II
+Location	•Death Star II: Capacitors
+Location	•Death Star II: Coolant Shaft
+Location	•Death Star II: Docking Bay
+Location	•Death Star II: Reactor Core
+Location	•Death Star II: Throne Room
+Effect	•Death Star Reactor Terminal
+Effect	•Death Star Sentry
+Defensive Shield	•Death Star Sentry (V)
+Device	Death Star Tractor Beam
+Character	Death Star Trooper
+Location	•Death Star: Central Core
+Location	•Death Star: Conference Room
+Location	•Death Star: Detention Block Control Room
+Location	•Death Star: Detention Block Corridor
+Location	•Death Star: Docking Bay 327
+Location	•Death Star: Docking Control Room 327
+Location	•Death Star: Level 4 Military Corridor
+Location	•Death Star: War Room
+Location	•Death Star: War Room (V)
+Character	•••Death Trooper (V)
+Interrupt	Debris Zone
+Epic Event	•Deep Hatred
+Character	•••Defel
+Interrupt	•Defensive Fire
+Interrupt	•Defensive Fire & •Hutt Smooch
+Interrupt	•Defensive Fire (V)
+Device	Deflector Shield Generators
+Device	Deflector Shield Generators (V)
+Effect	•Den Of Thieves
+Character	•Dengar
+Character	•Dengar (V)
+Starship	•Dengar In Punishing One
+Character	•Dengar With Blaster Carbine
+Character	•Dengar With Blaster Carbine (V)
+Weapon	•Dengar's Blaster Carbine
+Weapon	•Dengar's Modified Riot Gun
+Character	•Deputy Director Harus Ison
+Location	<>Desert
+Effect	•Desilijic Tattoo
+Effect	•Despair
+Effect	•Despair (V)
+Effect	•Desperate Counter
+Effect	•Destroyed Homestead
+Character	Destroyer Droid
+Starship	•Devastator
+Starship	•Devastator (V)
+Vehicle	Dewback
+Starship	•••DFS Squadron Starfighter
+Starship	•DFS-1015
+Starship	•DFS-1308
+Starship	•DFS-327
+Creature	Dianoga
+Interrupt	•Dioxis
+Interrupt	Direct Hit
+Character	•Director Orson Krennic
+Effect	Disarmed
+Weapon	Disruptor Pistol
+Character	•Djas Puhr
+Character	•Djas Puhr (V)
+Effect	•Do They Have A Code Clearance?
+Defensive Shield	•Do They Have A Code Clearance?
+Character	•Dodo Bodonawieedo
+Starship	•Dominator
+Interrupt	•Don't Move!
+Weapon	•Dooku's Lightsaber
+Interrupt	Double Back
+Interrupt	Double Back (V)
+Weapon	Double Laser Cannon
+Interrupt	•Double-Crossing, No-Good Swindler
+Location	•D'Qar
+Character	•Dr. Chelli Lona Aphra
+Character	•Dr. Chelli Lona Aphra (AI)
+Character	•Dr. Evazan
+Character	•Dr. Evazan & •Ponda Baba
+Weapon	•Dr. Evazan's Sawed-off Blaster
+Creature	<>Dragonsnake
+Effect	•Dreaded Imperial Starfleet
+Starship	Dreadnaught-Class Heavy Cruiser
+Device	Droid Detector
+Effect	•Droid Racks
+Effect	•Droid Racks (V)
+Starship	Droid Starfighter
+Weapon	Droid Starfighter Laser Cannons
+Character	Droideka
+Character	Droideka (AI)
+Interrupt	•Drop Your Weapons
+Effect	•Drop!
+Character	•Dryden Vos
+Character	•DS-181-3
+Character	•DS-181-4
+Character	•DS-61-2
+Character	•DS-61-3
+Character	•DS-61-4
+Character	•DS-61-5
+Character	•DS-61-5 (AI)
+Podracer	•Dud Bolt's Podracer
+Interrupt	•Dune Sea Sabacc
+Vehicle	•••Dune Walker
+Interrupt	•E Chu Ta
+Character	•E-3PO
+Weapon	E-web Blaster
+Effect	<>Early Warning Network
+Character	•Edcel Bar Gane
+Interrupt	•Eee Chu Wawa!
+Character	EG-6 (Eegee-Six)
+Character	•Eighth Brother
+Character	•Elan Sleazebaggano
+Device	Electro-Rangefinder
+Interrupt	Elis Helrot
+Starship	•Elis In Hinthra
+Character	•••Elite Squadron Stormtrooper
+Interrupt	Emergency Deployment
+Character	•Emperor Palpatine
+Character	•Emperor Palpatine, Foreseer
+Epic Event	•Emperor's Orders
+Starship	•Emperor's Personal Shuttle
+Effect	•Emperor's Power
+Effect	•Empire's New Order
+Interrupt	•End This Destructive Conflict
+Location	•Endor
+Interrupt	•Endor Occupation
+Objective	Endor Operations / Imperial Outpost
+Effect	•Endor Shield
+Effect	•Endor Shield (V)
+Location	•Endor: Ancient Forest
+Location	•Endor: Back Door
+Location	•Endor: Bunker
+Location	•Endor: Dark Forest
+Location	•Endor: Dense Forest
+Location	•Endor: Ewok Village
+Location	•Endor: Forest Clearing
+Location	•••Endor: Great Forest
+Location	•Endor: Landing Platform (Docking Bay)
+Weapon	Energy Shell Launchers
+Effect	•Energy Walls
+Weapon	Enhanced TIE Laser Cannon
+Character	•Ensign Eli Vanto
+Effect	•••Enter The Bureaucrat
+Character	•Ephant Mon
+Epic Event	•Epic Duel
+Location	•Eriadu
+Location	•Eriadu (V)
+Character	Eriadu Operative
+Effect	Establish Control
+Effect	Establish Control (V)
+Effect	•Establish Secret Base
+Effect	•Establish Secret Base (V)
+Character	•EV-9D9
+Interrupt	Evacuate?
+Interrupt	Evader
+Interrupt	Evader & Monnok
+Effect	•Evil Is Everywhere
+Starship	•Executor
+Location	•Executor: Comm Station
+Location	•Executor: Control Station
+Location	•Executor: Control Station
+Location	•Executor: Docking Bay
+Location	•Executor: Holotheatre
+Location	•Executor: Main Corridor
+Location	•Executor: Meditation Chamber
+Location	•Exegol: Sith Throne
+Interrupt	•Exhaustion
+Effect	•Expand The Empire
+Interrupt	Exposure
+Weapon	F-11D Blaster Rifle
+Effect	•Failure At The Cave
+Defensive Shield	•Failure At The Cave (V)
+Starship	•Falleen's Fist
+Defensive Shield	•Fanfare
+Effect	•Fanfare
+Defensive Shield	•Fanfare (Tatooine) (V)
+Defensive Shield	•Fanfare (V)
+Interrupt	•Far More Frightening Than Death
+Interrupt	•Fear
+Effect	•Fear Is My Ally
+Effect	Fear Will Keep Them In Line
+Character	•Feltipern Trevagg
+Weapon	•Feltipern Trevagg's Stun Rifle
+Character	•Fennec Shand
+Effect	Field Promotion
+Character	•Fifth Brother
+Admiral's Order	•Fighter Cover
+Admiral's Order	•Fighters Coming In
+Effect	•Fighters Straight Ahead
+Starship	•Finalizer
+Starship	•Finalizer (AI)
+Effect	•Firepower
+Location	•First Light: Bar
+Location	•First Light: Dryden's Study
+Location	•First Light: Reception Area
+Starship	•••First Order Special Forces TIE
+Character	First Order Stormtrooper
+Effect	•First Strike
+Effect	•Flagship
+Starship	•Flagship Executor
+Effect	•Flagship Operations
+Vehicle	Flare-S Racing Swoop
+Interrupt	•Flawless Marksmanship
+Interrupt	•Flight Escort
+Device	••Floating Refinery
+Character	•FN-2003
+Character	•FN-2199 (Nines)
+Interrupt	•Focused Attack
+Location	•Fondor
+Interrupt	•Force Field
+Interrupt	•Force Field (V)
+Interrupt	•Force Freeze
+Interrupt	•Force Lightning
+Weapon	Force Pike
+Interrupt	•Force Push
+Interrupt	•Force Push (V)
+Effect	•Forced Landing
+Effect	•Forced Servitude
+Location	<>Forest
+Character	•Fozec
+Interrupt	•Freeze!
+Effect	•Frostbite
+Effect	Frozen Dinner
+Interrupt	•Frustration
+Interrupt	Full Scale Alert
+Interrupt	Furry Fury
+Device	Fusion Generator Supply Tanks
+Character	FX-10 (Effex-ten)
+Weapon	Gaderffii Stick
+Character	•Gailid
+Location	•Gall
+Character	•Gamall Wironicc
+Weapon	Gamorrean Ax
+Character	Gamorrean Guard
+Character	•Gar Saxon
+Character	•Gardulla The Hutt
+Character	•Garindan
+Character	•Gela Yeens
+Character	•General Grievous
+Character	•General Grievous (AI)
+Character	•General Grievous (Holo AI)
+Character	•General Hux
+Character	•General Nevar
+Character	•General Tagge
+Character	•General Veers
+Character	•General Veers (V)
+Character	•Ghana Gleemort
+Interrupt	Ghhhk
+Interrupt	Ghhhk & Those Rebels Won't Escape Us
+Character	•Giran
+Interrupt	•Go For Help!
+Character	•Governor Pryce
+Character	•Gragra
+Character	•Grand Admiral Thrawn
+Character	•Grand Admiral Thrawn (V)
+Character	•Grand Admiral Thrawn (V) (AI)
+Character	•Grand Moff Tarkin
+Character	•Grand Moff Tarkin (V)
+Interrupt	Gravel Storm
+Interrupt	•Gravity Shadow
+Character	•Greeata
+Character	•Greedo
+Character	•Greedo (V)
+Interrupt	•Grievous' Gambit
+Character	•Grotto Werribee
+Character	•Grummgar
+Character	•Guri
+Interrupt	•Halt!
+Weapon	Han Seeker
+Interrupt	He Hasn't Come Back Yet
+Effect	•He Is Not Ready
+Interrupt	Heart Of The Chasm
+Interrupt	Heavy Fire Zone
+Weapon	Heavy Turbolaser Battery
+Character	•Hem Dazon
+Character	•Herat
+Character	•Hermi Odle
+Interrupt	He's All Yours, Bounty Hunter
+Interrupt	He's All Yours, Bounty Hunter (V)
+Interrupt	•He's No Good To Me Dead
+Interrupt	•Hidden Weapons
+Effect	•High Anxiety
+Interrupt	•High-speed Tactics
+Effect	•His Name Is Anakin
+Interrupt	•History, Philosophy, And Art
+Interrupt	•Hit Racer
+Interrupt	••HoloNet Transmission
+Device	•Homing Beacon
+Character	•Hondo Ohnaka
+Location	•Hosnian Prime
+Interrupt	•Hot Pursuit
+Location	•Hoth
+Location	•Hoth: Defensive Perimeter (3rd Marker)
+Location	•Hoth: Echo Command Center (War Room)
+Location	•Hoth: Echo Corridor
+Location	•Hoth: Echo Docking Bay
+Location	•Hoth: Ice Plains (5th Marker)
+Location	•Hoth: Ice Plains (5th Marker) (V)
+Location	•Hoth: Mountains (6th Marker)
+Location	•Hoth: North Ridge (4th Marker)
+Location	•Hoth: North Ridge (4th Marker) (V)
+Location	•Hoth: Wampa Cave (7th Marker)
+Starship	•Hound's Tooth
+Starship	•Hound's Tooth (V)
+Interrupt	Human Shield
+Objective	Hunt Down And Destroy The Jedi / Their Fire Has Gone Out Of The Universe
+Objective	Hunt Down And Destroy The Jedi / Their Fire Has Gone Out Of The Universe (V)
+Interrupt	•Hunting Party
+Interrupt	•Hunting Party (V)
+Effect	•Hutt Bounty
+Effect	•Hutt Influence
+Interrupt	•Hutt Smooch
+Character	••Hylobon Enforcer
+Effect	Hyperwave Scan
+Device	Hypo
+Effect	•I Am Your Father
+Effect	•I Am Your Father (V)
+Interrupt	•I Can't Shake Him!
+Interrupt	•I Can't Shake Him! (V)
+Effect	I Find Your Lack Of Faith Disturbing
+Defensive Shield	•I Find Your Lack Of Faith Disturbing (V)
+Effect	•I Had No Choice
+Interrupt	I Have You Now
+Interrupt	I Have You Now (V)
+Interrupt	•I Never Ask For Anything Twice
+Effect	•I Never Ask That Question
+Objective	I Want That Map / And Now You'll Give It To Me
+Effect	•I Want That Ship
+Effect	•I Will Find Them Quickly, Master
+Effect	•I Will Finish What You Started
+Character	•Iasa, The Traitor Of Jawa Canyon
+Effect	•Ice Storm
+Interrupt	•I'd Just As Soon Kiss A Wookiee
+Character	•••ID9 Probe Droid
+Epic Event	•If The Trace Was Correct
+Character	•••IG MagnaGuard
+Starship	•IG-2000
+Character	•IG-88
+Character	•IG-88 (V)
+Starship	•IG-88 In IG-2000
+Character	•IG-88 With Riot Gun
+Weapon	•IG-88's Neural Inhibitor
+Weapon	•IG-88's Pulse Cannon
+Interrupt	•I'm On The Leader
+Effect	•I'm Sorry
+Character	IM4-099 (Eyeemmfour)
+Effect	•Image Of The Dark Lord
+Effect	•Image Of The Dark Lord (V)
+Interrupt	•Imbalance
+Interrupt	•Imbalance & •Kintan Strider
+Effect	•Imperial Academy Training
+Effect	•Imperial Arrest Order
+Effect	•Imperial Arrest Order & •Secret Plans
+Interrupt	••Imperial Artillery
+Interrupt	Imperial Barrier
+Weapon	Imperial Blaster
+Interrupt	Imperial Code Cylinder
+Interrupt	Imperial Code Cylinder (V)
+Interrupt	•Imperial Command
+Interrupt	•Imperial Command & •In Range
+Character	Imperial Commander
+Effect	Imperial Decree
+Effect	Imperial Decree (V)
+Defensive Shield	•Imperial Detention
+Effect	••Imperial Domination
+Effect	•Imperial Enforcement
+Objective	Imperial Entanglements / No One To Stop Us This Time
+Character	Imperial Gunner
+Character	•••Imperial Helmsman
+Location	•Imperial Holotable
+Effect	Imperial Justice
+Objective	Imperial Occupation / Imperial Control
+Character	Imperial Pilot
+Effect	Imperial Propaganda
+Interrupt	Imperial Reinforcements
+Character	Imperial Squad Leader
+Interrupt	•Imperial Supply
+Character	Imperial Trooper Guard
+Character	•Imperial Trooper Guard Dainsom
+Interrupt	•Imperial Tyranny
+Vehicle	Imperial Walker
+Starship	Imperial-Class Star Destroyer
+Interrupt	•In Range
+Effect	•Inconsequential Losses
+Character	Infantry Battle Droid
+Weapon	Infantry Mine
+Interrupt	Informant
+Effect	•Information Exchange
+Epic Event	•Insidious Prisoner
+Effect	•Insignificant Rebellion
+Effect	•Insignificant Rebellion (V)
+Admiral's Order	•Intensify The Forward Batteries
+Device	•Interrogation Array
+Starship	•Intimidator & •Persecutor
+Weapon	Intruder Missile
+Objective	Invasion / In Complete Control
+Starship	•Invisible Hand
+Location	•Invisible Hand: Bridge
+Location	•Invisible Hand: Docking Bay
+Location	•Invisible Hand: Hallway 328
+Location	•Invisible Hand: Observatory Entrance
+Weapon	Ion Cannon
+Objective	ISB Operations / Empire's Sinister Agents
+Character	•IT-O (Eyetee-Oh)
+Interrupt	•It's An Older Code
+Interrupt	It's Worse
+Interrupt	I've Been Searching For You For Some Time
+Interrupt	I've Got A Problem Here
+Effect	I've Lost Artoo!
+Character	•Jabba
+Character	•Jabba Desilijic Tiure
+Character	•Jabba The Hutt
+Character	•Jabba The Hutt (V)
+Effect	•Jabba's Haven
+Effect	•Jabba's Influence
+Interrupt	•Jabba's Palace Sabacc
+Location	•Jabba's Palace: Audience Chamber
+Location	•Jabba's Palace: Droid Workshop
+Location	•Jabba's Palace: Dungeon
+Location	•Jabba's Palace: Entrance Cavern
+Location	•Jabba's Palace: Lower Passages
+Location	•Jabba's Palace: Rancor Pit
+Character	•Jabba's Prize / Jabba's Prize
+Vehicle	•Jabba's Sail Barge
+Vehicle	•Jabba's Sail Barge (V)
+Location	•Jabba's Sail Barge: Passenger Deck
+Starship	•Jabba's Space Cruiser
+Starship	•Jabba's Space Cruiser (V)
+Interrupt	•Jabba's Through With You
+Effect	•Jabba's Trophies
+Interrupt	•Jabba's Twerps
+Location	•Jakku
+Location	•Jakku (AI)
+Location	•Jakku: Landing Site
+Location	•Jakku: Tuanul Village
+Character	•Jango Fett
+Character	•Jango Fett (AI)
+Character	•Janus Greejatus
+Character	Jawa
+Character	Jawa
+Weapon	Jawa Blaster
+Effect	•Jawa Pack
+Location	•Jedha
+Location	•Jedha: Jedha City
+Location	•Jedha: Jedha City (AI)
+Device	•••Jet Pack
+Character	•Jodo Kast
+Interrupt	•Join Me!
+Character	•J'Quille
+Starship	•Judicator
+Location	<>Jungle
+Effect	•Juri Juice
+Location	•Kashyyyk
+Character	Kashyyyk Operative
+Character	•Keder The Black
+Location	•Kessel
+Character	Kessel Operative
+Effect	Ket Maliss
+Location	•Kiffex
+Character	Kiffex Operative
+Location	•Kijimi
+Interrupt	•Kill Them Immediately
+Interrupt	Kintan Strider
+Character	•Kir Kanos
+Character	•Kir Kanos (V)
+Character	•Kithaba
+Character	•Kitik Keed'kak
+Character	•Klaatu
+Effect	•Knowledge And Defense
+Effect	•Knowledge And Defense (V)
+Creature	•Krayt Dragon
+Effect	•Krayt Dragon Bones
+Character	•Krennic, Death Star Commandant
+Location	•Kuat
+Effect	•Kuat Drive Yards
+Effect	•Kuat Drive Yards (V)
+Character	•Kylo Ren
+Character	•Kylo Ren With Lightsaber
+Character	•Kylo Ren With Lightsaber (AI)
+Starship	•Kylo Ren's Command Shuttle
+Weapon	•Kylo Ren's Lightsaber
+Starship	•Kylo Ren's TIE Silencer
+Character	•Labria
+Character	•Lady Proxima
+Starship	Lambda-Class Shuttle
+Interrupt	•Lana Dobreed
+Interrupt	•Lana Dobreed & •Sacrifice
+Character	•Lando Calrissian
+Character	•Lando Calrissian, Vader's Broker
+Interrupt	Lando System?
+Weapon	Laser Cannon Battery
+Device	••Laser Gate
+Weapon	Laser Projector
+Effect	•Lateral Damage
+Character	•Lathe
+Effect	•Leave Them To Me
+Defensive Shield	•Leave Them To Me
+Weapon	Leia Seeker
+Objective	Let Them Make The First Move / At Last We Will Have Revenge
+Interrupt	•Levitation Attack
+Character	•Lieutenant Arnet
+Character	•Lieutenant Cabbel
+Character	•Lieutenant Cecius
+Character	•Lieutenant Commander Ardan
+Character	•Lieutenant Dopheld Mitaka
+Character	•Lieutenant Endicott
+Character	•Lieutenant Grond
+Character	•Lieutenant Hebsly
+Character	•Lieutenant Renz
+Character	•Lieutenant Sheckil
+Character	•Lieutenant Suba
+Character	•Lieutenant Tanbris
+Character	•Lieutenant Venka
+Character	•Lieutenant Venka (V)
+Character	•Lieutenant Watts
+Vehicle	Lift Tube
+Weapon	Light Repeating Blaster Rifle
+Interrupt	Lightsaber Deficiency
+Interrupt	•Lightsaber Parry
+Interrupt	•Limited Resources
+Character	LIN-V8M (Elleyein-Veeateemm)
+Character	•Lirin Car'n
+Interrupt	•Little Real Power
+Character	Lobel
+Character	•Lobot
+Interrupt	Local Trouble
+Effect	•Location, Location, Location
+Interrupt	•Lone Pilot
+Interrupt	•Lone Warrior
+Interrupt	Look Sir, Droids
+Character	•Lord Maul
+Character	•Lord Maul With Lightsaber
+Character	•Lord Sidious
+Character	•Lord Vader
+Effect	Lost In Space
+Location	•Lothal
+Location	•Lothal: Advanced Projects Laboratory
+Location	•Lothal: Capital City
+Location	•Lothal: Imperial Complex
+Location	•Lothal: Imperial Strip Mines
+Character	•Lott Dod
+Character	•Lt. Pol Treidum
+Character	•Lt. Pol Treidum (V)
+Character	•Lt. Poldin Lehuse
+Character	•Lt. Shann Childsen
+Weapon	Luke Seeker
+Character	•Luke Skywalker, The Emperor's Prize / Luke Skywalker, The Emperor's Prize
+Effect	•Luke? Luuuuke!
+Character	•Lyn Me
+Character	•Maarek Stele, The Emperor's Reach
+Effect	Macroscan
+Effect	Macroscan (V)
+Character	•Magistrate Morgan Elsbeth
+Device	Magnetic Suction Tube
+Interrupt	•Main Course
+Character	•Major Hewex
+Character	•Major Marquand
+Character	•Major Mianda
+Character	•Major Rhymer
+Character	•Major Turr Phennir
+Character	Makurth
+Location	•Malachor: Sith Temple Entrance
+Location	•Malachor: Sith Temple Gateway
+Location	•Malachor: Sith Temple Upper Chamber
+Character	•Malakili
+Location	•Malastare
+Location	•Malastare (V)
+Device	•Mandalorian Armor
+Effect	•Maneuver Check
+Starship	•Mara Jade In VT-49 Decimator
+Character	•Mara Jade With Lightsaber
+Character	•Mara Jade, The Emperor's Hand
+Weapon	•Mara Jade's Lightsaber
+Character	•Margo
+Vehicle	•Marquand In Blizzard 6
+Interrupt	•Master, Destroyers!
+Interrupt	•Masterful Move
+Interrupt	•Masterful Move & •Endor Occupation
+Character	•Maul
+Interrupt	Maul Strikes
+Weapon	•Maul's Double-Bladed Lightsaber
+Device	•Maul's Electrobinoculars
+Weapon	•Maul's Lightsaber
+Starship	•Maul's Sith Infiltrator
+Starship	•Maul's Sith Infiltrator (AI)
+Character	Mercenary Pilot
+Starship	•Meson Martinet
+Effect	•Meteor Impact?
+Character	•Mighty Jabba
+Character	•M'iiyoom Onith
+Effect	•Mind Tricks Don't Work On Me
+Starship	•Mist Hunter
+Character	•Mitth'raw'nuruodo
+Effect	•Mobilization Points
+Vehicle	Mobquet A-1 Deluxe Floater
+Character	•Moff Gideon
+Character	•Moff Jerjerrod
+Effect	•Molator
+Interrupt	•Moment Of Triumph
+Interrupt	•Moment Of Triumph (V)
+Location	•Mon Calamari
+Interrupt	Monnok
+Weapon	Mos Eisley Blaster
+Character	•Mosep
+Effect	•Mostly Armless
+Effect	•Motion Supported
+Character	•Motti
+Effect	•Mournful Roar
+Character	MSE-6 'Mouse' Droid
+Effect	•Much Anger In Him
+Vehicle	Multi Troop Transport
+Character	•Murttoc Yine
+Location	•Mustafar
+Location	•Mustafar: Private Platform (Docking Bay)
+Location	•Mustafar: Vader's Castle
+Location	•Mustafar: Vader's Castle (AI)
+Objective	My Kind Of Scum / Fearless And Inventive
+Objective	My Lord, Is That Legal? / I Will Make It Legal
+Character	•Myn Kyneugh
+Character	•Myn Kyneugh (V)
+Creature	Mynock
+Character	•Myo
+Location	•Naboo
+Location	•Naboo (V)
+Weapon	Naboo Blaster
+Weapon	Naboo Blaster Rifle
+Effect	•Naboo Occupation
+Location	•Naboo: Battle Plains
+Location	•Naboo: Swamp
+Location	•Naboo: Theed Palace Courtyard
+Location	•Naboo: Theed Palace Docking Bay
+Location	•Naboo: Theed Palace Generator
+Location	•Naboo: Theed Palace Generator Core
+Location	•Naboo: Theed Palace Hallway
+Location	•Naboo: Theed Palace Throne Room
+Location	•Nal Hutta
+Character	Nal Hutta Operative
+Character	Navy Trooper
+Character	•Navy Trooper Fenson
+Character	•••Navy Trooper Shield Technician
+Character	•Navy Trooper Vesden
+Character	•Nebit
+Interrupt	•Neimoidian Advisor
+Character	Neimoidian Pilot
+Interrupt	Nevar Yalnal
+Interrupt	Ng'ok
+Effect	•Ng'ok War Beast
+Effect	•Ni Chuba Na??
+Effect	•Ni Chuba Na?? (V)
+Character	•Niado Duegad
+Character	Nikto
+Character	•Ninth Sister
+Character	•Nizuc Bek
+Effect	•No Bargain
+Interrupt	•No Civility, Only Politics
+Effect	•No Escape
+Defensive Shield	•No Escape
+Effect	•No Escape (V)
+Interrupt	•No Match For A Sith
+Objective	No Money, No Parts, No Deal! / You're A Slave?
+Interrupt	None Shall Pass
+Admiral's Order	•Nothing Can Get Through Our Shield
+Character	•Nute Gunray
+Character	•Nute Gunray (V)
+Character	•Nute Gunray, Neimoidian Viceroy
+Character	•Nute Gunray, Neimoidian Viceroy (AI)
+Character	•Nysad
+Device	Observation Holocam
+Device	Observation Holocam (V)
+Starship	•Obsidian 10
+Starship	•Obsidian 7
+Starship	•Obsidian 8
+Starship	•••Obsidian Squadron TIE
+Character	•Ochi
+Character	•Officer Evax
+Character	•Officer Valin Hess
+Interrupt	Oh, Switch Off
+Effect	•Ominous Rumors
+Interrupt	Ommni Box
+Interrupt	Ommni Box & It's Worse
+Interrupt	•On The Payroll Of The Trade Federation
+Objective	On The Verge Of Greatness / Taking Control Of The Weapon
+Creature	•One-Arm
+Starship	•Onyx 1
+Starship	•Onyx 2
+Starship	•Onyx 2 (V)
+Interrupt	Oo-ta Goo-ta, Solo?
+Interrupt	Oo-ta Goo-ta, Solo? (V)
+Character	•OOM-9
+Effect	•Opee Sea Killer
+Effect	•Open Fire!
+Interrupt	•Operational As Planned
+Interrupt	•Operational As Planned (V)
+Defensive Shield	•Oppressive Enforcement
+Effect	•Oppressive Enforcement
+Location	•Ord Mantell
+Character	Ord Mantell Operative
+Effect	•Organa's Ceremonial Necklace
+Character	•Orn Free Taa
+Character	•Ortugg
+Character	•Ortugg (V)
+Starship	•OS-72-1 In Obsidian 1
+Character	•OS-72-10
+Starship	•OS-72-2 In Obsidian 2
+Effect	•Our Blockade Is Perfectly Legal
+Interrupt	Our First Catch Of The Day
+Character	Outer Rim Scout
+Interrupt	•Outflank
+Interrupt	Overload
+Effect	•Overseeing It Personally
+Effect	•Overseeing It Personally (V)
+Interrupt	Overwhelmed
+Character	•OWO-1 With Backup
+Character	•P-59
+Character	•P-60
+Character	•Palpatine, Emperor Returned
+Character	•Passel Argente
+Character	•Passel Argente (V)
+Vehicle	Patrol Craft
+Effect	•Perimeter Patrol
+Interrupt	Physical Choke
+Effect	•Pinned Down
+Interrupt	•Pit Crews
+Character	Pit Droid
+Interrupt	•Pitiful Little Band
+Effect	<>Planetary Rings
+Effect	•Planetary Subjugation
+Interrupt	•Podracer Collision
+Interrupt	Point Man
+Interrupt	Point Man (V)
+Character	•Ponda Baba
+Character	•Ponda Baba (V)
+Weapon	•Ponda Baba's Hold-out Blaster
+Device	Portable Fusion Generator
+Character	•Pote Snitkin
+Character	•Pote Snitkin (V)
+Effect	•Power Of The Hutt
+Interrupt	Precise Attack
+Effect	Precision Targeting
+Effect	•Prepare For A Surface Attack
+Effect	•Prepare For A Surface Attack (V)
+Interrupt	•Prepare The Chamber
+Interrupt	•Prepared Defenses
+Effect	••Presence Of The Force
+Effect	•Pride Of The Empire
+Effect	•Pride Of The Empire (V)
+Character	•Prince Xizor
+Device	Probe Antennae
+Character	Probe Droid
+Weapon	Probe Droid Laser
+Interrupt	Probe Telemetry
+Character	•Probot
+Effect	•Program Trap
+Interrupt	•Projective Telepathy
+Interrupt	•Projective Telepathy (V)
+Character	•Prophetess
+Weapon	Proton Bombs
+Starship	•Punishing One
+Starship	•Punishing One (V)
+Interrupt	•Put All Sections On Alert
+Character	•Qi'ra, Top Lieutenant
+Character	Quarren
+Effect	•Qui-Gon's End
+Effect	Quick Reflexes
+Effect	•Quietly Observing
+Effect	•Quietly Observing (V)
+Character	•Quiggold
+Character	R1-G4 (Arone-Geefour)
+Character	•R2-A5 (Artoo-Ayfive)
+Character	R2-Q2 (Artoo-Kyootoo)
+Character	•R3-T6 (Arthree-Teesix)
+Character	R4-M9 (Arfour-Emmnine)
+Character	R5-A2 (Arfive-Aytoo)
+Character	•Rachalt Hyst
+Vehicle	Racing Skiff
+Location	•Raithal
+Character	Raithal Operative
+Location	•Ralltiir
+Objective	Ralltiir Operations / In The Hands Of The Empire
+Objective	Ralltiir Operations / In The Hands Of The Empire (V)
+Creature	Rancor
+Character	•Rappertunie
+Character	•Rayno Vaca
+Effect	Reactor Terminal
+Effect	•Rebel Base Occupation
+Character	•Ree-Yees
+Character	•Ree-Yees (V)
+Character	•Reegesk
+Interrupt	•Release Your Anger
+Interrupt	•Relentless Pursuit
+Effect	•Relentless Tracking
+Location	•Rendili
+Effect	•Rendili StarDrive
+Interrupt	•Res Luk Ra'auf
+Character	••Reserve Pilot
+Effect	•Resistance
+Defensive Shield	•Resistance
+Effect	•Responsibility Of Command
+Device	Restraining Bolt
+Effect	Restricted Access
+Interrupt	Retract The Bridge
+Effect	•Return To Base
+Epic Event	Revenge Of The Sith
+Interrupt	••Rise Of The Sith
+Interrupt	•Rise, My Friend
+Interrupt	•Rite Of Passage
+Creature	Rock Wart
+Character	•••Rodian
+Effect	<>Rogue Asteroid
+Interrupt	•Rolling, Rolling, Rolling
+Vehicle	Ronto
+Effect	•Royal Escort
+Character	Royal Guard
+Character	•RR'uruurrr
+Character	•R'tic H'weei
+Character	•Rukh
+Character	•Rune Haako
+Character	•Rune Haako, Legal Counsel
+Character	•Rune Haako, Legal Counsel (AI)
+Character	•Rystall
+Starship	•Saber 1
+Starship	•Saber 2
+Starship	•Saber 3
+Starship	•Saber 4
+Interrupt	•Sacrifice
+Character	•Salacious Crumb
+Vehicle	Sandcrawler
+Location	•••Sandcrawler: Droid Junkheap
+Effect	•Sando Aqua Monster
+Character	Sandtrooper
+Effect	<>Sandwhirl
+Creature	•Sarlacc
+Character	•Savage Opress
+Character	•Savage Opress (AI)
+Interrupt	Scanning Crew
+Location	•Scarif
+Location	•Scarif: Beach
+Location	•Scarif: Citadel Tower
+Location	•Scarif: Command Center
+Location	•Scarif: Landing Pad Five (Docking Bay)
+Starship	•Scimitar 1
+Starship	•Scimitar 2
+Starship	•••Scimitar Squadron TIE
+Weapon	Scout Blaster
+Interrupt	•Scout Recon
+Interrupt	Scruffy-Looking Nerf Herder
+Effect	•Scum And Villainy
+Starship	•Scythe 1
+Starship	•Scythe 3
+Starship	•••Scythe Squadron TIE
+Interrupt	•Seal Off The Bridge
+Effect	•Search And Destroy
+Character	•Sebulba
+Character	•Sebulba (AI)
+Character	•Sebulba (V)
+Character	•Sebulba (V) (AI)
+Podracer	•Sebulba's Podracer
+Defensive Shield	•Secret Plans
+Effect	•Secret Plans
+Character	Security Battle Droid
+Effect	•Security Precautions
+Effect	•Security Precautions (V)
+Interrupt	Self-Destruct Mechanism
+Effect	Senate Hovercam
+Effect	•Send A Detachment Down
+Interrupt	Sense
+Interrupt	Sense
+Interrupt	Sense & Uncertain Is The Future
+Starship	Sentinel-Class Landing Craft
+Character	•Sergeant Barich
+Character	•Sergeant Elsek
+Character	•Sergeant Irol
+Character	•Sergeant Major Bursk
+Character	•Sergeant Major Enfield
+Character	•Sergeant Merril
+Character	•Sergeant Narthax
+Character	•Sergeant Narthax With E-web Blaster
+Character	•Sergeant Tarl
+Character	•Sergeant Torent
+Character	•Sergeant Wallen
+Interrupt	Set For Stun
+Objective	Set Your Course For Alderaan / The Ultimate Power In The Universe
+Character	•Seventh Sister
+Weapon	SFS L-s7.2 TIE Cannon
+Weapon	SFS L-s9.3 Laser Cannons
+Objective	Shadow Collective / You Know Who I Answer To
+Effect	•Shadows Of The Empire
+Interrupt	•Shattered Hope
+Device	•Shield Gate
+Interrupt	•Shocking Revelation
+Interrupt	•Short Range Fighters & •Watch Your Back!
+Interrupt	•Short-range Fighters
+Effect	•Shot In The Dark
+Interrupt	•Shut Him Up Or Shut Him Down
+Weapon	•Sidious' Lightsaber
+Character	•Sidon Ithano
+Effect	•Sienar Fleet Systems
+Character	•Sil Unch
+Effect	Silence Is Golden
+Effect	Silence Is Golden (V)
+Character	•Sim Aloo
+Character	•Sim Aloo (V)
+Vehicle	Single Trooper Aerial Platform
+Interrupt	•Sith Fury
+Interrupt	•Sith Fury (V)
+Character	Sith Probe Droid
+Character	Sith Probe Droid (V)
+Vehicle	Skiff
+Character	Skrilling
+Starship	•Slave I
+Starship	•Slave I, Symbol Of Fear
+Starship	•Slave I, Symbol Of Fear (AI)
+Creature	Sleen
+Interrupt	•Slip Sliding Away
+Interrupt	•Slip Sliding Away (V)
+Interrupt	•Sneak Attack
+Interrupt	•Sneak Attack (V)
+Interrupt	•Sniper
+Interrupt	•Sniper & •Dark Strike
+Character	•Snoova
+Character	Snowtrooper
+Character	•••Snowtrooper Officer
+Interrupt	Something Hit Us!
+Effect	•Something Special Planned For Them
+Effect	•Something Special Planned For Them (V)
+Interrupt	•Sonic Bombardment
+Interrupt	•Sonic Bombardment (V)
+Creature	<>Space Slug
+Location	<>Spaceport City
+Location	<>Spaceport Docking Bay
+Location	<>Spaceport Prefect's Office
+Location	<>Spaceport Street
+Effect	•Special Delivery
+Effect	•Specter Of The Supreme Leader
+Vehicle	Speeder Bike
+Weapon	Speeder Bike Cannon
+Effect	•Spice Mines Of Kessel
+Interrupt	•Squabbling Delegates
+Character	•SSA-1015
+Character	•SSA-306
+Character	•SSA-719
+Starship	•Stalker
+Starship	•Stalker (V)
+Weapon	STAP Blaster Cannons
+Location	•••Star Destroyer: Launch Bay
+Location	•Starkiller Base
+Location	•Starkiller Base (AI)
+Location	•Starkiller Base: Docking Bay
+Location	•Starkiller Base: Forest
+Location	•Starkiller Base: Interrogation Room (Prison)
+Location	•Starkiller Base: Shield Control
+Interrupt	•Start Your Engines!
+Starship	•Steadfast
+Starship	•Stinger
+Starship	•Stinger (V)
+Interrupt	Stop Motion
+Character	Stormtrooper
+Device	Stormtrooper Backpack
+Character	Stormtrooper Cadet
+Character	Stormtrooper Garrison
+Character	•••Stormtrooper Patrol
+Device	Stormtrooper Utility Belt
+Effect	•Strategic Reserves
+Weapon	Stun Blaster
+Interrupt	Stunning Leader
+Effect	Sudden Impact
+Location	•Sullust
+Effect	Sunsdown
+Effect	Sunsdown & Too Cold For Speeders
+Weapon	•Superlaser
+Weapon	•Superlaser (V)
+Weapon	•Superlaser Mark II
+Character	•Supreme Leader Snoke
+Character	•Supreme Leader Snoke (AI)
+Interrupt	•Surely You Can Do Better
+Interrupt	Surface Defense
+Interrupt	Surface Defense (V)
+Interrupt	Surprise
+Location	<>Swamp
+Effect	Swilla Corey
+Character	Swoop Mercenary
+Character	•Sy Snootles
+Effect	•Tactical Re-Call
+Interrupt	•Tactical Support
+Interrupt	•Take Evasive Action
+Interrupt	•Take Them Away
+Interrupt	Takeel
+Interrupt	Tallon Roll
+Character	Tank Commander
+Epic Event	Target The Main Generator
+Character	•Tarkin
+Character	•Tarkin (V)
+Effect	•Tarkin Doctrine
+Effect	•Tarkin's Bounty
+Effect	•Tarkin's Bounty (V)
+Interrupt	•Tarkin's Orders
+Location	•Tatooine
+Location	•Tatooine
+Location	•Tatooine (V)
+Effect	•Tatooine Occupation
+Location	•Tatooine: Bluffs
+Location	•Tatooine: Cantina
+Location	•••Tatooine: Desert
+Location	•Tatooine: Desert Heart
+Location	•Tatooine: Desert Landing Site
+Location	•Tatooine: Docking Bay 94
+Location	•Tatooine: Great Pit Of Carkoon
+Location	•Tatooine: Jabba's Palace
+Location	•Tatooine: Jawa Camp
+Location	•Tatooine: Jawa Canyon
+Location	•Tatooine: Jundland Wastes
+Location	•Tatooine: Krayt Dragon Pass
+Location	•Tatooine: Lars' Moisture Farm
+Location	•Tatooine: Marketplace
+Location	•Tatooine: Mos Eisley
+Location	•Tatooine: Mos Espa
+Location	•Tatooine: Mos Espa (V)
+Location	•Tatooine: Mos Espa Docking Bay
+Location	•Tatooine: Podrace Arena
+Location	•Tatooine: Tusken Canyon
+Location	•Tatooine: Watto's Junkyard
+Interrupt	•Tauntaun Skull
+Character	•Taym Dren-garen
+Character	•TC-14
+Character	•Tech Mo'r
+Podracer	•Teemto Pagalies' Podracer
+Character	•Televan Koreyy
+Vehicle	•Tempest 1
+Vehicle	Tempest Scout
+Vehicle	•Tempest Scout 1
+Vehicle	•Tempest Scout 2
+Vehicle	•Tempest Scout 3
+Vehicle	•Tempest Scout 3 (V)
+Vehicle	•Tempest Scout 4
+Vehicle	•Tempest Scout 5
+Vehicle	•Tempest Scout 6
+Effect	Tentacle
+Character	•Tey How
+Epic Event	•That Thing's Operational
+Interrupt	That's It, The Rebels Are There!
+Interrupt	The Circle Is Now Complete
+Character	•The Client
+Effect	The Dark Path
+Effect	The Dark Path (V)
+Effect	•The Dead Speak!
+Admiral's Order	•The Deflector Shield Is Too Strong
+Interrupt	•The Ebb Of Battle
+Character	•The Emperor
+Character	•The Emperor (V)
+Effect	•The Emperor's Prize
+Starship	•The Emperor's Shield
+Starship	•The Emperor's Sword
+Interrupt	The Empire's Back
+Effect	•The First Order Was Just The Beginning
+Character	•The Grand Inquisitor
+Effect	•The Hutts Are Gangsters
+Effect	•The Phantom Menace
+Effect	•The Phantom Menace (AI)
+Interrupt	•The Point Is Conceded
+Effect	The Shield Doors Must Be Closed
+Effect	•There Are Many Hunting You Now
+Interrupt	•There Is No Conflict
+Effect	•There Is No Try
+Defensive Shield	•There Is No Try
+Effect	•There Is No Try & •Oppressive Enforcement
+Interrupt	•There They Are!
+Effect	•••There'll Be Hell To Pay
+Weapon	•Thermal Detonator
+Effect	•They Must Never Again Leave This City
+Effect	•They Will Be No Match For You
+Effect	•They Will Be No Match For You (V)
+Interrupt	•They're Coming In Too Fast!
+Interrupt	They're Still Coming Through!
+Interrupt	•They've Shut Down The Main Reactor
+Objective	This Deal Is Getting Worse All The Time / Pray I Don't Alter It Any Further
+Effect	•This Is Just Wrong
+Interrupt	•This Is Not Good
+Effect	•This Is Outrageous!
+Interrupt	This Is Some Rescue!
+Interrupt	•This Is Still Wrong
+Character	•Thok & Thug
+Interrupt	Those Rebels Won't Escape Us
+Interrupt	•Thrawn Pincer
+Effect	•Thrawn's Art Collection
+Interrupt	•Through The Corridor
+Character	•Thul Fain
+Starship	•Thunderflare
+Starship	•Thunderflare (V)
+Character	Tibanna Gas Miner
+Starship	TIE Advanced x1
+Starship	TIE Assault Squadron
+Starship	TIE Avenger
+Starship	TIE Bomber
+Starship	TIE Defender Mark I
+Starship	TIE Fighter
+Starship	TIE Interceptor
+Starship	TIE Scout
+Interrupt	•TIE Sentry Ships
+Interrupt	•TIE Sentry Ships (V)
+Starship	TIE Vanguard
+Character	•Tikkes
+Weapon	Timer Mine
+Character	•Tonnika Sisters
+Effect	Too Cold For Speeders
+Character	•Toonbuck Toora
+Interrupt	•Torture
+Device	Tractor Beam
+Starship	Trade Federation Battleship
+Starship	<>Trade Federation Droid Control Ship
+Starship	Trade Federation Landing Craft
+Interrupt	•Trade Federation Tactics
+Interrupt	•Trade Federation Tactics (V)
+Effect	•Tragedy Of Plagueis
+Interrupt	Trample
+Character	Trandoshan
+Interrupt	•Trap Door
+Interrupt	Trinto Duaba
+Interrupt	Trooper Assault
+Interrupt	Trooper Charge
+Character	•Trooper Davin Felth
+Character	•Trooper Jerrol Blendin
+Interrupt	•Trooper Sabacc
+Vehicle	•TT-6
+Vehicle	•TT-9
+Weapon	Turbolaser Battery
+Interrupt	Turn It Off! Turn It Off!
+Interrupt	Turn It Off! Turn It Off! (V)
+Character	Tusken Raider
+Character	Tusken Raider
+Character	Tusken Raider With Hunting Rifle
+Interrupt	Tusken Scavengers
+Interrupt	•Twi'lek Advisor
+Interrupt	•Twi'lek Advisor (V)
+Objective	Twin Suns Of Tatooine / Well Trained In The Jedi Arts
+Starship	•Tyrant
+Character	•U-3PO (Yoo-Threepio)
+Vehicle	Ubrikkian 9000 Z001
+Effect	•Ubrikkian Industries
+Character	•Ugloste
+Character	Ugnaught
+Character	•Umpass-stay
+Interrupt	Uncertain Is The Future
+Effect	Undercover
+Interrupt	•Understand Art, Understand A Species
+Interrupt	•Unexpected Interruption
+Character	•Unkar Plutt
+Effect	•Unlimited Power!
+Interrupt	•Unsalvageable
+Character	•URoRRuR'R'R
+Vehicle	•URoRRuR'R'R's Bantha
+Weapon	•URoRRuR'R'R's Hunting Rifle
+Character	•Ur'Ru'r
+Interrupt	Utinni!
+Character	•Vader
+Character	•Vader (V)
+Interrupt	•Vader's Anger
+Interrupt	•Vader's Anger (V)
+Effect	•Vader's Bounty
+Effect	•Vader's Cape
+Starship	•Vader's Custom TIE
+Starship	•Vader's Custom TIE (V)
+Interrupt	•Vader's Eye
+Weapon	•Vader's Lightsaber
+Weapon	•Vader's Lightsaber (V)
+Interrupt	•Vader's Obsession
+Starship	•Vader's Personal Shuttle
+Starship	•Vader's Personal Shuttle (V)
+Character	•Vanee
+Character	•Vedain
+Character	•Veers
+Character	•Veers (V)
+Weapon	Vehicle Mine
+Character	•Velken Tezeri
+Character	•Velken Tezeri (V)
+Starship	•Vengeance
+Starship	•Vengeance (V)
+Weapon	Vibro-Ax
+Starship	Victory-Class Star Destroyer
+Character	•••Vigo
+Character	•••Vigo (V)
+Creature	Vine Snake
+Starship	•Virago
+Starship	•Visage
+Effect	•Visage Of The Emperor
+Effect	•Visage Of The Emperor (V)
+Character	•Vizam
+Interrupt	•Vote Now!
+Defensive Shield	•Vote of No Confidence
+Interrupt	••Voyeur
+Location	•Wakeelmui
+Location	•Wakeelmui (V)
+Interrupt	Walker Barrage
+Interrupt	Walker Garrison
+Interrupt	Wall Of Fire
+Creature	Wampa
+Character	•Warrant Officer M'Kae
+Character	•Wat Tambor
+Interrupt	•Watch Your Back!
+Character	•Watto
+Character	•Watto (AI)
+Effect	•Watto's Box
+Interrupt	•Watto's Chance Cube
+Interrupt	We Have A Prisoner
+Interrupt	•We Must Accelerate Our Plans
+Effect	•We Shall Double Our Efforts!
+Interrupt	•Weapon Levitation
+Effect	•Weapon Malfunction
+Defensive Shield	•Weapon Of A Sith
+Interrupt	•Weapon Of An Ungrateful Son
+Effect	•Weather Vane
+Character	WED15-I662 'Treadwell' Droid
+Character	•WED15-l7 'Septoid' Droid
+Character	•••Weequay Guard
+Character	•••Weequay Hunter
+Character	•••Weequay Marksman
+Character	•••Weequay Skiff Master
+Effect	•Well Guarded
+Defensive Shield	•We'll Let Fate-a Decide, Huh?
+Effect	•Well-earned Command
+Interrupt	We're All Gonna Be A Lot Thinner!
+Interrupt	••We're Hit, Artoo
+Admiral's Order	•We're In Attack Position Now
+Effect	•We're The Bait
+Effect	•Where Are Those Droidekas?!
+Effect	•Where Are Those Droidekas?! (V)
+Character	Whiphid
+Interrupt	•Why Didn't You Tell Me?
+Effect	•Wipe Them Out, All Of Them
+Defensive Shield	•Wipe Them Out, All Of Them
+Character	•Wittin
+Vehicle	•Wittin's Sandcrawler
+Creature	•••Womp Rat
+Character	•Wooof
+Character	•Wooof (V)
+Interrupt	•Working Much More Closely
+Interrupt	•Wounded Warrior
+Interrupt	•Wounded Wookiee
+Effect	•Wrong Turn
+Character	•Wuher
+Effect	•Xizor's Bounty
+Location	•Xizor's Palace: Sewer
+Location	•Xizor's Palace: Uplink Station
+Character	•Yade M'rak
+Interrupt	Yaggle Gakkle
+Location	•Yavin 4
+Location	•Yavin 4: Docking Bay
+Location	•Yavin 4: Jungle
+Character	•Yeb Yeb Adem'thorn
+Interrupt	•You Are Beaten
+Effect	•You Cannot Hide Forever
+Defensive Shield	•You Cannot Hide Forever
+Effect	•You Cannot Hide Forever & •Mobilization Points
+Defensive Shield	•You Cannot Hide Forever (Death Star II) (V)
+Defensive Shield	•You Cannot Hide Forever (V)
+Interrupt	•You Know What I've Come For
+Effect	•You May Start Your Landing
+Interrupt	You Overestimate Their Chances
+Interrupt	•You Rebel Scum
+Interrupt	•You Swindled Me!
+Interrupt	•You Swindled Me! (V)
+Effect	•You Want This, Don't You?
+Effect	•You'll Be Dead!
+Interrupt	•Young Fool
+Effect	•Your Destiny
+Effect	Your Eyes Can Deceive You
+Interrupt	Your Powers Are Weak, Old Man
+Defensive Shield	•You've Never Won A Race?
+Character	•Ysanne Isard
+Character	•••Yuzzum
+Character	•Zam Wesell
+Character	•Zuckuss
+Starship	•Zuckuss In Mist Hunter
+Weapon	•Zuckuss' Snare Rifle
