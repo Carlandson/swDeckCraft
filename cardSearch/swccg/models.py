@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from rest_framework import routers, serializers, viewsets
+import json
 
 class starwarscard(models.Model):
     title = models.CharField(max_length=200, null=True, default="")
@@ -37,6 +38,7 @@ class starwarscard(models.Model):
     darkSideIcons = models.IntegerField(null=True)
     ferocity = models.CharField(max_length=200, null=True, default="")
     destinyValues = ArrayField(models.CharField(max_length=200, null=True, default=""), default=list, null=True)
+    image = models.ImageField(upload_to='', max_length=255, blank=True)
     def __str__(self):
         return f"{self.title}"
 
@@ -45,9 +47,11 @@ class starwarscard(models.Model):
             "name" : self.title,
             "type" : self.type,
             "side" : self.side,
-            "image" : self.imageUrl
+            "gametext" : self.gametext,
+            "image" : json.dumps(str(self.image), ensure_ascii=False),
+            "lore" : self.lore,
+            "subType" : self.subType,
         }
-
 
 class decklist(models.Model):
     name = models.CharField(max_length=200)

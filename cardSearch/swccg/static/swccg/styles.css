@@ -1,19 +1,88 @@
 
 #searchResults {
-    overflow: scroll;
     display: flex;
     flex-wrap: wrap;
-    width: 700px;
-    height: 1000px;
-    background-color: red;
-    grid-template-columns: repeat(auto-fill,minmax(160px, 1fr));
+    width: 640px;
+    height: 552px;
+    overflow: scroll;
+    flex-direction: row;
+    align-content: flex-start;
 }
-.cardResults {
-    display: grid;
+#deckBuilder {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    width: 730px;
+    height: 690px;
 }
+
 .card {
-    height: fit-content;
+    display: flex;
+    height: 138.3px;
+    width: 100px;
 }
-.cardImage {
-    max-height: 100px;
+
+.deckCard {
+    height: 125.5px;
+    width: 90px;
 }
+
+.searchBar {
+    background-image: url('/static/swccg/Sketch002.png');
+    background-position: center;
+    width: 290px;
+    margin: 4px;
+}
+
+.focusCardDiv {
+    position: absolute; 
+    z-index: 9;
+    cursor: move;
+    border-radius: 20px;
+}
+
+.focusSite {
+    transform-origin: 0 0;
+    transform: rotate(.25turn);
+    margin-left: 100%;
+    width: 498px;
+    height: 358px;
+}
+.focusCard {
+    width: 358px;
+    height: 498px;  
+}
+
+.deckSite {
+    transform-origin: 0 0;
+    transform: rotate(.25turn);
+    width: 90px;
+    margin-left: 100%;
+    max-width: none;
+    width: 125.5px;
+}
+
+.site {
+    transform-origin: 0 0;
+    transform: rotate(.25turn);
+    width: 100px;
+    margin-left: 100%;
+    max-width: none;
+    width: 137.4px;
+}
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+.cardStack {
+    transform: translate(10px);
+}
+
+.child {
+    position: absolute;
+    top: 0;
+  }

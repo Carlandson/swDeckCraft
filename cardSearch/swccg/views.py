@@ -5,6 +5,13 @@ from .models import starwarscard, decklist, copies
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
+import requests
+import urllib3
+import os
+import urllib.request
+from django.core.files import File
+import re
+
 def index(request):
     decks = decklist.objects.all().order_by("-id")
     return render(request, 'swccg/index.html', {'decklists': decks})
@@ -13,7 +20,7 @@ def index(request):
 #when new cards are created. could also be used to add values to cards.
 
 #Note - I found errors in these lists so saving this was incredibly helpful!
-# def card_save(request):
+def card_save(request):
 #     if request.method == "POST":
 #         with open('/workspaces/73307697/final/swccg/lscardlist.txt') as f:
 #             lines = f.readlines()
@@ -42,45 +49,81 @@ def index(request):
 #                 )
 #                 newcard.save()
 #         return render(request, 'swccg/card_save.html')
+    return render(request, 'swccg/card_save.html')
+
+# saved cards 
+# def card_save(request):
+#     if request.method == "POST":
+#         data = open('swccg\dark.json').read()
+#         json_data = json.loads(data)
+#         keys = {}
+#         for d in json_data["cards"]:
+#             cardAttribute = {}
+#             for first_key, value in d.items():
+#                 if first_key == "printings":
+#                     continue
+#                 if type(value) == list:
+#                     continue
+#                 if first_key != "front" and first_key != "back" and first_key != "counterpart":
+#                     cardAttribute[first_key] = value
+#                 if type(value) == dict and first_key != "back":
+#                     for second_key, second_value in value.items():
+#                         # print(second_key)
+#                         # print(second_value)
+#                         if second_key == int or bool or str:
+#                             cardAttribute[second_key] = second_value
+#                         else:
+#                             if second_key == "icons" or  second_key == "destinyValues":
+#                                 cardAttribute[second_key] = []
+#                                 for item in second_value:
+#                                     if type(item) == str or int or bool:
+#                                         cardAttribute[second_key].append(item) 
+#                             else:
+#                                 continue
+#             m = starwarscard(**cardAttribute)
+#             m.save()
+#         return render(request, 'swccg/card_save.html', {"keys" : keys})
 #     if request.method == "GET":
 #         return render(request, 'swccg/card_save.html')
 
+# def card_save(request):
+#     if request.method == "POST":
+#         card_db = starwarscard.objects.all();
+#         for card in card_db:
+#             url = card.imageUrl
+#             card_title_cleaned = re.sub('[?<>]', '', card.title)
+#             if '/' in card_title_cleaned:
+#                 card_split = card_title_cleaned.rsplit('/', 1)[0]
+#                 card_name = card_split.strip() + ".jpg"
+#             else:
+#                 card_name = card_title_cleaned + ".jpg"
+#             save_path = "C:/Users/Jx1/Documents/GitHub/projects/cardSearch/media/MEDIA/images"
+#             join_path_image = os.path.join(save_path, card_name)
+#             if card.imageUrl and not card.image:
+#                 with open(join_path_image, 'wb') as handle:
+#                     response = requests.get(url, stream=True)
+#                     if not response.ok:
+#                         print(response)
+#                     for block in response.iter_content(1024):
+#                         if not block:
+#                             break
+#                         handle.write(block)
+#                     card.image = join_path_image
+#                     card.save()
+        # if test_card.imageUrl and not test_card.image:
+        #     result = urllib.request.urlretrieve(url, "MEDIA/images")
+        #     print(result)
+            # test_card.image.save(
+            #     os.path.basename(test_card.imageUrl),
+            #     File(open(result[0], encoding="utf8"))
+            # )
+            # test_card.save()
+    #     return render(request, 'swccg/card_save.html')
+    # if request.method == "GET":
+    #     return render(request, 'swccg/card_save.html')
+    # for card in card_db:
+    #     img_data = requests.get(card.imageUrl)
 
-def card_save(request):
-    if request.method == "POST":
-        data = open('swccg\light.json').read()
-        json_data = json.loads(data)
-        keys = {}
-        for d in json_data["cards"]:
-            cardAttribute = {}
-            for first_key, value in d.items():
-                #we are going to test waters by adding all the subdata types into sql
-                    #make list of all key/values, add to relevant model
-                if first_key == "printings":
-                    continue
-                if type(value) == list:
-                    continue
-                if first_key != "front" and first_key != "back" and first_key != "counterpart":
-                    cardAttribute[first_key] = value
-                if type(value) == dict and first_key != "back":
-                    for second_key, second_value in value.items():
-                        # print(second_key)
-                        # print(second_value)
-                        if second_key == int or bool or str:
-                            cardAttribute[second_key] = second_value
-                        else:
-                            if second_key == "icons" or  second_key == "destinyValues":
-                                cardAttribute[second_key] = []
-                                for item in second_value:
-                                    if type(item) == str or int or bool:
-                                        cardAttribute[second_key].append(item) 
-                            else:
-                                continue
-            m = starwarscard(**cardAttribute)
-            m.save()
-        return render(request, 'swccg/card_save.html', {"keys" : keys})
-    if request.method == "GET":
-        return render(request, 'swccg/card_save.html')
 
 @csrf_exempt
 def deckbuild(request):
@@ -112,6 +155,13 @@ def deckview(request, deckid):
             if count == 0:
                 deck_type_dict.pop(list)
         return render(request, 'swccg/deckview.html', {"deck": deck_choice, "cards":my_list, "type_lists":deck_type_dict})
+        
+#fetch all cards return an array
+def load_cards(request):
+    if request.method == "GET":
+        all_cards = starwarscard.objects.all()
+        print("working")
+        return JsonResponse([cards.serialize() for cards in all_cards], safe=False)
 
 def card_search(request, cardside):
     if request.method == "GET":

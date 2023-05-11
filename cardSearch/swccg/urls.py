@@ -1,4 +1,6 @@
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import views
 
@@ -11,4 +13,5 @@ urlpatterns = [
     path('deck_build', views.deck_build, name="deck_build"),
     path('deck_check/<str:deckname>', views.deck_check, name="deck_check"),
     path('index_search/<str:parameter>', views.index_search, name="index_search"),
-]
+    path('load_cards', views.load_cards, name='load_cards'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

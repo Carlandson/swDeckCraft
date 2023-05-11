@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import environ
+import os
 
 env = environ.Env()
 environ.Env.read_env()
@@ -29,6 +30,10 @@ SECRET_KEY = 'django-insecure-yx-fl+x)0**o&!08vqc4)^ba*x#s1)8@ud$_9w29+o#ue4o$h7
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+#media/user uploads
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Application definition
 
@@ -129,6 +134,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 STATIC_URL = 'static/'
 
