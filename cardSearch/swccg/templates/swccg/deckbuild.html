@@ -41,18 +41,12 @@
     <div id="searchResults" class="flex-grid">
     </div> 
 </div>
-<div id="deckBuild" class="float-right w-1/2 pl-12 text-center h-screen flex-grid">
+<div id="deckBuild" class="float-right w-1/2 pl-12 text-center h-screen">
     <span>Card Total : <span id="deckCount"></span> / 60</span>
-    <div class="h-screen border-2 m-3 text-left overflow-auto" id="deckBuilder">    
+    <div class="h-screen border-2 m-3 text-left flex-grid" id="deckBuilder">    
     </div>
     <div>
-        <form id="deckSubmit" action="post">
-            <ul>
-                <li class="mb-2 border-gray-200"><input id="deckName" class="text-center" placeholder="Deck Name" type="text" required></li>
-                <li class="mb-2"><input id="author" placeholder="Your Name" class="text-center" type="text" required></li>
-                <li class="mb-2"><button id="buttonSubmit" class="bg-teal-400 px-6 disabled:opacity-50" disabled>Build Deck</button></li>
-            </ul>
-        </form>
+        <button id="saveDeck" class="bg-teal-400 px-6">Save Deck</button>
     </div>
 </div>
 <div id="typeCount">

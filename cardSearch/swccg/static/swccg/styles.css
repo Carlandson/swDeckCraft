@@ -13,6 +13,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     align-content: flex-start;
+    overflow: auto;
     width: 730px;
     height: 690px;
 }
@@ -73,9 +74,8 @@
 }
 .cardContainer {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-content: flex-start;
+    position: relative;
+    height: 126px;
 }
 
 .cardStack {
@@ -84,5 +84,4 @@
 
 .child {
     position: absolute;
-    top: 0;
   }

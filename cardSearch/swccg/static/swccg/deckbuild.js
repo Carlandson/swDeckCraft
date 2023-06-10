@@ -5,6 +5,7 @@ var tempDictionary = [];
 var tempArray = [];
 var count = 0;
 var deckOnDeck = [];
+
 //card object
 class cardObject {
     constructor(
@@ -31,7 +32,7 @@ class cardObject {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadCards();
-    document.querySelector('#deckSubmit').addEventListener('submit', () => buildDeck());
+    document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
     document.querySelector('#side').addEventListener('change', () => searchCards());
     document.querySelector('#optionOne').addEventListener('change', () => changeFilter());
     document.querySelector('#textSearchOne').addEventListener('input', () => textFilter(document.querySelector('#searchOneType').value, document.querySelector("#textSearchOne").value));
@@ -41,37 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     bars.forEach(bar => {
         bar.value = "";
     });
-    //dynamic array listening for changes in search results for dynamic pagination
-    // const targetNode = document.querySelector('#searchResults'); 
-    // const config = { attributes: true, childList: true, subtree:true };
-    // const callback = (mutationList, observer) => {
-    //     console.log("the mutationList object is " + mutationList);
-    //     for (i=0; i < mutationList.length; i++) {
-    //         console.log(mutationList[i].addedNodes.length)
-    //         if (mutationList[i].type === "childList"){
-    //             for (j=0; j<mutationList[i].addedNodes.length; j++){
-    //                 testArray.push(mutationList[i].addedNodes[j].id)
-    //             }
-    //         };
-    //         if (mutationList[i].type == "attributes") {
-    //             console.log("mutatlist length is " + mutationList.length);
-    //             for (k=0; k < mutationList.length; k++) {
-    //                 if (mutationList[k].target.style.display == 'none') { 
-    //                     // testArray.filter(card => card !== mutationList[k].target.id);
-    //                     console.log("none test")
-    //                 } else if (mutationList[k].target.style.display == 'block') {
-    //                     // testArray.push(mutationList[k].target.id)
-    //                     console.log("block test")
-    //                 };
-    //             };
-    //         };
-    //     }
-    //     testArray.forEach (item => {
-    //         console.log(item);
-    //     });
-    // };
-    // const observer = new MutationObserver(callback);
-    // observer.observe(targetNode, config);
 });
 
 //dynamic array listening for changes in search results for dynamic pagination
@@ -106,6 +76,7 @@ function loadCards() {
                     card['type'],
                     card['side'],
                     card['subType'],
+                    card['gempId'],
                 )
                 if (card['side'] == "Light") {
                     lightDictionary.push(cardName);
@@ -129,7 +100,6 @@ function searchCards() {
 
 function searchQuery(object) {
     count = 0;
-    console.log(object.length)
     //loader displays while populating, hidden after finishing
     // let loader = document.querySelector("#loading");
     // loader.classList.add("display");
@@ -148,6 +118,7 @@ function searchQuery(object) {
         let gametext = card.gametext;
         let type = card.type;
         let subType = card.subType;
+        let gempId = card.gempId;
         let resultCard = document.createElement('div');
         resultCard.setAttribute('class', 'card');
         if(subType=="Site"){
@@ -169,6 +140,7 @@ function searchQuery(object) {
         resultCard.setAttribute('id', name);
         resultCard.setAttribute('data-gametext', gametext);
         resultCard.setAttribute('data-lore', lore);
+        resultCard.setAttribute('gempId', gempId);
         resultCard.addEventListener('click', (e) => {
             if(e.shiftKey) {
                 draggableZoom(finalImage, subType)
@@ -181,6 +153,7 @@ function searchQuery(object) {
     document.querySelector("#resultCount").innerHTML = "showing " + count + " results out of " + object.length;
 };
 
+//draggable function for zoomed card - user shift clicks
 function draggableZoom(finalImage, subType) {
     var cardDiv = document.createElement('div');
     cardDiv.classList.add("focusCardDiv");
@@ -231,12 +204,6 @@ function addCard(card) {
         deckOnDeck.push(addCard);
     }
     deckArea();
-    // addCard.setAttribute('class', 'deckCard');
-    // addCard.setAttribute('id', `${card.name}`)
-    // addCard.setAttribute('src', `${finalImage}`);
-    // deckArea.appendChild(addCard);
-    // deckTotal();
-    // addCard.addEventListener('click', () => deleteCard(card));
 };
 
 function deckArea() {
@@ -245,66 +212,53 @@ function deckArea() {
     for(i = 0; i < deckOnDeck.length; i++) {
         let tempCard = deckOnDeck[i];
         let parentContainer = document.createElement("div");
+        let parentWidth = 90 + (10*(tempCard.count - 1));
+        parentContainer.style.width = `${parentWidth}px`;
         parentContainer.classList.add("cardContainer");
-        //add site transform
-        let cardDiv = document.createElement('div');
-        cardDiv.classList.add('deckCard');
-        let imageUrl = tempCard.image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
-        let finalImage = imageUrl.replaceAll('"', '');
-        if (deckOnDeck[i].subType == "Site"){
-            let rotatedCard = document.createElement('div');
-            rotatedCard.classList.add('site-wrapper');
-            let imageElement = document.createElement('img');
-            imageElement.classList.add('deckSite');
-            imageElement.setAttribute('src', `${finalImage}`);
-            imageElement.setAttribute('loading', 'lazy');
-            rotatedCard.append(imageElement);
-            cardDiv.append(rotatedCard);
-        } else {
-            let imageElement = document.createElement('img');
-            imageElement.setAttribute('src', `${finalImage}`);
-            imageElement.setAttribute('loading', 'lazy');
-            cardDiv.append(imageElement);
-        };
-        if (tempCard.count > 1) {
-            let newWidth = 90 + (10*(tempCard.count - 1));
-            parentContainer.style.width = `${newWidth}px`;
-            for (j=0; j<tempCard.count; j++) {
-                //add card to the container
-                //make a copy of the cardiv and append a new copy to the stack
-                //set attribute of all cards after 1 to have x left padding and z-index to be over the next card
-                //need new div new translate off last element, put div in div to translate off previous
-                let childDiv = document.createElement('div');
-                let copyDiv = cardDiv;
-                childDiv.classList.add("child");
-                childDiv.style.left = `${j*10}px`;
-                console.log(childDiv.style.left);
-                console.log(copyDiv);
-                childDiv.append(copyDiv);
-                parentContainer.append(childDiv);
+        for(j = 0; j < tempCard.count; j++){
+            //creates seperate div for each card
+            let cardDiv = document.createElement('div');
+            //moves the card to the right j*10 pixels
+            if (j > 0) {cardDiv.style.left = `${j*10}px`};
+            //gives card child and deckcard attributes to be controlled by parent container
+            cardDiv.classList.add("child", "deckCard");
+            //grabs the image, takes out the path which messes with the image display
+            let imageUrl = tempCard.image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
+            //removes quotations from the path which also affects the image display
+            let finalImage = imageUrl.replaceAll('"', '');
+            if (deckOnDeck[i].subType == "Site"){
+                let rotatedCard = document.createElement('div');
+                rotatedCard.classList.add('site-wrapper');
+                let imageElement = document.createElement('img');
+                imageElement.classList.add('deckSite');
+                imageElement.setAttribute('src', `${finalImage}`);
+                imageElement.setAttribute('loading', 'lazy');
+                rotatedCard.append(imageElement);
+                cardDiv.append(rotatedCard);
+            } else {
+                let imageElement = document.createElement('img');
+                imageElement.setAttribute('src', `${finalImage}`);
+                imageElement.setAttribute('loading', 'lazy');
+                cardDiv.append(imageElement);
+                cardDiv.addEventListener('click', (e) => deleteCard(e));
             };
-        } else { 
-            console.log("one card");
             parentContainer.append(cardDiv);
-        };
+            };
         deckArea.append(parentContainer);
         parentContainer.addEventListener('click', () => deleteCard(tempCard, cardDiv));
     }; 
     deckTotal();
 };
-function deckTotal() {   
-    //add function to calculate counts of cards
-    var total = deckOnDeck.length;
-    let deckCount = document.querySelector('#deckCount');
-    deckCount.innerHTML = `${total}`;
-    if(total == 60) {
-        document.querySelector('#buttonSubmit').disabled = false;
-    }
-    else{document.querySelector('#buttonSubmit').disabled = true;}
-};
 
-function deleteCard(card, cardDiv){
-    console.log(cardDiv);
+function deckTotal() {   
+    //reduce function calculates total with count element
+    const getDeckTotal = deckOnDeck.reduce((n, {count}) => n + count, 0)
+    let deckCount = document.querySelector('#deckCount');
+    deckCount.innerHTML = `${getDeckTotal}`;
+};
+//stoppage june 9th, figure out delete card too tired
+function deleteCard(card){
+    console.log("deleteCard function test");
     if ( card.count > 1) {
         card.count -= 1;
     } else {
@@ -314,44 +268,42 @@ function deleteCard(card, cardDiv){
     let deckDiv = document.querySelector("#deckBuilder");
     console.log(deckDiv);
     deckDiv.parentNode.removeChild(cardDiv);
-    deckTotal();
-    deckArea();
     //delete card from deck area
     //feed div info and delete divinfrom from parent
     //deckDiv.parentNode.removeChild(cardDiv)
 }
 
-function buildDeck(event) {
-    event.preventDefault()
-    var deckName = document.getElementById('deckName').value;
-    fetch('deck_check' + "/" + deckName, {method:'get'})
-        .then(response=>response.json())
-        .then((data)=> {
-            if(data == true) {
-                alert("deck exists");
-            }
-            else {
-                var cards = document.getElementById('cards_added').getElementsByTagName("li");
-                let deck = []
-                for (let i=0; i< cards.length; i++){
-                    let temp = cards[i].id;
-                    deck.push(temp)
-                };
-                fetch('deck_build', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        name: document.querySelector('#deckName').value,
-                        author: document.querySelector('#author').value,
-                        cards: deck,
-                        side: document.querySelector('#side').value,
-                    })
-                });
-                alert('deck posted!');
-                window.location.href = "http://127.0.0.1:8000";
-            };
-    });
-}
-dragElement(document.getElementById("focusCardDiv"));
+// function buildDeck(event) {
+//     event.preventDefault()
+//     var deckName = document.getElementById('deckName').value;
+//     fetch('deck_check' + "/" + deckName, {method:'get'})
+//         .then(response=>response.json())
+//         .then((data)=> {
+//             if(data == true) {
+//                 alert("deck exists");
+//             }
+//             else {
+//                 var cards = document.getElementById('cards_added').getElementsByTagName("li");
+//                 let deck = []
+//                 for (let i=0; i< cards.length; i++){
+//                     let temp = cards[i].id;
+//                     deck.push(temp)
+//                 };
+//                 fetch('deck_build', {
+//                     method: 'POST',
+//                     body: JSON.stringify({
+//                         name: document.querySelector('#deckName').value,
+//                         author: document.querySelector('#author').value,
+//                         cards: deck,
+//                         side: document.querySelector('#side').value,
+//                     })
+//                 });
+//                 alert('deck posted!');
+//                 window.location.href = "http://127.0.0.1:8000";
+//             };
+//     });
+// }
+// dragElement(document.getElementById("focusCardDiv"));
 //draggable zoom card function
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -381,64 +333,31 @@ function dragElement(elmnt) {
     function closeDragElement() {
         document.onmouseup = null;
         document.onmousemove = null;
-    }
-}
-function deckArea() {
-    let deckArea = document.querySelector("#deckBuilder");
-    deckArea.innerHTML = '';
-    for(i = 0; i < deckOnDeck.length; i++) {
-        let tempCard = deckOnDeck[i];
-        let parentContainer = document.createElement("div");
-        let parentWidth = 90 + (10*(tempCard.count - 1));
-        parentContainer.style.width = `${parentWidth}px`;
-        parentContainer.classList.add("cardContainer");
-        for(j = 0; j < tempCard.count; j++){
-            //add site transform
-            let cardDiv = document.createElement('div');
-            cardDiv.classList.add("child", "deckCard");
-            let imageUrl = tempCard.image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
-            let finalImage = imageUrl.replaceAll('"', '');
-            if (deckOnDeck[i].subType == "Site"){
-                let rotatedCard = document.createElement('div');
-                rotatedCard.classList.add('site-wrapper');
-                let imageElement = document.createElement('img');
-                imageElement.classList.add('deckSite');
-                imageElement.setAttribute('src', `${finalImage}`);
-                imageElement.setAttribute('loading', 'lazy');
-                rotatedCard.append(imageElement);
-                cardDiv.append(rotatedCard);
-            } else {
-                let imageElement = document.createElement('img');
-                imageElement.setAttribute('src', `${finalImage}`);
-                imageElement.setAttribute('loading', 'lazy');
-                cardDiv.append(imageElement);
-            };
-            if (j > 0) {
-                cardDiv.style.left = `${j*10}px`;
-            }
-        if (tempCard.count > 1) {
-            let newWidth = 90 + (10*(tempCard.count - 1));
-            parentContainer.style.width = `${newWidth}px`;
-            for (j=0; j<tempCard.count; j++) {
-                //add card to the container
-                //make a copy of the cardiv and append a new copy to the stack
-                //set attribute of all cards after 1 to have x left padding and z-index to be over the next card
-                //need new div new translate off last element, put div in div to translate off previous
-                let childDiv = document.createElement('div');
-                let copyDiv = cardDiv;
-                cardDiv.classList.add("child");
-                childDiv.style.left = `${j*10}px`;
-                console.log(childDiv.style.left);
-                console.log(copyDiv);
-                childDiv.append(copyDiv);
-                parentContainer.append(childDiv);
-            };
-        } else { 
-            console.log("one card");
-            parentContainer.append(cardDiv);
-        };
-        deckArea.append(parentContainer);
-        parentContainer.addEventListener('click', () => deleteCard(tempCard, cardDiv));
-    }; 
-    deckTotal();
+    };
 };
+
+function saveDeck(deckOnDeck) {
+    let deckList = `<?xml version="1.0" encoding="UTF-8" standalone="no"?><deck>`;
+    for (i = 0; i < deckOnDeck.length; i++){
+        deckList = deckList + `<card blueprintId="${deckOnDeck[i].gempId}" title="${deckOnDeck[i].name}"/>`.repeat(deckOnDeck[i].count);
+    };
+    deckList = deckList + "</deck>";
+    //june 3rd stoppage
+    let deckName = prompt("Save deck list as: ");
+    let newDeck = new File([`${deckList}`], `${deckName}.txt`);
+    downloadDeck(newDeck);
+}
+
+//decksave to txt
+function downloadDeck (file) {
+    const link = document.createElement('a');
+    link.style.display = 'none';
+    link.href = URL.createObjectURL(file);
+    link.download = file.name;
+    document.body.appendChild(link);
+    link.click();
+    setTimeout(() => {
+        URL.revokeObjectURL(link.href);
+        link.parentNode.removeChild(link);
+    }, 0);
+}

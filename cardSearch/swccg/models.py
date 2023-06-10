@@ -51,6 +51,7 @@ class starwarscard(models.Model):
             "image" : json.dumps(str(self.image), ensure_ascii=False),
             "lore" : self.lore,
             "subType" : self.subType,
+            "gempId" : self.gempId,
         }
 
 class decklist(models.Model):

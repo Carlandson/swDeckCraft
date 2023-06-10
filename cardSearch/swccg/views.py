@@ -160,7 +160,6 @@ def deckview(request, deckid):
 def load_cards(request):
     if request.method == "GET":
         all_cards = starwarscard.objects.all()
-        print("working")
         return JsonResponse([cards.serialize() for cards in all_cards], safe=False)
 
 def card_search(request, cardside):
@@ -169,27 +168,43 @@ def card_search(request, cardside):
         side = starwarscard.objects.filter(side=cardside)
         return JsonResponse([card_list.serialize() for card_list in side], safe=False)
 
-@csrf_exempt
-def deck_build(request):
-    if request.method == "POST":
-        data = json.loads(request.body)
-        name = data.get("name", "")
-        author = data.get("author", "")
-        cards = data.get("cards", "")
-        side = data.get("side", "")
-        force_side = forceside.objects.get(sides=side)
-        new_deck = decklist(
-            name = name,
-            author = author,
-            side = force_side
-        )
-        new_deck.save()
-        for card in cards:
-            object_translate = starwarscard.objects.get(name=card, side=force_side)
-            copies.objects.create(name=object_translate, deck_list=new_deck)
-        return JsonResponse({"message" : "deck saved."}, status=201)
-    if request.method == "GET":
-        pass
+#saving this, it will be incoprorated when we get decklist sharing functionality
+# @csrf_exempt
+# def deck_build(request):
+#     if request.method == "POST":
+#         data = json.loads(request.body)
+#         name = data.get("name", "")
+#         author = data.get("author", "")
+#         cards = data.get("cards", "")
+#         side = data.get("side", "")
+#         force_side = forceside.objects.get(sides=side)
+#         new_deck = decklist(
+#             name = name,
+#             author = author,
+#             side = force_side
+#         )
+#         new_deck.save()
+#         for card in cards:
+#             object_translate = starwarscard.objects.get(name=card, side=force_side)
+#             copies.objects.create(name=object_translate, deck_list=new_deck)
+#         return JsonResponse({"message" : "deck saved."}, status=201)
+#     if request.method == "GET":
+#         pass
+# this is going to just output a txt file of deck, for now
+# @csrf_exempt
+# def deck_build(request):
+#     if request.method == "POST":
+#         data = json.loads(request.body)
+#         name = data.get("name", "")
+#         cards = data.get("cards", "")
+#         side = data.get("side", "")
+#         for card in cards:
+#             object_translate = starwarscard.objects.get(name=card, side=force_side)
+#             copies.objects.create(name=object_translate, deck_list=new_deck)
+#         return JsonResponse({"message" : "deck saved."}, status=201)
+#     if request.method == "GET":
+#         pass
+
 
 def deck_check(request, deckname):
     if request.method != "GET":
