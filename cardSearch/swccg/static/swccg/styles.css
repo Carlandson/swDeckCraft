@@ -20,12 +20,13 @@
 
 .card {
     display: flex;
+    flex-basis: auto;
     height: 138.3px;
     width: 100px;
 }
 
 .deckCard {
-    height: 125.5px;
+    height: 125.5px; 
     width: 90px;
 }
 
@@ -84,4 +85,8 @@
 
 .child {
     position: absolute;
+  }
+
+  .import:hover {
+    cursor: grab;
   }

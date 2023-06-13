@@ -32,6 +32,8 @@ class cardObject {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadCards();
+    document.querySelector('#importLightDeck').addEventListener('change', () => {importLightDeck()});
+    document.querySelector('#importDarkDeck').addEventListener('change', () => {importDarkDeck()});
     document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
     document.querySelector('#side').addEventListener('change', () => searchCards());
     document.querySelector('#optionOne').addEventListener('change', () => changeFilter());
@@ -109,7 +111,7 @@ function searchQuery(object) {
         count++;
         if(count>100) {
             break;
-        }
+        };
         let name = card.name;
         let image = card.image;
         let lore = card.lore;
@@ -240,12 +242,18 @@ function deckArea() {
                 imageElement.setAttribute('src', `${finalImage}`);
                 imageElement.setAttribute('loading', 'lazy');
                 cardDiv.append(imageElement);
-                cardDiv.addEventListener('click', (e) => deleteCard(e));
+                // cardDiv.addEventListener('click', () => deleteCard(tempCard));
+                cardDiv.addEventListener('click', (e) => {
+                    if(e.shiftKey) {
+                        draggableZoom(finalImage, tempCard.subType)
+                    } else {
+                        deleteCard(tempCard);
+                    }
+                });
             };
             parentContainer.append(cardDiv);
             };
         deckArea.append(parentContainer);
-        parentContainer.addEventListener('click', () => deleteCard(tempCard, cardDiv));
     }; 
     deckTotal();
 };
@@ -258,20 +266,13 @@ function deckTotal() {
 };
 //stoppage june 9th, figure out delete card too tired
 function deleteCard(card){
-    console.log("deleteCard function test");
-    if ( card.count > 1) {
-        card.count -= 1;
-    } else {
+    card.count = card.count - 1;
+    if (card.count == 0) {
         let tempIndex = deckOnDeck.indexOf(card);
         deckOnDeck.splice(tempIndex, 1);
-    }
-    let deckDiv = document.querySelector("#deckBuilder");
-    console.log(deckDiv);
-    deckDiv.parentNode.removeChild(cardDiv);
-    //delete card from deck area
-    //feed div info and delete divinfrom from parent
-    //deckDiv.parentNode.removeChild(cardDiv)
-}
+    };
+    deckArea();
+};
 
 // function buildDeck(event) {
 //     event.preventDefault()
@@ -360,4 +361,64 @@ function downloadDeck (file) {
         URL.revokeObjectURL(link.href);
         link.parentNode.removeChild(link);
     }, 0);
-}
+};
+
+function importLightDeck() {
+    let deckArea = document.querySelector("#deckBuilder");
+    deckArea.innerHTML = '';
+    let importFile = document.querySelector('#importLightDeck').files;
+    if (importFile.length == 0) return;
+    const importedDeck = importFile[0];
+    let reader = new FileReader();
+    reader.onload = (e) => {
+        const file = e.target.result;
+        //file is a string
+        //file is going to fetch each card from the dictionary, then use the addcard function to add them to the deckview
+        //we need to clean the string up first - or we can parse the string and find matches in the dictionary to add without needing to change string at all
+        var reg = /\"(.*?)\"/g;
+        var cleanedDeck = [];
+        file.match(reg).forEach((element) => {
+            // console.log(element);
+            if(element.includes("_")) {
+                element = element.replace(/["]/g, '');
+                cleanedDeck.push(element);
+            }
+        });
+        console.log(cleanedDeck);
+        cleanedDeck.forEach((card) => {
+            var matchingCard = lightDictionary.find(item => item.gempId == card);
+            addCard(matchingCard);
+        });
+    };
+    reader.onerror = (e) => alert(e.target.error.name);
+    reader.readAsText(importedDeck);
+};
+
+function importDarkDeck() {
+    let importFile = document.querySelector('#importDarkDeck').files;
+    if (importFile.length == 0) return;
+    const importedDeck = importFile[0];
+    let reader = new FileReader();
+    reader.onload = (e) => {
+        const file = e.target.result;
+        //file is a string
+        //file is going to fetch each card from the dictionary, then use the addcard function to add them to the deckview
+        //we need to clean the string up first - or we can parse the string and find matches in the dictionary to add without needing to change string at all
+        var reg = /\"(.*?)\"/g;
+        var cleanedDeck = [];
+        file.match(reg).forEach((element) => {
+            // console.log(element);
+            if(element.includes("_")) {
+                element = element.replace(/["]/g, '');
+                cleanedDeck.push(element);
+            }
+        });
+        console.log(cleanedDeck);
+        cleanedDeck.forEach((card) => {
+            var matchingCard = darkDictionary.find(item => item.gempId == card);
+            addCard(matchingCard);
+        });
+    };
+    reader.onerror = (e) => alert(e.target.error.name);
+    reader.readAsText(importedDeck);
+};
