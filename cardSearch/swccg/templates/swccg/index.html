@@ -9,7 +9,7 @@
 <div class="w-full">
     <div class="w-1/2 float-left text-center">
         <h2 class="text-2xl font-semibold text-red-400 md:mt-20 mb-4">Check out Recent Decks</h2>
-        <a class="text-2xl" href="{% url 'card_save' %}">Save Cards To DB</a>
+        <a class="text-2xl hidden" href="{% url 'card_save' %}">Save Cards To DB</a>
         <div class="border-solid">
             <ul>
             {% for deck in decklists|slice:":10" %}
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="w-1/2 float-right text-center md:mt-20">
-            <h1 class="text-2xl font-bold text-blue-400">Search Decks</h1><br>
+            <h1 class="text-2xl font-bold text-blue-400">Search Decks (under construction)</h1><br>
             <input id="searchChoice" type="text" placeholder="by name, author, or side">
             <input type="submit" value="Search" id="deckSearch"><br>
             <span id="resultCount"></span>

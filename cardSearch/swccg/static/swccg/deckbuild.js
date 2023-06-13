@@ -20,6 +20,7 @@ class cardObject {
         side,
         subType,
         gempId,
+        destiny,
     ) {
     this.name = name;
     this.gametext = gametext;
@@ -29,6 +30,7 @@ class cardObject {
     this.side = side;
     this.subType = subType;
     this.gempId = gempId;
+    this.destiny = destiny;
     }
 }
 
@@ -51,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#optionOne').addEventListener('change', () => changeFilter(tempDictionary, document.querySelector('#optionOne').value));
     document.querySelector('#textSearchOne').addEventListener('input', () => textFilter(document.querySelector('#searchOneType').value, document.querySelector("#textSearchOne").value));
     document.querySelector('#side').value = "choose";
+    document.querySelector('#optionOne').value = "choose";
     document.querySelector('#resultCount').innerHTML = count;
     var collapsibles = document.getElementsByClassName("collapsible");
     for(i = 0; i < collapsibles.length; i++){
@@ -86,16 +89,13 @@ function changeFilter(array, cardType) {
 };
 
 function filterTest(array, type, query, cardType) {
-    console.log(type, query);
     var temp;
     var tempArray;
     if (cardType == "Null") {
         tempArray = array.filter(card => card[type].includes(query));
     } else {
-        temp = array.filter(card => card.type == cardType);
-        console.log(temp);
+        temp = array.filter(card => card.type == cardType);      
         tempArray = temp.filter(card => card[type].includes(query));
-        console.log(tempArray);
     };
     return tempArray;
 };
@@ -115,6 +115,7 @@ function loadCards() {
                     card['side'],
                     card['subType'],
                     card['gempId'],
+                    card['destiny'],
                 )
                 if (card['side'] == "Light") {
                     lightDictionary.push(cardName);
@@ -134,6 +135,7 @@ function searchCards() {
         searchQuery(darkDictionary);
         tempDictionary = JSON.parse(JSON.stringify(darkDictionary));
     };
+    document.querySelector('#optionOne').value = "choose";
 };
 
 function searchQuery(object) {
@@ -157,6 +159,7 @@ function searchQuery(object) {
         let type = card.type;
         let subType = card.subType;
         let gempId = card.gempId;
+        let destiny = card.destiny;
         let resultCard = document.createElement('div');
         resultCard.setAttribute('class', 'card');
         if(subType=="Site"){
@@ -179,6 +182,7 @@ function searchQuery(object) {
         resultCard.setAttribute('data-gametext', gametext);
         resultCard.setAttribute('data-lore', lore);
         resultCard.setAttribute('gempId', gempId);
+        resultCard.setAttribute('destiny', destiny);
         resultCard.addEventListener('click', (e) => {
             if(e.shiftKey) {
                 draggableZoom(finalImage, subType)
@@ -307,8 +311,16 @@ function deckTotal() {
     //reduce function calculates total with count element
     const getDeckTotal = deckOnDeck.reduce((n, {count}) => n + count, 0)
     let deckCount = document.querySelector('#deckCount');
+    let deckAverageDestiny = document.querySelector('#averageDestiny');
+    var totalDestiny = 0;
+    for (i = 0; i < deckOnDeck.length; i++) {
+        totalDestiny += deckOnDeck[i].destiny * deckOnDeck[i].count;
+    }
+    let destinyAverage = totalDestiny / getDeckTotal;
     deckCount.innerHTML = `${getDeckTotal}`;
+    deckAverageDestiny.innerHTML = `${destinyAverage.toFixed(2)}`;
 };
+
 //stoppage june 9th, figure out delete card too tired
 function deleteCard(activeArray, card){
     card.count = card.count - 1;

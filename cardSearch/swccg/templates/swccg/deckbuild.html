@@ -4,6 +4,28 @@
 <header class="nav">
     <a href="{% url 'index' %}"class="text-xl top-0 text-green-400">Return Home</a>
 </header>
+<div id="deckBuild" class="float-left w-1/2 pl-12 text-center h-screen">
+    <button class="collapsible px-6">61st Cards</button>
+    <div id="sixtyFirst" class="cardArea h-screen border-2 m-3 text-left flex-grid"></div>
+    <br>
+    <span>Card Total : <span id="deckCount"></span> / 60</span>
+    <span>Average Destiny : <span id="averageDestiny"></span></span>
+    <div class="cardArea active h-screen border-2 m-3 text-left flex-grid" id="deckBuilder">    
+    </div>
+    <div>
+        <input id="importLightDeck" type="file" class="hidden"/>
+        <label for="importLightDeck" class="import bg-gray-200 px-6">Import Light Deck</label>
+        <input id="importDarkDeck" type="file" class="hidden"/>
+        <label for="importDarkDeck" class="import bg-red-400 px-6">Import Dark Deck</label>
+        <button id="saveDeck" class="bg-teal-400 px-6">Save Deck</button>
+    </div>
+    <!-- This is a div for adding and deleting search parameters -->
+    <!-- Small Icons that if you click will delete the search parameter -->
+    <button class="collapsible">Defensive Shields</button>
+    <div id="cardsOutsideDeck" class="cardArea h-screen border-2 m-3 text-left flex-grid"></div>
+</div>
+<div id="typeCount">
+</div>
 <div class="float-right w-1/2 text center h-screen">
     <div class="search_div">
         <select id="side" label="Side">
@@ -14,7 +36,8 @@
         <ul class="searchBars">
             <li class="cardSearchBar">
                 <select id="optionOne">
-                    <option value="Null">choose type:</option>
+                    <option disabled value="choose">Choose type:</option>
+                    <option value="Null">Any</option>
                     <option value="Admiral's Order">Admiral's Order</option>
                     <option value="Character">Character</option>
                     <option value="Effect">Effect</option>
@@ -44,28 +67,7 @@
     <div id="searchResults" class="flex-grid">
     </div> 
 </div>
-<div id="deckBuild" class="float-left w-1/2 pl-12 text-center h-screen">
-    <!-- This is a collapseable 61st card div -->
-    <button class="collapsible px-6">61st Cards</button>
-    <div id="sixtyFirst" class="cardArea h-screen border-2 m-3 text-left flex-grid"></div>
-    <br>
-    <span>Card Total : <span id="deckCount"></span> / 60</span>
-    <div class="cardArea active h-screen border-2 m-3 text-left flex-grid" id="deckBuilder">    
-    </div>
-    <div>
-        <input id="importLightDeck" type="file" class="hidden"/>
-        <label for="importLightDeck" class="import bg-gray-200 px-6">Import Light Deck</label>
-        <input id="importDarkDeck" type="file" class="hidden"/>
-        <label for="importDarkDeck" class="import bg-red-400 px-6">Import Dark Deck</label>
-        <button id="saveDeck" class="bg-teal-400 px-6">Save Deck</button>
-    </div>
-    <!-- This is a div for adding and deleting search parameters -->
-    <!-- Small Icons that if you click will delete the search parameter -->
-    <button class="collapsible">Defensive Shields</button>
-    <div id="cardsOutsideDeck" class="cardArea h-screen border-2 m-3 text-left flex-grid"></div>
-</div>
-<div id="typeCount">
-</div>
+
 
 {% endblock %}
 {% block script %}

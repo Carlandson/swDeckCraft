@@ -52,6 +52,7 @@ class starwarscard(models.Model):
             "lore" : self.lore,
             "subType" : self.subType,
             "gempId" : self.gempId,
+            "destiny" : self.destiny,
         }
 
 class decklist(models.Model):
