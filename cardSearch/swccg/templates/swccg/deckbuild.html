@@ -5,8 +5,6 @@
     <a href="{% url 'index' %}"class="text-xl top-0 text-green-400">Return Home</a>
 </header>
 <div class="float-right w-1/2 text center h-screen">
-    <!-- This is a collapseable 61st card div -->
-    <div></div>
     <div class="search_div">
         <select id="side" label="Side">
             <option disabled value="choose">choose side:</option>
@@ -16,16 +14,16 @@
         <ul class="searchBars">
             <li class="cardSearchBar">
                 <select id="optionOne">
-                    <option value="any">choose type:</option>
-                    <option value="admiral order">Admiral's Order</option>
-                    <option value="character">Character</option>
-                    <option value="effect">Effect</option>
-                    <option value="interrupt">Interrupt</option>
-                    <option value="location">Location</option>
-                    <option value="objective">Objective</option>
-                    <option value="starship">Starship</option>
-                    <option value="vehicle">Vehicle</option>
-                    <option value="weapon">Weapon</option>
+                    <option value="Null">choose type:</option>
+                    <option value="Admiral's Order">Admiral's Order</option>
+                    <option value="Character">Character</option>
+                    <option value="Effect">Effect</option>
+                    <option value="Interrupt">Interrupt</option>
+                    <option value="Location">Location</option>
+                    <option value="Objective">Objective</option>
+                    <option value="Starship">Starship</option>
+                    <option value="Vehicle">Vehicle</option>
+                    <option value="Weapon">Weapon</option>
                 </select>
             </li>
             <li class="cardSearchBar"></li>
@@ -36,19 +34,23 @@
                     <option value="lore">lore</option>
                     <option value="name">name</option>
                 </select>
+                <button id="saveParameter">Save Parameter</button>
+            </li>
+            <li id="parameterDiv">
             </li>
         </ul>
     </div>
-    <!-- This is a div for adding and deleting search parameters -->
-    <!-- Small Icons that if you click will delete the search parameter -->
-    <div></div>
     <br><span id="resultCount"></span>
     <div id="searchResults" class="flex-grid">
     </div> 
 </div>
 <div id="deckBuild" class="float-left w-1/2 pl-12 text-center h-screen">
+    <!-- This is a collapseable 61st card div -->
+    <button class="collapsible px-6">61st Cards</button>
+    <div id="sixtyFirst" class="cardArea h-screen border-2 m-3 text-left flex-grid"></div>
+    <br>
     <span>Card Total : <span id="deckCount"></span> / 60</span>
-    <div class="h-screen border-2 m-3 text-left flex-grid" id="deckBuilder">    
+    <div class="cardArea active h-screen border-2 m-3 text-left flex-grid" id="deckBuilder">    
     </div>
     <div>
         <input id="importLightDeck" type="file" class="hidden"/>
@@ -57,6 +59,10 @@
         <label for="importDarkDeck" class="import bg-red-400 px-6">Import Dark Deck</label>
         <button id="saveDeck" class="bg-teal-400 px-6">Save Deck</button>
     </div>
+    <!-- This is a div for adding and deleting search parameters -->
+    <!-- Small Icons that if you click will delete the search parameter -->
+    <button class="collapsible">Defensive Shields</button>
+    <div id="cardsOutsideDeck" class="cardArea h-screen border-2 m-3 text-left flex-grid"></div>
 </div>
 <div id="typeCount">
 </div>

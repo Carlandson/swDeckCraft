@@ -8,6 +8,27 @@
     flex-direction: row;
     align-content: flex-start;
 }
+
+#sixtyFirst {
+    display: none;
+    flex-wrap: wrap;
+    width: 730px;
+    height: 140px;
+    overflow: auto;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+#cardsOutsideDeck {
+    display: none;
+    flex-wrap: wrap;
+    width: 730px;
+    height: 280px;
+    overflow: auto;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
 #deckBuilder {
     display: flex;
     flex-wrap: wrap;
@@ -15,7 +36,24 @@
     align-content: flex-start;
     overflow: auto;
     width: 730px;
-    height: 690px;
+    height: 504px;
+}
+
+.collapsible {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color:rgb(89, 184, 144);
+    color:rgb(167, 235, 240);
+    /* padding: 12px; */
+    cursor: pointer;
+    width: 200px;
+    height: 45px;
+    font-size: 18px;
+}
+
+.active, .collapsible:hover {
+    background-color:aliceblue;
 }
 
 .card {
@@ -88,5 +126,5 @@
   }
 
   .import:hover {
-    cursor: grab;
+    cursor: pointer;
   }

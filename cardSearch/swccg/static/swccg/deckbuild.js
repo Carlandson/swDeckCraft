@@ -5,6 +5,9 @@ var tempDictionary = [];
 var tempArray = [];
 var count = 0;
 var deckOnDeck = [];
+var sixtyFirstCards = [];
+var cardsOutsideDeck = [];
+var currentSearchType;
 
 //card object
 class cardObject {
@@ -32,35 +35,68 @@ class cardObject {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadCards();
+    var cardAreas = document.getElementsByClassName("cardArea");
+    for (i = 0; i < cardAreas.length; i++) {
+        cardAreas[i].addEventListener('click', function () {
+            for (j = 0; j < cardAreas.length; j++) {
+                cardAreas[j].classList.remove('active');
+            };
+            this.classList.toggle('active');
+        });
+    };
     document.querySelector('#importLightDeck').addEventListener('change', () => {importLightDeck()});
     document.querySelector('#importDarkDeck').addEventListener('change', () => {importDarkDeck()});
     document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
     document.querySelector('#side').addEventListener('change', () => searchCards());
-    document.querySelector('#optionOne').addEventListener('change', () => changeFilter());
+    document.querySelector('#optionOne').addEventListener('change', () => changeFilter(tempDictionary, document.querySelector('#optionOne').value));
     document.querySelector('#textSearchOne').addEventListener('input', () => textFilter(document.querySelector('#searchOneType').value, document.querySelector("#textSearchOne").value));
     document.querySelector('#side').value = "choose";
     document.querySelector('#resultCount').innerHTML = count;
+    var collapsibles = document.getElementsByClassName("collapsible");
+    for(i = 0; i < collapsibles.length; i++){
+        collapsibles[i].addEventListener('click', function() {
+            this.classList.toggle('open');
+            var content = this.nextElementSibling;
+            if (content.style.display === "flex"){
+                content.style.display = "none";
+            } else {
+                content.style.display = "flex";
+            };
+    });
+    };    
     let bars = document.querySelectorAll('.searchBar');
     bars.forEach(bar => {
         bar.value = "";
     });
 });
 
-//dynamic array listening for changes in search results for dynamic pagination
-
-//load more function
 function textFilter(queryType, queryText) {
-    searchQuery(filterTest(tempDictionary, queryType, queryText));
+    searchQuery(filterTest(tempDictionary, queryType, queryText, currentSearchType));
 };
 
-function changeFilter() {
-    // change filter based on option select
-}
+function changeFilter(array, cardType) {
+    // cardType = `"${cardType}"`;
+    if (cardType == "Null") {
+        tempArray = array;
+    } else {
+        tempArray = array.filter(card => card.type == cardType);
+    };
+    currentSearchType = cardType;
+    searchQuery(tempArray);
+};
 
-function filterTest(array, type, query) {
+function filterTest(array, type, query, cardType) {
     console.log(type, query);
-    let tempArray = tempDictionary;
-    tempArray = array.filter(card => card[type].includes(query));
+    var temp;
+    var tempArray;
+    if (cardType == "Null") {
+        tempArray = array.filter(card => card[type].includes(query));
+    } else {
+        temp = array.filter(card => card.type == cardType);
+        console.log(temp);
+        tempArray = temp.filter(card => card[type].includes(query));
+        console.log(tempArray);
+    };
     return tempArray;
 };
 
@@ -147,7 +183,14 @@ function searchQuery(object) {
             if(e.shiftKey) {
                 draggableZoom(finalImage, subType)
             } else {
-                addCard(card);
+                currentDiv = document.querySelector(".active").id;
+                if(currentDiv == "deckBuilder") {
+                    addCard(deckOnDeck, card);
+                } else if(currentDiv == "cardsOutsideDeck") {
+                    addCard(cardsOutsideDeck, card);
+                } else if(currentDiv == "sixtyFirst") {
+                    addCard(sixtyFirstCards, card);
+                };
             }
         });
         resultDiv.append(resultCard);
@@ -187,10 +230,11 @@ function draggableZoom(finalImage, subType) {
 //create each card a an object with properties, or add the full object 
 //seperate both boxes. populated deck will be its own array
 //create copy of object, add copy to deck
-function addCard(card) {
+function addCard(activeArray, card) {
+    console.log(activeArray);
     var newCard = true;
-    for (i = 0; i < deckOnDeck.length; i++) {
-        let tempCard = deckOnDeck[i]
+    for (i = 0; i < activeArray.length; i++) {
+        let tempCard = activeArray[i]
         if(tempCard.name == card.name) {
             tempCard.count += 1;
             newCard = false;
@@ -198,21 +242,22 @@ function addCard(card) {
         }
         else {
             continue;
-        }
+        };
     };
     if (newCard) {
         var addCard = card;
         addCard.count = 1;
-        deckOnDeck.push(addCard);
+        activeArray.push(addCard);
     }
-    deckArea();
+    deckArea(activeArray);
 };
 
-function deckArea() {
-    let deckArea = document.querySelector("#deckBuilder");
+function deckArea(activeArray) {
+    let deckArea = document.querySelector(".active");
     deckArea.innerHTML = '';
-    for(i = 0; i < deckOnDeck.length; i++) {
-        let tempCard = deckOnDeck[i];
+    console.log("the active array is " + activeArray);
+    for(i = 0; i < activeArray.length; i++) {
+        let tempCard = activeArray[i];
         let parentContainer = document.createElement("div");
         let parentWidth = 90 + (10*(tempCard.count - 1));
         parentContainer.style.width = `${parentWidth}px`;
@@ -228,7 +273,7 @@ function deckArea() {
             let imageUrl = tempCard.image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
             //removes quotations from the path which also affects the image display
             let finalImage = imageUrl.replaceAll('"', '');
-            if (deckOnDeck[i].subType == "Site"){
+            if (activeArray[i].subType == "Site"){
                 let rotatedCard = document.createElement('div');
                 rotatedCard.classList.add('site-wrapper');
                 let imageElement = document.createElement('img');
@@ -247,7 +292,7 @@ function deckArea() {
                     if(e.shiftKey) {
                         draggableZoom(finalImage, tempCard.subType)
                     } else {
-                        deleteCard(tempCard);
+                        deleteCard(activeArray, tempCard);
                     }
                 });
             };
@@ -265,13 +310,13 @@ function deckTotal() {
     deckCount.innerHTML = `${getDeckTotal}`;
 };
 //stoppage june 9th, figure out delete card too tired
-function deleteCard(card){
+function deleteCard(activeArray, card){
     card.count = card.count - 1;
     if (card.count == 0) {
-        let tempIndex = deckOnDeck.indexOf(card);
-        deckOnDeck.splice(tempIndex, 1);
+        let tempIndex = activeArray.indexOf(card);
+        activeArray.splice(tempIndex, 1);
     };
-    deckArea();
+    deckArea(activeArray);
 };
 
 // function buildDeck(event) {
@@ -385,13 +430,18 @@ function importLightDeck() {
             }
         });
         console.log(cleanedDeck);
-        cleanedDeck.forEach((card) => {
-            var matchingCard = lightDictionary.find(item => item.gempId == card);
-            addCard(matchingCard);
-        });
+        try {
+            cleanedDeck.forEach((card) => {
+                var matchingCard = lightDictionary.find(item => item.gempId == card);
+                if (matchingCard === undefined) throw "Wrong Side!";
+                addCard(matchingCard);
+            });
+        } catch (e) {
+            alert(e);
+        };
     };
     reader.onerror = (e) => alert(e.target.error.name);
-    reader.readAsText(importedDeck);
+    reader.readAsText(importedDeck);        
 };
 
 function importDarkDeck() {
@@ -414,11 +464,17 @@ function importDarkDeck() {
             }
         });
         console.log(cleanedDeck);
-        cleanedDeck.forEach((card) => {
-            var matchingCard = darkDictionary.find(item => item.gempId == card);
-            addCard(matchingCard);
+        try {
+            cleanedDeck.forEach((card) => {
+                var matchingCard = darkDictionary.find(item => item.gempId == card);
+                if (matchingCard === undefined) throw "Wrong Side!";
+                addCard(matchingCard);
         });
+        } catch (e) {
+            alert(e);
+        };
     };
     reader.onerror = (e) => alert(e.target.error.name);
     reader.readAsText(importedDeck);
 };
+
