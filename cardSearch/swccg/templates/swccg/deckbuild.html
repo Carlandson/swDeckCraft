@@ -4,13 +4,10 @@
 <header class="nav">
     <a href="{% url 'index' %}"class="text-xl top-0 text-green-400">Return Home</a>
 </header>
-<div id="deckBuild" class="float-left w-1/2 pl-12 text-center h-screen">
-    <button class="collapsible px-6">61st Cards</button>
-    <div id="sixtyFirst" class="cardArea h-screen border-2 m-3 text-left flex-grid"></div>
-    <br>
-    <span>Card Total : <span id="deckCount"></span> / 60</span>
+<div id="deckBuild" class="float-left w-1/2 pl-2 text-center h-screen">
+    <span class="mr-10">Card Total : <span id="deckCount"></span> / 60</span>
     <span>Average Destiny : <span id="averageDestiny"></span></span>
-    <div class="cardArea active h-screen border-2 m-3 text-left flex-grid" id="deckBuilder">    
+    <div class="cardArea active h-screen border-2 mb-3 text-left flex-grid" id="deckBuilder">    
     </div>
     <div>
         <input id="importLightDeck" type="file" class="hidden"/>
@@ -22,14 +19,16 @@
     <!-- This is a div for adding and deleting search parameters -->
     <!-- Small Icons that if you click will delete the search parameter -->
     <button class="collapsible">Defensive Shields</button>
-    <div id="cardsOutsideDeck" class="cardArea h-screen border-2 m-3 text-left flex-grid"></div>
+    <div id="cardsOutsideDeck" class="cardArea h-screen border-2 text-left flex-grid"></div>
+    <button class="collapsible px-6">61st Cards</button>
+    <div id="sixtyFirst" class="cardArea h-screen border-2 text-left flex-grid"></div>
 </div>
 <div id="typeCount">
 </div>
-<div class="float-right w-1/2 text center h-screen">
+<div id="search" class="float-right mr-6 mt-1 text-left h-screen">
     <div class="search_div">
         <select id="side" label="Side">
-            <option disabled value="choose">choose side:</option>
+            <option disabled value="choose">Choose side:</option>
             <option value="Light">Light</option>
             <option value="Dark">Dark</option>
         </select>
@@ -51,13 +50,26 @@
             </li>
             <li class="cardSearchBar"></li>
             <li class="cardSearchBar">
-                <input id="textSearchOne" class="searchBar"></input>
                 <select id="searchOneType">
-                    <option value="gametext">gametext</option>
-                    <option value="lore">lore</option>
-                    <option value="name">name</option>
+                    <option value="name">Name</option>
+                    <option value="lore">Lore</option>
+                    <option value="gametext">Gametext</option>
+                    <option value="power">Power</option>
+                    <option value="ability">Ability</option>
+                    <option value="deploy">Deploy</option>
+                    <option value="forfeit">Forfeit</option>
+                    <option value="destiny">Destiny</option>
                 </select>
-                <button id="saveParameter">Save Parameter</button>
+                <select id="secondaryParameter">
+                    <option value="contains" selected>contains</option>
+                    <option value="equals">=</option>
+                    <option value="greaterThan">></option>
+                    <option value="lessThan"><</option>
+                    <option value="lessThanEqualTo">≤</option>
+                    <option value="greaterThanEqualTo">≥</option>
+                </select>
+                <input id="textSearchOne" class="searchBar"></input>
+                <li><button id="saveParameter">Save Parameter</button></li>
             </li>
             <li id="parameterDiv">
             </li>

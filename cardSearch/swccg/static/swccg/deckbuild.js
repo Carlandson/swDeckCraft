@@ -7,8 +7,22 @@ var count = 0;
 var deckOnDeck = [];
 var sixtyFirstCards = [];
 var cardsOutsideDeck = [];
-var currentSearchType;
+var parameterArray = [];
+var parameterCount = 0;
+var currentSearchType = "Null";
+var currentSearchQuery;
 
+class searchObject {
+    constructor(
+        property,
+        operator,
+        query
+    ) {
+        this.property = property;
+        this.operator = operator;
+        this.query = query;
+    }
+};
 //card object
 class cardObject {
     constructor(
@@ -21,6 +35,10 @@ class cardObject {
         subType,
         gempId,
         destiny,
+        power,
+        ability,
+        deploy,
+        forfeit,
     ) {
     this.name = name;
     this.gametext = gametext;
@@ -31,8 +49,12 @@ class cardObject {
     this.subType = subType;
     this.gempId = gempId;
     this.destiny = destiny;
+    this.power = power;
+    this.ability = ability;
+    this.deploy = deploy;
+    this.forfeit = forfeit;
     }
-}
+};
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -50,8 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#importDarkDeck').addEventListener('change', () => {importDarkDeck()});
     document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
     document.querySelector('#side').addEventListener('change', () => searchCards());
-    document.querySelector('#optionOne').addEventListener('change', () => changeFilter(tempDictionary, document.querySelector('#optionOne').value));
-    document.querySelector('#textSearchOne').addEventListener('input', () => textFilter(document.querySelector('#searchOneType').value, document.querySelector("#textSearchOne").value));
+    document.querySelector('#optionOne').addEventListener('change', () => typeFilter(tempDictionary, document.querySelector('#optionOne').value));
+    document.querySelector('#textSearchOne').addEventListener('input', () => textFilter(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
+    document.querySelector('#saveParameter').addEventListener('click', () => saveParameters(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
     document.querySelector('#side').value = "choose";
     document.querySelector('#optionOne').value = "choose";
     document.querySelector('#resultCount').innerHTML = count;
@@ -60,10 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
         collapsibles[i].addEventListener('click', function() {
             this.classList.toggle('open');
             var content = this.nextElementSibling;
-            if (content.style.display === "flex"){
+            if (content.style.display === "block"){
                 content.style.display = "none";
             } else {
-                content.style.display = "flex";
+                content.style.display = "block";
             };
     });
     };    
@@ -73,11 +96,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function textFilter(queryType, queryText) {
-    searchQuery(filterTest(tempDictionary, queryType, queryText, currentSearchType));
+function textFilter(e, property, operator, query) {
+    searchParameter = new searchObject(
+        property,
+        operator,
+        query,
+    );
+    
+    parameterArray[parameterCount] = searchParameter;
+    array = tempDictionary;
+    searchQuery(dynamicSearchArray(array));
 };
 
-function changeFilter(array, cardType) {
+function typeFilter(array, cardType) {
     // cardType = `"${cardType}"`;
     if (cardType == "Null") {
         tempArray = array;
@@ -88,16 +119,65 @@ function changeFilter(array, cardType) {
     searchQuery(tempArray);
 };
 
-function filterTest(array, type, query, cardType) {
+function dynamicSearchArray (array) {
     var temp;
     var tempArray;
-    if (cardType == "Null") {
-        tempArray = array.filter(card => card[type].includes(query));
+    if (currentSearchType == "Null") {
+        tempArray = array;
     } else {
-        temp = array.filter(card => card.type == cardType);      
-        tempArray = temp.filter(card => card[type].includes(query));
+        tempArray = array.filter(card => card.type == currentSearchType)
+    }
+    for(i = 0; i < parameterArray.length; i++) {
+        let operator = parameterArray[i].operator;
+        let property = parameterArray[i].property;
+        let query = parameterArray[i].query;
+        if (operator == "contains") {
+            if (currentSearchType == "Null") {
+                tempArray = array.filter(card => card[property].includes(query));
+            } else {
+                temp = array.filter(card => card.type == currentSearchType);      
+                tempArray = temp.filter(card => card[property].includes(query));
+            };
+        } else {
+            if (currentSearchType == "Null") {
+                tempArray = array.filter(card => evaluate(card, property, query, operator));
+            } else {
+                temp = array.filter(card => card.type == currentSearchType);
+                tempArray = temp.reduce(card => evaluate(card, property, query, operator));
+            };
+        };
     };
     return tempArray;
+};
+
+function filterTest(array, searchObject, cardType) {
+    let query = searchObject.query;
+    let property = searchObject.property;
+    let operator = searchObject.operator;
+    var temp;
+    var tempArray;
+    if (operator == "contains"){
+        if (cardType == "Null") {
+            tempArray = array.filter(card => card[property].includes(query));
+        } else {
+            temp = array.filter(card => card.type == cardType);      
+            tempArray = temp.filter(card => card[property].includes(query));
+        };
+        return tempArray;
+    };
+};
+
+function SaveParameters(property, operator, query) {
+    searchParameter = new searchObject(
+        property,
+        operator,
+        query,
+    );
+    parameterArray.append(searchParameter);
+    let parameterIconDiv = document.querySelector("#parameterDiv");
+    let newParameterIcon = document.createElement("button");
+    newParameterIcon.innerHTML = `${type + operator, query}`;
+    parameterIconDiv.appendChild(newParameterIcon);
 };
 
 function loadCards() {
@@ -105,7 +185,7 @@ function loadCards() {
         .then(response => response.json())
         .then(results => {
             results.forEach(card => {
-                cardName = card['name'];
+                // cardName = card['name'];
                 cardName = new cardObject(
                     card['name'],
                     card['gametext'],
@@ -116,6 +196,10 @@ function loadCards() {
                     card['subType'],
                     card['gempId'],
                     card['destiny'],
+                    card['power'],
+                    card['ability'],
+                    card['deploy'],
+                    card['forfeit'],
                 )
                 if (card['side'] == "Light") {
                     lightDictionary.push(cardName);
@@ -160,6 +244,10 @@ function searchQuery(object) {
         let subType = card.subType;
         let gempId = card.gempId;
         let destiny = card.destiny;
+        // let power = card.power;
+        // let ability = card.ability;
+        // let deploy = card.deploy;
+        // let forfeit = card.forfeit;
         let resultCard = document.createElement('div');
         resultCard.setAttribute('class', 'card');
         if(subType=="Site"){
@@ -490,3 +578,31 @@ function importDarkDeck() {
     reader.readAsText(importedDeck);
 };
 
+//evaulate
+function evaluate(card, parameter1, parameter2, operator) {
+    if(card[parameter1]) {
+        if(operator == "equals") {
+            if (card[parameter1] == parameter2){
+                return card;
+            };
+        } else if(operator == "greaterThan") {
+            if (card[parameter1] > parameter2){
+                return card;
+            };
+        } else if(operator == "lessThan") {
+            if (card[parameter1] < parameter2){
+                return card;
+            };
+        } else if(operator == "lessThanEqualTo") {
+            if (card[parameter1] <= parameter2){
+                return card;
+            };
+        } else if(operator == "greaterThanEqualTo") {
+            if (card[parameter1] >= parameter2){
+                return card;
+            };
+        };
+    };
+    //eval is security risk
+    // return eval(parameter1 + operator + parameter2);
+};

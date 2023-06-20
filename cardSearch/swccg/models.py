@@ -53,6 +53,10 @@ class starwarscard(models.Model):
             "subType" : self.subType,
             "gempId" : self.gempId,
             "destiny" : self.destiny,
+            "ability" : self.ability,
+            "power" : self.power,
+            "deploy" : self.deploy,
+            "forfeit" : self.forfeit,
         }
 
 class decklist(models.Model):

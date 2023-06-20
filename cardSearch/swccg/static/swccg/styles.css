@@ -1,29 +1,44 @@
+html {
+    height: 100%;
+    width: 100%;
+    clip: auto;
+    position: absolute;
+    overflow: hidden;
+    background-color:whitesmoke;
+}
 
 #searchResults {
     display: flex;
     flex-wrap: wrap;
-    width: 640px;
+    width: 530px;
     height: 552px;
-    overflow: scroll;
+    overflow: auto;
     flex-direction: row;
     align-content: flex-start;
 }
 
 #sixtyFirst {
+    position: absolute;
+    bottom: 150px;
+    left: 30px;
     display: none;
     flex-wrap: wrap;
-    width: 730px;
-    height: 140px;
+    width: 60vw;
+    height: 15vh;
     overflow: auto;
     flex-direction: row;
     align-content: flex-start;
 }
 
 #cardsOutsideDeck {
+    position: absolute;
+    z-index: auto;
     display: none;
     flex-wrap: wrap;
-    width: 730px;
-    height: 280px;
+    width: 60vw;
+    height: 20vh;
+    bottom: 150px;
+    left: 30px;
     overflow: auto;
     flex-direction: row;
     align-content: flex-start;
@@ -35,9 +50,19 @@
     flex-direction: row;
     align-content: flex-start;
     overflow: auto;
-    width: 730px;
-    height: 504px;
+    width: 65vw;
+    height: 80vh;
 }
+
+#search {
+    position: relative;
+    width: 30vw;
+    padding-left: 0pt;
+}
+
+/* #secondaryParameter {
+    display: auto;
+} */
 
 .collapsible {
     align-items: center;
@@ -68,15 +93,23 @@
     width: 90px;
 }
 
+#parameterDiv {
+    height: 100px;
+    border: 3px solid #C7C7C7;
+
+}
 .searchBar {
     background-image: url('/static/swccg/Sketch002.png');
     background-position: center;
-    width: 290px;
-    margin: 4px;
+    width: 200px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 .focusCardDiv {
     position: absolute; 
+    right: 165px;
+    bottom: 132px;
     z-index: 9;
     cursor: move;
     border-radius: 20px;
