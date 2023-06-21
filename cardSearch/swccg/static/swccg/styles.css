@@ -53,10 +53,11 @@ html {
     flex-wrap: wrap;
     flex-direction: row;
     align-content: flex-start;
-    overflow: auto;
+    overflow: visible;
     width: 65vw;
     height: 80vh;
     background-color: transparent;
+    position: relative;
 }
 
 #search {
@@ -73,8 +74,6 @@ html {
     align-items: center;
     justify-content: center;
     display: flex;
-    background-color:rgb(89, 184, 144);
-    color:rgb(167, 235, 240);
     /* padding: 12px; */
     cursor: pointer;
     width: 200px;
@@ -122,11 +121,17 @@ html {
 }
 
 .focusSite {
+    position: absolute;
+    z-index: 9;
+    cursor: move;
+    bottom: 132px;
+    border-radius:20px;
     transform-origin: 0 0;
     transform: rotate(.25turn);
     margin-left: 100%;
     width: 498px;
     height: 358px;
+    max-width: none;
 }
 .focusCard {
     width: 358px;
@@ -150,6 +155,7 @@ html {
     max-width: none;
     width: 137.4px;
 }
+
 .cardContainer {
     display: flex;
     position: relative;
@@ -166,4 +172,26 @@ html {
 
   .import:hover {
     cursor: pointer;
+  }
+
+  #lsShields {
+    background-image: url('/static/swccg/image.jpg');
+    background-position: center;
+  }
+
+  #shieldButton {
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  #sixtyOneCards{
+    background-color: orange;
+    border-radius: 10px;
+  }
+  
+  #outsideDecks{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
   }

@@ -10,8 +10,8 @@ var cardsOutsideDeck = [];
 var parameterArray = [];
 var parameterCount = 0;
 var currentSearchType = "Null";
-var currentSearchQuery;
-var currentSet;
+var currentSearchQuery = "Null";
+var currentSet = "Null";
 
 class searchObject {
     constructor(
@@ -75,10 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#importDarkDeck').addEventListener('change', () => {importDarkDeck()});
     document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
     document.querySelector('#side').addEventListener('change', () => searchCards());
-    document.querySelector('#optionOne').addEventListener('change', () => typeFilter(tempDictionary, document.querySelector('#optionOne').value));
-    document.querySelector('#setOption').addEventListener('change', () => setFilter(tempDictionary, document.querySelector('#setOption').value));
-    document.querySelector('#textSearchOne').addEventListener('input', () => textFilter(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
-    document.querySelector('#saveParameter').addEventListener('click', () => saveParameters(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
+    // document.querySelector('#optionOne').addEventListener('change', () => typeFilter(tempDictionary, document.querySelector('#optionOne').value));
+    document.querySelector('#optionOne').addEventListener('change', () => typeFilterTest(document.querySelector('#optionOne').value));
+    // document.querySelector('#setOption').addEventListener('change', () => setFilter(tempDictionary, document.querySelector('#setOption').value));
+    document.querySelector('#setOption').addEventListener('change', () => setFilterTest(document.querySelector('#setOption').value));
+    // document.querySelector('#textSearchOne').addEventListener('input', () => textFilter(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
+    document.querySelector('#textSearchOne').addEventListener('input', () => textFilterTest(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
+    // document.querySelector('#saveParameter').addEventListener('click', () => saveParameters(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
     document.querySelector('#side').value = "choose";
     document.querySelector('#optionOne').value = "choose";
     document.querySelector('#resultCount').innerHTML = count;
@@ -114,10 +117,57 @@ function textFilter(property, operator, query) {
     }; 
 };
 
+function textFilterTest(property, operator, query) {
+    searchParameter = new searchObject(
+        property,
+        operator,
+        query,
+    );
+    currentSearchQuery = searchParameter;
+    newSearchArrayTest();
+};
+function typeFilterTest(cardType){
+    currentSearchType = cardType;
+    newSearchArrayTest();
+};
+
+function setFilterTest(set){
+    currentSet = set;
+    newSearchArrayTest();
+};
+
+function newSearchArrayTest() {
+    console.log("current type is : " + currentSearchType + ", current set is : " + currentSet + ", current query is : " + currentSearchQuery.property + currentSearchQuery.operator + currentSearchQuery.query);
+    tempArray = tempDictionary;
+    if (currentSearchType != "Null") {
+        tempArray = tempArray.filter(card => card.type == currentSearchType);
+    }
+    if (currentSet != "Null"){
+        tempArray = tempArray.filter(card => card.set == currentSet);
+    }
+    if (currentSearchQuery != "Null") {
+        let property = currentSearchQuery.property;
+        let operator = currentSearchQuery.operator;
+        let query = currentSearchQuery.query;
+        if(currentSearchQuery.operator == "contains") {
+            tempArray = tempArray.filter(card => card[property].toLowerCase().includes(query.toLowerCase()));
+        } else {
+            temp = tempArray.filter(card => card.type == currentSearchType);
+            tempArray = temp.reduce(card => evaluate(card, property, query, operator));
+        };
+    };
+    searchQuery(tempArray);
+}
 function typeFilter(array, cardType) {
     if (cardType == "Null") {
-        tempArray = array;
+        if (set == "Null") {
+            tempArray = array;
+        } else {
+            temp = array.filter(card => card.set == set);
+            tempArray = temp.filter(card => card.type == cardType);
+        };
     } else {
+        temp = array.filter(card => card.set == set);
         tempArray = array.filter(card => card.type == cardType);
     };
     currentSearchType = cardType;
@@ -148,10 +198,10 @@ function dynamicSearchArray (array) {
         let query = parameterArray[i].query;
         if (operator == "contains") {
             if (currentSearchType == "Null") {
-                tempArray = array.filter(card => card[property].includes(query));
+                tempArray = array.filter(card => card[property].toLowerCase().includes(query.toLowerCase()));
             } else {
                 temp = array.filter(card => card.type == currentSearchType);      
-                tempArray = temp.filter(card => card[property].includes(query));
+                tempArray = temp.filter(card => card[property].toLowerCase().includes(query.toLowerCase()));
             };
         } else {
             if (currentSearchType == "Null") {
@@ -235,7 +285,7 @@ function searchCards() {
         searchQuery(darkDictionary);
         tempDictionary = JSON.parse(JSON.stringify(darkDictionary));
     };
-    document.querySelector('#optionOne').value = "choose";
+    newSearchArrayTest();
 };
 
 function searchQuery(object) {
@@ -315,7 +365,6 @@ function draggableZoom(finalImage, subType) {
         let rotatedCard = document.createElement('div');
         rotatedCard.classList.add('site-wrapper');
         var imageElement = document.createElement('img');
-        imageElement.classList.add('site');
         imageElement.setAttribute("src", `${finalImage}`);
         imageElement.classList.add('focusSite');
     } else {
@@ -379,6 +428,7 @@ function deckArea(activeArray) {
             //removes quotations from the path which also affects the image display
             let finalImage = imageUrl.replaceAll('"', '');
             if (activeArray[i].subType == "Site"){
+                console.log(activeArray[i].subType);
                 let rotatedCard = document.createElement('div');
                 rotatedCard.classList.add('site-wrapper');
                 let imageElement = document.createElement('img');
@@ -387,6 +437,13 @@ function deckArea(activeArray) {
                 imageElement.setAttribute('loading', 'lazy');
                 rotatedCard.append(imageElement);
                 cardDiv.append(rotatedCard);
+                cardDiv.addEventListener('click', (e) => {
+                    if(e.shiftKey) {
+                        draggableZoom(finalImage, "Site")
+                    } else {
+                        deleteCard(activeArray, tempCard);
+                    }
+                });
             } else {
                 let imageElement = document.createElement('img');
                 imageElement.setAttribute('src', `${finalImage}`);

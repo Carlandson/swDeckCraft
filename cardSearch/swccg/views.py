@@ -133,28 +133,29 @@ def deckbuild(request):
 
 def deckview(request, deckid):
     if request.method == "GET":
-        deck_choice = decklist.objects.get(id=deckid)
-        deck_cards = copies.objects.all()
-        deck_type_dict = dict()
-        deck_types = card_type.objects.all().order_by("types")
-        for each in deck_types:
-            title = each.types
-            deck_type_dict[title] = []
-        my_list = []
-        my_cards = deck_choice.deck_list.filter(deck_list=deck_choice).order_by("name")
-        for card in my_cards:
-            add_card = starwarscard.objects.get(name = card.name, side=deck_choice.side)
-            my_list.append(add_card)
-        for list in deck_type_dict.copy():
-            count = 0;
-            for item in my_list:
-                card_type_is = item.type.types
-                if card_type_is == list:
-                    deck_type_dict[list].append(item)
-                    count +=1
-            if count == 0:
-                deck_type_dict.pop(list)
-        return render(request, 'swccg/deckview.html', {"deck": deck_choice, "cards":my_list, "type_lists":deck_type_dict})
+        # deck_choice = decklist.objects.get(id=deckid)
+        # deck_cards = copies.objects.all()
+        # deck_type_dict = dict()
+        # deck_types = card_type.objects.all().order_by("types")
+        # for each in deck_types:
+        #     title = each.types
+        #     deck_type_dict[title] = []
+        # my_list = []
+        # my_cards = deck_choice.deck_list.filter(deck_list=deck_choice).order_by("name")
+        # for card in my_cards:
+        #     add_card = starwarscard.objects.get(name = card.name, side=deck_choice.side)
+        #     my_list.append(add_card)
+        # for list in deck_type_dict.copy():
+        #     count = 0;
+        #     for item in my_list:
+        #         card_type_is = item.type.types
+        #         if card_type_is == list:
+        #             deck_type_dict[list].append(item)
+        #             count +=1
+        #     if count == 0:
+        #         deck_type_dict.pop(list)
+        # return render(request, 'swccg/deckview.html', {"deck": deck_choice, "cards":my_list, "type_lists":deck_type_dict})
+        return render(request, 'swccg/deckview.html')
         
 #fetch all cards return an array
 def load_cards(request):
