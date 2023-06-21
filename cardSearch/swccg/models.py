@@ -6,6 +6,10 @@ import json
 class starwarscard(models.Model):
     title = models.CharField(max_length=200, null=True, default="")
     type = models.CharField(max_length=200, null=True, default="")
+    errataSymbol = models.CharField(max_length=200, null=True, default='')
+    errataDate = models.CharField(max_length=200, null=True, default='')
+    errataNotes = models.TextField(max_length=10000, null=True, default='')
+    previousId = models.CharField(max_length=200, null=True, default="")
     side = models.CharField(max_length=200, null=True, default="")
     gametext = models.TextField(max_length=200, null=True, default="")
     deploy = models.CharField(max_length=200, default="")
@@ -57,6 +61,7 @@ class starwarscard(models.Model):
             "power" : self.power,
             "deploy" : self.deploy,
             "forfeit" : self.forfeit,
+            "set" : self.set,
         }
 
 class decklist(models.Model):

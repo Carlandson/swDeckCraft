@@ -20,7 +20,7 @@ def index(request):
 #when new cards are created. could also be used to add values to cards.
 
 #Note - I found errors in these lists so saving this was incredibly helpful!
-def card_save(request):
+# def card_save(request):
 #     if request.method == "POST":
 #         with open('/workspaces/73307697/final/swccg/lscardlist.txt') as f:
 #             lines = f.readlines()
@@ -49,12 +49,12 @@ def card_save(request):
 #                 )
 #                 newcard.save()
 #         return render(request, 'swccg/card_save.html')
-    return render(request, 'swccg/card_save.html')
+    # return render(request, 'swccg/card_save.html')
 
 # saved cards 
 # def card_save(request):
 #     if request.method == "POST":
-#         data = open('swccg\dark.json').read()
+#         data = open('swccg\Light.json').read()
 #         json_data = json.loads(data)
 #         keys = {}
 #         for d in json_data["cards"]:
@@ -85,8 +85,8 @@ def card_save(request):
 #         return render(request, 'swccg/card_save.html', {"keys" : keys})
 #     if request.method == "GET":
 #         return render(request, 'swccg/card_save.html')
-
-# def card_save(request):
+# This adds images to the database, because accessing the url was too slow
+def card_save(request):
 #     if request.method == "POST":
 #         card_db = starwarscard.objects.all();
 #         for card in card_db:
@@ -113,14 +113,14 @@ def card_save(request):
         # if test_card.imageUrl and not test_card.image:
         #     result = urllib.request.urlretrieve(url, "MEDIA/images")
         #     print(result)
-            # test_card.image.save(
-            #     os.path.basename(test_card.imageUrl),
-            #     File(open(result[0], encoding="utf8"))
-            # )
-            # test_card.save()
+        #     test_card.image.save(
+        #         os.path.basename(test_card.imageUrl),
+        #         File(open(result[0], encoding="utf8"))
+        #     )
+        #     test_card.save()
     #     return render(request, 'swccg/card_save.html')
-    # if request.method == "GET":
-    #     return render(request, 'swccg/card_save.html')
+    if request.method == "GET":
+        return render(request, 'swccg/card_save.html')
     # for card in card_db:
     #     img_data = requests.get(card.imageUrl)
 

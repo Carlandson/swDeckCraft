@@ -1,29 +1,30 @@
 {% extends 'swccg/layout.html' %}
 {% load static %}
 {% block body %}
-<header class="nav">
-    <a href="{% url 'index' %}"class="text-xl top-0 text-green-400">Return Home</a>
-</header>
+
 <div id="deckBuild" class="float-left w-1/2 pl-2 text-center h-screen">
-    <span class="mr-10">Card Total : <span id="deckCount"></span> / 60</span>
-    <span>Average Destiny : <span id="averageDestiny"></span></span>
-    <div class="cardArea active h-screen border-2 mb-3 text-left flex-grid" id="deckBuilder">    
-    </div>
-    <div>
+    <div class="pt-2">
+        <a href="{% url 'index' %}"class="float-left text-white">Return Home</a>
         <input id="importLightDeck" type="file" class="hidden"/>
         <label for="importLightDeck" class="import bg-gray-200 px-6">Import Light Deck</label>
         <input id="importDarkDeck" type="file" class="hidden"/>
         <label for="importDarkDeck" class="import bg-red-400 px-6">Import Dark Deck</label>
         <button id="saveDeck" class="bg-teal-400 px-6">Save Deck</button>
     </div>
-    <!-- This is a div for adding and deleting search parameters -->
-    <!-- Small Icons that if you click will delete the search parameter -->
+    <div class="cardArea active h-screen mt-2 border-2 mb-3 text-left flex-grid" id="deckBuilder">    
+    </div>
+    <div>
+        <span class="mr-10 text-white">Card Total : <span id="deckCount"></span> / 60</span>
+        <span class="text-white">Average Destiny : <span id="averageDestiny"></span></span>
+    </div>
     <button class="collapsible">Defensive Shields</button>
-    <div id="cardsOutsideDeck" class="cardArea h-screen border-2 text-left flex-grid"></div>
+    <div id="cardsOutsideDeck" class="cardArea h-screen border-2 text-left flex-grid">
+        <button id="lsShields" class="border-2 bg-gray-100">Add LS shields?</button>
+        <button id="dsShields" class="border-2 bg-red-300">Add DS shields?</button>
+    </div>
     <button class="collapsible px-6">61st Cards</button>
-    <div id="sixtyFirst" class="cardArea h-screen border-2 text-left flex-grid"></div>
-</div>
-<div id="typeCount">
+    <div id="sixtyFirst" class="cardArea h-screen border-2 text-left flex-grid">
+    </div> 
 </div>
 <div id="search" class="float-right mr-6 mt-1 text-left h-screen">
     <div class="search_div">
@@ -31,6 +32,56 @@
             <option disabled value="choose">Choose side:</option>
             <option value="Light">Light</option>
             <option value="Dark">Dark</option>
+        </select>
+        <select id="setOption" label="set">
+            <option disabled value="chooseSet">Set:</option>
+            <option value="Null">all</option>
+            <option value="1">Premiere</option>
+            <option value="101">Premiere 2 Player</option>
+            <option value="102">Jedi Pack</option>
+            <option value="103">Rebel Leader</option>
+            <option value="2">A New Hope</option>
+            <option value="3">Hoth</option>
+            <option value="104">ESB 2 Player</option>
+            <option value="4">Dagobah</option>
+            <option value="5">Cloud City </option>
+            <option value="6">Jabba's Palace</option>
+            <option value="106">Sealed Deck</option>
+            <option value="7">Special Edition</option>
+            <option value="108">Enhanced Premiere Pack</option>
+            <option value="8">Endor</option>
+            <option value="109">Enhanced Cloud City</option>
+            <option value="110">Enhanced Jabba's Palace</option>
+            <option value="9">Death Star II</option>
+            <option value="112">Jabba's Palace Sealed Deck</option>
+            <option value="10">Reflections II</option>
+            <option value="11">Tatooine</option>
+            <option value="12">Coruscant</option>
+            <option value="13">Reflections III</option>
+            <option value="13">Theed Palace</option>
+            <option value="200">Virtual Set 0</option>
+            <option value="201">Virtual Set 1</option>
+            <option value="202">Virtual Set 2</option>
+            <option value="203">Virtual Set 3</option>
+            <option value="204">Virtual Set 4</option>
+            <option value="205">Virtual Set 5</option>
+            <option value="206">Virtual Set 6</option>
+            <option value="207">Virtual Set 7</option>
+            <option value="208">Virtual Set 8</option>
+            <option value="209">Virtual Set 9</option>
+            <option value="210">Virtual Set 10</option>
+            <option value="211">Virtual Set 11</option>
+            <option value="212">Virtual Set 12</option>
+            <option value="213">Virtual Set 13</option>
+            <option value="214">Virtual Set 14</option>
+            <option value="215">Virtual Set 15</option>
+            <option value="216">Virtual Set 16</option>
+            <option value="217">Virtual Set 17</option>
+            <option value="218">Virtual Set 18</option>
+            <option value="219">Virtual Set 19</option>
+            <option value="220">Virtual Set 20</option>
+            <option value="221">Virtual Set 21</option>
+            <option value="301">Virtual Premium Set</option>
         </select>
         <ul class="searchBars">
             <li class="cardSearchBar">
@@ -69,13 +120,13 @@
                     <option value="greaterThanEqualTo">≥</option>
                 </select>
                 <input id="textSearchOne" class="searchBar"></input>
-                <li><button id="saveParameter">Save Parameter</button></li>
+                <li><button id="saveParameter" class="text-white">Save Parameter</button></li>
             </li>
             <li id="parameterDiv">
             </li>
         </ul>
     </div>
-    <br><span id="resultCount"></span>
+    <br><span id="resultCount" class="text-white"></span>
     <div id="searchResults" class="flex-grid">
     </div> 
 </div>

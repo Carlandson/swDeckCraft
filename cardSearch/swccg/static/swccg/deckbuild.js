@@ -11,6 +11,7 @@ var parameterArray = [];
 var parameterCount = 0;
 var currentSearchType = "Null";
 var currentSearchQuery;
+var currentSet;
 
 class searchObject {
     constructor(
@@ -39,6 +40,7 @@ class cardObject {
         ability,
         deploy,
         forfeit,
+        set,
     ) {
     this.name = name;
     this.gametext = gametext;
@@ -53,6 +55,7 @@ class cardObject {
     this.ability = ability;
     this.deploy = deploy;
     this.forfeit = forfeit;
+    this.set = set;
     }
 };
 
@@ -73,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
     document.querySelector('#side').addEventListener('change', () => searchCards());
     document.querySelector('#optionOne').addEventListener('change', () => typeFilter(tempDictionary, document.querySelector('#optionOne').value));
+    document.querySelector('#setOption').addEventListener('change', () => setFilter(tempDictionary, document.querySelector('#setOption').value));
     document.querySelector('#textSearchOne').addEventListener('input', () => textFilter(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
     document.querySelector('#saveParameter').addEventListener('click', () => saveParameters(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
     document.querySelector('#side').value = "choose";
@@ -96,26 +100,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function textFilter(e, property, operator, query) {
-    searchParameter = new searchObject(
+function textFilter(property, operator, query) {
+    if (!query) {
+        searchQuery(tempDictionary);
+    } else {searchParameter = new searchObject(
         property,
         operator,
         query,
     );
-    
     parameterArray[parameterCount] = searchParameter;
     array = tempDictionary;
     searchQuery(dynamicSearchArray(array));
+    }; 
 };
 
 function typeFilter(array, cardType) {
-    // cardType = `"${cardType}"`;
     if (cardType == "Null") {
         tempArray = array;
     } else {
         tempArray = array.filter(card => card.type == cardType);
     };
     currentSearchType = cardType;
+    searchQuery(tempArray);
+};
+
+function setFilter(array, set) {
+    if (set == "Null") {
+        tempArray = array;
+    } else {
+        tempArray = array.filter(card => card.set == set);
+    };
+    currentSet = set;
     searchQuery(tempArray);
 };
 
@@ -200,6 +215,7 @@ function loadCards() {
                     card['ability'],
                     card['deploy'],
                     card['forfeit'],
+                    card['set'],
                 )
                 if (card['side'] == "Light") {
                     lightDictionary.push(cardName);
@@ -296,7 +312,6 @@ function draggableZoom(finalImage, subType) {
     cardDiv.classList.add("focusCardDiv");
     //add second div that changes the dimensions of the first div, give the movable properties to focusCardDiv, and the dimensions to the next div
     if(subType == "Site") {
-        console.log('working');
         let rotatedCard = document.createElement('div');
         rotatedCard.classList.add('site-wrapper');
         var imageElement = document.createElement('img');
@@ -323,7 +338,6 @@ function draggableZoom(finalImage, subType) {
 //seperate both boxes. populated deck will be its own array
 //create copy of object, add copy to deck
 function addCard(activeArray, card) {
-    console.log(activeArray);
     var newCard = true;
     for (i = 0; i < activeArray.length; i++) {
         let tempCard = activeArray[i]
@@ -347,7 +361,6 @@ function addCard(activeArray, card) {
 function deckArea(activeArray) {
     let deckArea = document.querySelector(".active");
     deckArea.innerHTML = '';
-    console.log("the active array is " + activeArray);
     for(i = 0; i < activeArray.length; i++) {
         let tempCard = activeArray[i];
         let parentContainer = document.createElement("div");
@@ -509,67 +522,99 @@ function downloadDeck (file) {
 };
 
 function importLightDeck() {
-    let deckArea = document.querySelector("#deckBuilder");
-    deckArea.innerHTML = '';
+    deckOnDeck = [];
     let importFile = document.querySelector('#importLightDeck').files;
     if (importFile.length == 0) return;
     const importedDeck = importFile[0];
     let reader = new FileReader();
     reader.onload = (e) => {
         const file = e.target.result;
-        //file is a string
-        //file is going to fetch each card from the dictionary, then use the addcard function to add them to the deckview
-        //we need to clean the string up first - or we can parse the string and find matches in the dictionary to add without needing to change string at all
-        var reg = /\"(.*?)\"/g;
+        var deck = [];
         var cleanedDeck = [];
-        file.match(reg).forEach((element) => {
-            // console.log(element);
-            if(element.includes("_")) {
-                element = element.replace(/["]/g, '');
-                cleanedDeck.push(element);
-            }
+        var outsideCards = [];
+        var regBrackets = /\<(.*?)\>/g;
+        var reg = /\"(.*?)\"/g;
+        file.match(regBrackets).forEach((element) => {
+            deck.push(element);
         });
-        console.log(cleanedDeck);
+        for (i = 0; i < deck.length; i++) {
+            var outsideDeck = true;
+            //opt-chaining operator skips null
+            if(deck[i].match("card b")){
+                outsideDeck = false;
+            };
+            deck[i].match(reg)?.forEach((element) => {
+                if(element.includes("_")) {
+                    element = element.replace(/["]/g, '');
+                    if(!outsideDeck) {
+                        cleanedDeck.push(element);
+                    } else {
+                        outsideCards.push(element);
+                    };
+                };
+            });
+        };
         try {
             cleanedDeck.forEach((card) => {
                 var matchingCard = lightDictionary.find(item => item.gempId == card);
                 if (matchingCard === undefined) throw "Wrong Side!";
-                addCard(matchingCard);
+                addCard(deckOnDeck, matchingCard);
             });
         } catch (e) {
             alert(e);
         };
     };
-    reader.onerror = (e) => alert(e.target.error.name);
+    reader.onerror = (e) => alert("check" + e.target.error.name);
     reader.readAsText(importedDeck);        
 };
 
 function importDarkDeck() {
+    deckOnDeck = [];
     let importFile = document.querySelector('#importDarkDeck').files;
     if (importFile.length == 0) return;
     const importedDeck = importFile[0];
     let reader = new FileReader();
     reader.onload = (e) => {
         const file = e.target.result;
+        var deck = [];
+        var cleanedDeck = [];
+        var outsideCards = [];
+        var regBrackets = /\<(.*?)\>/g;
+        var reg = /\"(.*?)\"/g;
+        file.match(regBrackets).forEach((element) => {
+            deck.push(element);
+        });
+        for (i = 0; i < deck.length; i++) {
+            var outsideDeck = true;
+            //opt-chaining operator skips null
+            if(deck[i].match("card b")){
+                outsideDeck = false;
+            };
+            deck[i].match(reg)?.forEach((element) => {
+                if(element.includes("_")) {
+                    element = element.replace(/["]/g, '');
+                    if(!outsideDeck) {
+                        cleanedDeck.push(element);
+                    } else {
+                        outsideCards.push(element);
+                    };
+                };
+            });
+        };
         //file is a string
         //file is going to fetch each card from the dictionary, then use the addcard function to add them to the deckview
         //we need to clean the string up first - or we can parse the string and find matches in the dictionary to add without needing to change string at all
-        var reg = /\"(.*?)\"/g;
-        var cleanedDeck = [];
-        file.match(reg).forEach((element) => {
-            // console.log(element);
-            if(element.includes("_")) {
-                element = element.replace(/["]/g, '');
-                cleanedDeck.push(element);
-            }
-        });
-        console.log(cleanedDeck);
         try {
             cleanedDeck.forEach((card) => {
                 var matchingCard = darkDictionary.find(item => item.gempId == card);
                 if (matchingCard === undefined) throw "Wrong Side!";
-                addCard(matchingCard);
-        });
+                addCard(deckOnDeck, matchingCard);
+            });
+            // outsideCards.forEach((card) => {
+            //     var matchingCard = darkDictionary.find(item => item.gempId == card);
+            //     if (matchingCard === undefined) throw "Wrong Side!";
+            //     addCard(cardsOutsideDeck, matchingCard);
+            // });
         } catch (e) {
             alert(e);
         };
