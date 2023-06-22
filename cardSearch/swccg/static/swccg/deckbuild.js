@@ -12,6 +12,7 @@ var parameterCount = 0;
 var currentSearchType = "Null";
 var currentSearchQuery = "Null";
 var currentSet = "Null";
+var activeDiv = "deck";
 
 class searchObject {
     constructor(
@@ -63,14 +64,14 @@ class cardObject {
 document.addEventListener('DOMContentLoaded', () => {
     loadCards();
     var cardAreas = document.getElementsByClassName("cardArea");
-    for (i = 0; i < cardAreas.length; i++) {
-        cardAreas[i].addEventListener('click', function () {
-            for (j = 0; j < cardAreas.length; j++) {
-                cardAreas[j].classList.remove('active');
-            };
-            this.classList.toggle('active');
-        });
-    };
+    // for (i = 0; i < cardAreas.length; i++) {
+    //     cardAreas[i].addEventListener('click', function () {
+    //         for (j = 0; j < cardAreas.length; j++) {
+    //             cardAreas[j].classList.remove('active');
+    //         };
+    //         this.classList.toggle('active');
+    //     });
+    // };
     document.querySelector('#importLightDeck').addEventListener('change', () => {importLightDeck()});
     document.querySelector('#importDarkDeck').addEventListener('change', () => {importDarkDeck()});
     document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
@@ -84,24 +85,57 @@ document.addEventListener('DOMContentLoaded', () => {
     // document.querySelector('#saveParameter').addEventListener('click', () => saveParameters(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
     document.querySelector('#side').value = "choose";
     document.querySelector('#optionOne').value = "choose";
+    document.querySelector('#setOption').value = "chooseSet";
     document.querySelector('#resultCount').innerHTML = count;
-    var collapsibles = document.getElementsByClassName("collapsible");
-    for(i = 0; i < collapsibles.length; i++){
-        collapsibles[i].addEventListener('click', function() {
-            this.classList.toggle('open');
-            var content = this.nextElementSibling;
-            if (content.style.display === "block"){
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            };
-    });
-    };    
+    document.querySelector('#shieldButton').addEventListener('click', () => defensiveShieldTest());
+    document.querySelector('#sixtyFirstButton').addEventListener('click', () => sixtyFirstTest());
+    // var collapsibles = document.getElementsByClassName("collapsible");
+    // for(i = 0; i < collapsibles.length; i++){
+    //     collapsibles[i].addEventListener('click', function() {
+    //         this.classList.toggle('open');
+    //         var content = this.nextElementSibling;
+    //         if (content.style.display === "block"){
+    //             content.style.display = "none";
+    //         } else {
+    //             content.style.display = "block";
+    //         };
+    // });
+    // };    
     let bars = document.querySelectorAll('.searchBar');
     bars.forEach(bar => {
         bar.value = "";
     });
 });
+
+function defensiveShieldTest() {
+    var mainDeck = document.querySelector('#deckBuilder');
+    var sixtyFirstDiv = document.querySelector('#sixtyFirst');
+    var defensiveShieldDiv = document.querySelector('#cardsOutsideDeck');
+    if (defensiveShieldDiv.style.display == "flex"){
+        defensiveShieldDiv.style.display = "none";
+        activeDiv = "deck";
+    } else {
+        defensiveShieldDiv.style.display = "flex";
+        sixtyFirstDiv.style.display = "none";
+        activeDiv = "defensive";
+    };
+};
+
+function sixtyFirstTest() {
+    var mainDeck = document.querySelector('#deckBuilder');
+    var sixtyFirstDiv = document.querySelector('#sixtyFirst');
+    var defensiveShieldDiv = document.querySelector('#cardsOutsideDeck');
+    if (sixtyFirstDiv.style.display == "flex"){
+        sixtyFirstDiv.style.display = "none";
+        activeDiv = "deck";
+        mainDeck.classList.remove("opaque");
+    } else {
+        sixtyFirstDiv.style.display = "flex";
+        defensiveShieldDiv.style.display = "none";
+        activeDiv = "sixtyFirst";
+        mainDeck.classList.add("opaque");
+    };
+};
 
 function textFilter(property, operator, query) {
     if (!query) {
@@ -137,7 +171,6 @@ function setFilterTest(set){
 };
 
 function newSearchArrayTest() {
-    console.log("current type is : " + currentSearchType + ", current set is : " + currentSet + ", current query is : " + currentSearchQuery.property + currentSearchQuery.operator + currentSearchQuery.query);
     tempArray = tempDictionary;
     if (currentSearchType != "Null") {
         tempArray = tempArray.filter(card => card.type == currentSearchType);
@@ -341,12 +374,11 @@ function searchQuery(object) {
             if(e.shiftKey) {
                 draggableZoom(finalImage, subType)
             } else {
-                currentDiv = document.querySelector(".active").id;
-                if(currentDiv == "deckBuilder") {
+                if(activeDiv == "deck") {
                     addCard(deckOnDeck, card);
-                } else if(currentDiv == "cardsOutsideDeck") {
+                } else if(activeDiv == "defensive") {
                     addCard(cardsOutsideDeck, card);
-                } else if(currentDiv == "sixtyFirst") {
+                } else if(activeDiv == "sixtyFirst") {
                     addCard(sixtyFirstCards, card);
                 };
             }
@@ -404,11 +436,18 @@ function addCard(activeArray, card) {
         addCard.count = 1;
         activeArray.push(addCard);
     }
-    deckArea(activeArray);
+    deckPopulate(activeArray);
 };
 
-function deckArea(activeArray) {
-    let deckArea = document.querySelector(".active");
+function deckPopulate(activeArray) {
+    var deckArea;
+    if(activeDiv == "deck") {
+        deckArea = document.querySelector("#deckBuilder");
+    } else if(activeDiv == "sixtyFirst") {
+        deckArea = document.querySelector("#sixtyFirst");
+    } else {
+        deckArea = document.querySelector('#cardsOutsideDeck');
+    }
     deckArea.innerHTML = '';
     for(i = 0; i < activeArray.length; i++) {
         let tempCard = activeArray[i];
@@ -486,7 +525,7 @@ function deleteCard(activeArray, card){
         let tempIndex = activeArray.indexOf(card);
         activeArray.splice(tempIndex, 1);
     };
-    deckArea(activeArray);
+    deckPopulate(activeArray);
 };
 
 // function buildDeck(event) {

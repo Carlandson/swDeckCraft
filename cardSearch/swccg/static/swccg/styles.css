@@ -32,6 +32,7 @@ html {
     overflow: auto;
     flex-direction: row;
     align-content: flex-start;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 #cardsOutsideDeck {
@@ -40,12 +41,13 @@ html {
     display: none;
     flex-wrap: wrap;
     width: 60vw;
-    height: 20vh;
+    height: 40vh;
     bottom: 160px;
     left: 30px;
     overflow: auto;
     flex-direction: row;
     align-content: flex-start;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 #deckBuilder {
@@ -60,10 +62,18 @@ html {
     position: relative;
 }
 
+#deckStats {
+    display: flex;
+    width: 30vw;
+    height: 20vh;
+    text-align: center;
+    color: white;
+}
 #search {
     position: relative;
     width: 30vw;
     padding-left: 0pt;
+    bottom: 0;
 }
 
 /* #secondaryParameter {
@@ -184,7 +194,7 @@ html {
     border-radius: 10px;
   }
 
-  #sixtyOneCards{
+  #sixtyFirstButton{
     background-color: orange;
     border-radius: 10px;
   }
@@ -194,4 +204,8 @@ html {
     flex-wrap: wrap;
     flex-direction: row;
     align-content: flex-start;
+  }
+
+  .opaque {
+    background-color: green;
   }
