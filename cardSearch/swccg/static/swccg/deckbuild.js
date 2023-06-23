@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
     document.querySelector('#side').addEventListener('change', () => searchCards());
     document.querySelector('#sortDeckByType').addEventListener('click', () => sortDeck());
+    document.querySelector('#sortDeckByName').addEventListener('click', () => sortAlphabet());
     // document.querySelector('#optionOne').addEventListener('change', () => typeFilter(tempDictionary, document.querySelector('#optionOne').value));
     document.querySelector('#optionOne').addEventListener('change', () => typeFilterTest(document.querySelector('#optionOne').value));
     // document.querySelector('#setOption').addEventListener('change', () => setFilter(tempDictionary, document.querySelector('#setOption').value));
@@ -754,7 +755,9 @@ function sortDeck() {
         var nameA = a.name.toUpperCase();
         var nameB = b.name.toUpperCase();
         nameA = nameA.replace("Â€¢", "");
-        nameB = nameB.replace("Â€¢", ""); 
+        nameA = nameA.replace("Â€¢", "");
+        nameB = nameB.replace("Â€¢", "");
+        nameB = nameB.replace("Â€¢", "");
         if (nameA > nameB) {
             return 1;
         } if (nameA < nameB) {
@@ -774,20 +777,25 @@ function sortDeck() {
             return 0;
         }
     });
-    // deckOnDeck.sort(function(a, b, c, d) {
-    //     const typeA = a.type.toUpperCase();
-    //     const typeB = b.type.toUpperCase();
-    //     const nameA = c.name.toUpperCase();
-    //     const nameB = d.name.toUpperCase();
-    //     while (typeA < typeB) {
-    //         if(nameA > nameB) {
-    //             return 1;
-    //         } if(nameA < nameB) {
-    //             return -1;
-    //         } else {
-    //             return 0;
-    //         }
-    //     }
-    // })
+    deckPopulate(deckOnDeck);
+};
+
+function sortAlphabet() {
+    deckOnDeck.sort(function(a, b) {
+        var nameA = a.name.toUpperCase();
+        var nameB = b.name.toUpperCase();
+        nameA = nameA.replace("Â€¢", "");
+        nameA = nameA.replace("Â€¢", "");
+        nameB = nameB.replace("Â€¢", "");
+        nameB = nameB.replace("Â€¢", "");
+        console.log(nameA)
+        if (nameA > nameB) {
+            return 1;
+        } if (nameA < nameB) {
+            return -1;
+        } else{
+            return 0;
+        }
+    });
     deckPopulate(deckOnDeck);
 };

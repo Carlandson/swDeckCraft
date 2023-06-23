@@ -218,3 +218,11 @@ html {
     /* align-self: flex-end; */
     margin-left: auto;
   }
+
+  #sortDeckByName {
+    background-color: greenyellow;
+    border-radius: 10px;
+    width: 100px;
+    /* align-self: flex-end; */
+    margin-left: auto;
+  }
