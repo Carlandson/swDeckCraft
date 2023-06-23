@@ -185,12 +185,16 @@ html {
   }
 
   #lsShields {
-    background-image: url('/static/swccg/image.jpg');
+    /* background-image: url('/static/swccg/image.jpg'); */
     background-position: center;
+    background-color: #42ADC7;
+    border-radius: 10px;
+    border: 1px solid black;
+
   }
 
   #shieldButton {
-    background-color: white;
+    background-color: #1DACD0;
     border-radius: 10px;
   }
 
@@ -211,18 +215,52 @@ html {
     background-color: green;
   }
 
+  #sortButtons {
+    margin-left: auto;
+    display:flex;
+    flex-direction: column;
+  }
   #sortDeckByType {
     background-color: greenyellow;
     border-radius: 10px;
-    width: 100px;
+    width: 150px;
+    margin-bottom: 1px;
     /* align-self: flex-end; */
-    margin-left: auto;
   }
 
   #sortDeckByName {
     background-color: greenyellow;
     border-radius: 10px;
-    width: 100px;
+    width: 150px;
+    margin-bottom: 1px;
     /* align-self: flex-end; */
-    margin-left: auto;
+  }
+
+  #clearDeck{
+    background-color: rgb(205,92,92);
+    border-radius: 10px;
+  }
+
+  #outsideButtons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* .starting {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 3px solid red;
+    margin: 2px;
+  } */
+
+  /* .starting {
+    box-shadow:inset 0px 0px 0px 10px rgb(170, 96, 96);
+    -webkit-box-shadow:inset 0px 0px 0px 10px rgb(209, 134, 134);
+    -moz-box-shadow:inset 0px 0px 0px 10px rgb(170, 101, 101);
+    box-sizing: border-box;
+  } */
+  .starting {
+    outline: 3px solid red;
+    outline-offset: -3px;
   }

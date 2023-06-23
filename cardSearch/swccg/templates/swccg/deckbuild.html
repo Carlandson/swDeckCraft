@@ -17,16 +17,20 @@
     <div class="cardArea active h-screen mt-2 border-2 mb-3 text-left flex-grid" id="deckBuilder">     
     </div>
     <div id="outsideDecks">
+        <div id="outsideButtons">
             <button id="shieldButton" class="collapsible">Defensive Shields</button>
+            <button id="lsShields" class="image-button">Add/Remove Shields</button>
+        </div>
         <div id="cardsOutsideDeck" class="cardArea h-screen border-2 text-left flex-grid">
-            <button id="lsShields" class="image-button">Add LS shields?</button>
-            <button id="dsShields" class="border-2 bg-red-300">Add DS shields?</button>
         </div>
             <button id="sixtyFirstButton" class="collapsible px-6">61st Cards</button>
             <div id="sixtyFirst" class="cardArea h-screen border-2 text-left flex-grid">
             </div>
-            <button id="sortDeckByType">Sort By Type</button>
-            <button id="sortDeckByName">Sort Alphabetically</button>
+            <div id="sortButtons">
+                <button id="sortDeckByType">Sort By Type</button>
+                <button id="sortDeckByName">Sort Alphabetically</button>
+                <button id="clearDeck">Clear Deck</button>
+            </div>
     </div>
 </div>
 <div id="deckStats"class="float-right text-center">

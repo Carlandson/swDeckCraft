@@ -76,8 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#importDarkDeck').addEventListener('change', () => {importDarkDeck()});
     document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
     document.querySelector('#side').addEventListener('change', () => searchCards());
+    document.querySelector('#lsShields').addEventListener('click', () => addShields());
     document.querySelector('#sortDeckByType').addEventListener('click', () => sortDeck());
     document.querySelector('#sortDeckByName').addEventListener('click', () => sortAlphabet());
+    document.querySelector('#clearDeck').addEventListener('click', () => clearDeck());
     // document.querySelector('#optionOne').addEventListener('change', () => typeFilter(tempDictionary, document.querySelector('#optionOne').value));
     document.querySelector('#optionOne').addEventListener('change', () => typeFilterTest(document.querySelector('#optionOne').value));
     // document.querySelector('#setOption').addEventListener('change', () => setFilter(tempDictionary, document.querySelector('#setOption').value));
@@ -469,31 +471,57 @@ function deckPopulate(activeArray) {
             //removes quotations from the path which also affects the image display
             let finalImage = imageUrl.replaceAll('"', '');
             if (activeArray[i].subType == "Site"){
-                console.log(activeArray[i].subType);
                 let rotatedCard = document.createElement('div');
                 rotatedCard.classList.add('site-wrapper');
                 let imageElement = document.createElement('img');
                 imageElement.classList.add('deckSite');
                 imageElement.setAttribute('src', `${finalImage}`);
-                imageElement.setAttribute('loading', 'lazy');
                 rotatedCard.append(imageElement);
                 cardDiv.append(rotatedCard);
+                if (j == tempCard.count - 1) {
+                    if(tempCard.startingCard == 1) {
+                        console.log("once")
+                        imageElement.classList.add('starting');
+                    };
+                };
                 cardDiv.addEventListener('click', (e) => {
                     if(e.shiftKey) {
                         draggableZoom(finalImage, "Site")
+                    } if(e.ctrlKey) {
+                        if (!tempCard.startingCard) {
+                            imageElement.classList.toggle('starting');
+                            tempCard.startingCard = 1;
+                        } else if (tempCard.startingCard == 1){
+                            imageElement.classList.toggle('starting');
+                            tempCard.startingCard = 0;
+                        };
                     } else {
                         deleteCard(activeArray, tempCard);
-                    }
+                    };
                 });
             } else {
                 let imageElement = document.createElement('img');
                 imageElement.setAttribute('src', `${finalImage}`);
-                imageElement.setAttribute('loading', 'lazy');
+                imageElement.setAttribute('mix-blend-mode', 'multiply');
                 cardDiv.append(imageElement);
-                // cardDiv.addEventListener('click', () => deleteCard(tempCard));
+                if (j == tempCard.count - 1) {
+                    if(tempCard.startingCard == 1) {
+                        imageElement.classList.add('starting');
+                    };
+                };
                 cardDiv.addEventListener('click', (e) => {
+                    console.log(e)
                     if(e.shiftKey) {
                         draggableZoom(finalImage, tempCard.subType)
+                    } else if(e.ctrlKey) {
+                        console.log("control pressed")
+                        if (!tempCard.startingCard) {
+                            imageElement.classList.toggle('starting');
+                            tempCard.startingCard = 1;
+                        } else if (tempCard.startingCard == 1) {
+                            imageElement.classList.toggle('starting');
+                            tempCard.startingCard = 0;
+                        };
                     } else {
                         deleteCard(activeArray, tempCard);
                     }
@@ -788,7 +816,6 @@ function sortAlphabet() {
         nameA = nameA.replace("Â€¢", "");
         nameB = nameB.replace("Â€¢", "");
         nameB = nameB.replace("Â€¢", "");
-        console.log(nameA)
         if (nameA > nameB) {
             return 1;
         } if (nameA < nameB) {
@@ -798,4 +825,31 @@ function sortAlphabet() {
         }
     });
     deckPopulate(deckOnDeck);
+};
+
+function addShields() {
+    activeDiv = "cardsOutsideDeck";
+    if (cardsOutsideDeck.length > 0) {
+        let deckArea = document.querySelector('#cardsOutsideDeck');
+        cardsOutsideDeck = [];
+        deckArea.innerHTML = '';
+    } else {
+        var tempDeck = tempDictionary.filter(card => card.type == "Defensive Shield");
+        for(i = 0; i < tempDeck.length; i++) {
+            tempDeck[i].count = 1;
+            cardsOutsideDeck.push(tempDeck[i]);
+        };
+        deckPopulate(cardsOutsideDeck);
+    };
+};
+
+function clearDeck() {
+    let deckArea = document.querySelector('#deckBuilder');
+    deckOnDeck = [];
+    deckArea.innerHTML = '';
+    deckTotal();
+};
+
+function toggleStart () {
+
 };
