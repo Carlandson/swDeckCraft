@@ -204,8 +204,17 @@ html {
     flex-wrap: wrap;
     flex-direction: row;
     align-content: flex-start;
+    width: 65vw;
   }
 
   .opaque {
     background-color: green;
+  }
+
+  #sortDeckByType {
+    background-color: greenyellow;
+    border-radius: 10px;
+    width: 100px;
+    /* align-self: flex-end; */
+    margin-left: auto;
   }

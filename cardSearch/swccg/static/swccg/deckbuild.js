@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#importDarkDeck').addEventListener('change', () => {importDarkDeck()});
     document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
     document.querySelector('#side').addEventListener('change', () => searchCards());
+    document.querySelector('#sortDeckByType').addEventListener('click', () => sortDeck());
     // document.querySelector('#optionOne').addEventListener('change', () => typeFilter(tempDictionary, document.querySelector('#optionOne').value));
     document.querySelector('#optionOne').addEventListener('change', () => typeFilterTest(document.querySelector('#optionOne').value));
     // document.querySelector('#setOption').addEventListener('change', () => setFilter(tempDictionary, document.querySelector('#setOption').value));
@@ -746,4 +747,47 @@ function evaluate(card, parameter1, parameter2, operator) {
     };
     //eval is security risk
     // return eval(parameter1 + operator + parameter2);
+};
+
+function sortDeck() {
+    deckOnDeck.sort(function(a, b) {
+        var nameA = a.name.toUpperCase();
+        var nameB = b.name.toUpperCase();
+        nameA = nameA.replace("Â€¢", "");
+        nameB = nameB.replace("Â€¢", ""); 
+        if (nameA > nameB) {
+            return 1;
+        } if (nameA < nameB) {
+            return -1;
+        } else{
+            return 0;
+        }
+    });
+    deckOnDeck.sort(function(a, b) {
+        const typeA = a.type.toUpperCase();
+        const typeB = b.type.toUpperCase();
+        if (typeA > typeB) {
+            return 1;
+        } if (typeA < typeB) {
+            return -1;
+        } else{
+            return 0;
+        }
+    });
+    // deckOnDeck.sort(function(a, b, c, d) {
+    //     const typeA = a.type.toUpperCase();
+    //     const typeB = b.type.toUpperCase();
+    //     const nameA = c.name.toUpperCase();
+    //     const nameB = d.name.toUpperCase();
+    //     while (typeA < typeB) {
+    //         if(nameA > nameB) {
+    //             return 1;
+    //         } if(nameA < nameB) {
+    //             return -1;
+    //         } else {
+    //             return 0;
+    //         }
+    //     }
+    // })
+    deckPopulate(deckOnDeck);
 };
