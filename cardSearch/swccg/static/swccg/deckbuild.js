@@ -7,6 +7,7 @@ var count = 0;
 var deckOnDeck = [];
 var sixtyFirstCards = [];
 var cardsOutsideDeck = [];
+var randomHand = [];
 var parameterArray = [];
 var parameterCount = 0;
 var currentSearchType = "Null";
@@ -80,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#sortDeckByType').addEventListener('click', () => sortDeck());
     document.querySelector('#sortDeckByName').addEventListener('click', () => sortAlphabet());
     document.querySelector('#clearDeck').addEventListener('click', () => clearDeck());
+    document.querySelector('#randomHandButton').addEventListener('click', () => randomStartingHand());
     // document.querySelector('#optionOne').addEventListener('change', () => typeFilter(tempDictionary, document.querySelector('#optionOne').value));
     document.querySelector('#optionOne').addEventListener('change', () => typeFilterTest(document.querySelector('#optionOne').value));
     // document.querySelector('#setOption').addEventListener('change', () => setFilter(tempDictionary, document.querySelector('#setOption').value));
@@ -449,9 +451,11 @@ function deckPopulate(activeArray) {
         deckArea = document.querySelector("#deckBuilder");
     } else if(activeDiv == "sixtyFirst") {
         deckArea = document.querySelector("#sixtyFirst");
-    } else {
+    } else if(activeDiv =="defensive") {
         deckArea = document.querySelector('#cardsOutsideDeck');
-    }
+    } else if(activeDiv == "random") {
+        deckArea = document.querySelector('#randomHand');
+    };
     deckArea.innerHTML = '';
     for(i = 0; i < activeArray.length; i++) {
         let tempCard = activeArray[i];
@@ -479,7 +483,7 @@ function deckPopulate(activeArray) {
                 rotatedCard.append(imageElement);
                 cardDiv.append(rotatedCard);
                 if (j == tempCard.count - 1) {
-                    if(tempCard.startingCard == 1) {
+                    if(tempCard.startingCard) {
                         console.log("once")
                         imageElement.classList.add('starting');
                     };
@@ -490,10 +494,10 @@ function deckPopulate(activeArray) {
                     } if(e.ctrlKey) {
                         if (!tempCard.startingCard) {
                             imageElement.classList.toggle('starting');
-                            tempCard.startingCard = 1;
-                        } else if (tempCard.startingCard == 1){
+                            tempCard.startingCard = true;
+                        } else if (tempCard.startingCard){
                             imageElement.classList.toggle('starting');
-                            tempCard.startingCard = 0;
+                            tempCard.startingCard = false;
                         };
                     } else {
                         deleteCard(activeArray, tempCard);
@@ -505,7 +509,7 @@ function deckPopulate(activeArray) {
                 imageElement.setAttribute('mix-blend-mode', 'multiply');
                 cardDiv.append(imageElement);
                 if (j == tempCard.count - 1) {
-                    if(tempCard.startingCard == 1) {
+                    if(tempCard.startingCard) {
                         imageElement.classList.add('starting');
                     };
                 };
@@ -517,10 +521,10 @@ function deckPopulate(activeArray) {
                         console.log("control pressed")
                         if (!tempCard.startingCard) {
                             imageElement.classList.toggle('starting');
-                            tempCard.startingCard = 1;
-                        } else if (tempCard.startingCard == 1) {
+                            tempCard.startingCard = true;
+                        } else if (tempCard.startingCard) {
                             imageElement.classList.toggle('starting');
-                            tempCard.startingCard = 0;
+                            tempCard.startingCard = false;
                         };
                     } else {
                         deleteCard(activeArray, tempCard);
@@ -622,9 +626,12 @@ function dragElement(elmnt) {
 };
 
 function saveDeck(deckOnDeck) {
-    let deckList = `<?xml version="1.0" encoding="UTF-8" standalone="no"?><deck>`;
+    let deckList = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>` + `\n` + `<deck>`;
+    deckList = deckList + `\n`;
     for (i = 0; i < deckOnDeck.length; i++){
-        deckList = deckList + `<card blueprintId="${deckOnDeck[i].gempId}" title="${deckOnDeck[i].name}"/>`.repeat(deckOnDeck[i].count);
+        let tempCard = deckOnDeck[i].name;
+        tempCard = replaceString(tempCard);
+        deckList = deckList + `    <card blueprintId="${deckOnDeck[i].gempId}" title="${tempCard}"/>\n`.repeat(deckOnDeck[i].count);
     };
     deckList = deckList + "</deck>";
     //june 3rd stoppage
@@ -814,8 +821,14 @@ function sortAlphabet() {
         var nameB = b.name.toUpperCase();
         nameA = nameA.replace("Â€¢", "");
         nameA = nameA.replace("Â€¢", "");
+        nameA = nameA.replace("<>", "");
+        nameA = nameA.replace("<>", "");
+        nameA = nameA.replace("<>", "");
         nameB = nameB.replace("Â€¢", "");
         nameB = nameB.replace("Â€¢", "");
+        nameB = nameB.replace("<>", "");
+        nameB = nameB.replace("<>", "");
+        nameB = nameB.replace("<>", "");
         if (nameA > nameB) {
             return 1;
         } if (nameA < nameB) {
@@ -850,6 +863,54 @@ function clearDeck() {
     deckTotal();
 };
 
-function toggleStart () {
-
+function randomStartingHand () {
+    var randomHandDiv = document.querySelector('#randomHand');
+    if (activeDiv == "deck") {
+        activeDiv = "random";
+        randomHandDiv.style.display = 'flex';
+        var newArray = deckOnDeck.filter(card => !card.startingCard);
+        var temp = [];
+        console.log(temp)
+        for(i=0;i<newArray.length;i++){
+            if(newArray[i].count > 0) {
+                var tempObject = newArray[i];
+                count = newArray[i].count
+                for(j=0; j < count; j++) {
+                    tempObject.count = 1;
+                    temp.push(tempObject);
+                }
+            } else{
+                temp.push(newArray[i]);
+            }
+        };
+        console.log(temp)
+        randomHand = [];
+        var tempNumber = 0;
+        for(i=0; i<8; i++) {
+            var randomCard = Math.floor(Math.random() * temp.length);
+            randomHand.push(temp[randomCard]);
+            temp.splice(randomCard, 1);
+        };
+        console.log(temp)
+        deckPopulate(randomHand);
+    } else if (randomHandDiv.style.display == 'flex') {
+        randomHandDiv.style.display = "none"
+        activeDiv = "deck";
+    };
 };
+
+function replaceString(tempCard) {
+    tempCard = tempCard.replace("â€¢", "");
+    tempCard = tempCard.replace("â€¢", "");
+    tempCard = tempCard.replace("â€¢", "");
+    tempCard = tempCard.replace("<>", "");
+    tempCard = tempCard.replace("<>", "");
+    tempCard = tempCard.replace("<>", "");
+    tempCard = tempCard.replace(" (V)", "");
+    tempCard = tempCard.replace(" (AI)", "");
+    var temp = tempCard.split("/");
+    tempCard = temp[0];
+    tempCard = tempCard.trim();
+    tempCard = tempCard.replace('&', '&amp;');
+    return tempCard;
+}

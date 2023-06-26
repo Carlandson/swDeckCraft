@@ -1,8 +1,8 @@
 {% extends 'swccg/layout.html' %}
 {% load static %}
 {% block body %}
-
-<div id="deckBuild" class="float-left w-1/2 pl-2 text-center h-screen">
+<div id="randomHand"></div>
+<div id="deckBuild" class="float-left pl-2 text-center h-screen">
     <div class="pt-2">
         <a href="{% url 'index' %}"class="float-left text-white">Return Home</a>
         <input id="importLightDeck" type="file" class="hidden"/>
@@ -10,8 +10,7 @@
         <input id="importDarkDeck" type="file" class="hidden"/>
         <label for="importDarkDeck" class="import bg-red-400 px-6">Import Dark Deck</label>
         <button id="saveDeck" class="bg-teal-400 px-6">Save Deck</button>
-        <span class="mr-10 text-white">Card Total : <span id="deckCount"></span> / 60</span>
-        <span class="text-white">Average Destiny : <span id="averageDestiny"></span></span>
+        <button id="randomHandButton">Generate Random Hand</button>
     </div>
     
     <div class="cardArea active h-screen mt-2 border-2 mb-3 text-left flex-grid" id="deckBuilder">     
@@ -26,6 +25,8 @@
             <button id="sixtyFirstButton" class="collapsible px-6">61st Cards</button>
             <div id="sixtyFirst" class="cardArea h-screen border-2 text-left flex-grid">
             </div>
+        <span class="mr-10 text-white">Card Total : <span id="deckCount"></span> / 60</span>
+        <span class="text-white">Average Destiny : <span id="averageDestiny"></span></span>
             <div id="sortButtons">
                 <button id="sortDeckByType">Sort By Type</button>
                 <button id="sortDeckByName">Sort Alphabetically</button>

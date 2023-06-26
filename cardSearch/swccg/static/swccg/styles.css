@@ -120,6 +120,29 @@ html {
     margin-bottom: 2px;
     border-radius: 5px;
 }
+#randomHandButton {
+    margin-left: auto;
+    background-color: papayawhip;
+    border-radius: 5px;
+}
+#randomHand {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: 15vh;
+    width: 41.5vw;
+    z-index: 100;
+    background-color:#1DACD0;
+    border: 5px solid blue;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+}
 
 .focusCardDiv {
     position: absolute; 
