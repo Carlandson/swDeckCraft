@@ -14,7 +14,11 @@ var currentSearchType = "Null";
 var currentSearchQuery = "Null";
 var currentSet = "Null";
 var activeDiv = "deck";
-
+var side;
+var chartTypes = [`Admiral's Orders`, 'Characters', 'Creatures', 'Effects', 'Epic Event', 'Interrupts', 'Jedi Tests', 'Locations', 'Objective', 'Starships', 'Vehicles', 'Weapons'];
+var backgroundColors = ['black', 'white', 'gray', 'red', 'purple', 'lightsalmon', 'green', 'silver', 'purple', 'blue', 'lightskyblue', 'lawngreen'];
+var typeCount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var typeChart;
 class searchObject {
     constructor(
         property,
@@ -64,15 +68,21 @@ class cardObject {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadCards();
-    var cardAreas = document.getElementsByClassName("cardArea");
-    // for (i = 0; i < cardAreas.length; i++) {
-    //     cardAreas[i].addEventListener('click', function () {
-    //         for (j = 0; j < cardAreas.length; j++) {
-    //             cardAreas[j].classList.remove('active');
-    //         };
-    //         this.classList.toggle('active');
-    //     });
-    // };
+    typeChart = new Chart("typeBreakdown", {
+        type: 'pie',
+        data: {
+            labels:chartTypes,
+            datasets: [{
+                backgroundColor: backgroundColors,
+                data: typeCount,
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsiveness: true,
+        }
+    });
+    typeChart.update();
     document.querySelector('#importLightDeck').addEventListener('change', () => {importLightDeck()});
     document.querySelector('#importDarkDeck').addEventListener('change', () => {importDarkDeck()});
     document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
@@ -81,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#sortDeckByType').addEventListener('click', () => sortDeck());
     document.querySelector('#sortDeckByName').addEventListener('click', () => sortAlphabet());
     document.querySelector('#clearDeck').addEventListener('click', () => clearDeck());
+    document.querySelector('#clearSixtyFirst').addEventListener('click', () => clearSixtyFirst());
     document.querySelector('#randomHandButton').addEventListener('click', () => randomStartingHand());
     // document.querySelector('#optionOne').addEventListener('change', () => typeFilter(tempDictionary, document.querySelector('#optionOne').value));
     document.querySelector('#optionOne').addEventListener('change', () => typeFilterTest(document.querySelector('#optionOne').value));
@@ -114,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function defensiveShieldTest() {
-    var mainDeck = document.querySelector('#deckBuilder');
     var sixtyFirstDiv = document.querySelector('#sixtyFirst');
     var defensiveShieldDiv = document.querySelector('#cardsOutsideDeck');
     if (defensiveShieldDiv.style.display == "flex"){
@@ -123,7 +133,7 @@ function defensiveShieldTest() {
     } else {
         defensiveShieldDiv.style.display = "flex";
         sixtyFirstDiv.style.display = "none";
-        activeDiv = "defensive";
+        activeDiv = "cardsOutsideDeck";
     };
 };
 
@@ -341,14 +351,17 @@ function searchQuery(object) {
         };
         let name = card.name;
         let image = card.image;
-        let lore = card.lore;
+        // let lore = card.lore;
         let imageUrl = image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
         let finalImage = imageUrl.replaceAll('"', '');
         let gametext = card.gametext;
+        if(name=="corulag" && gametext == "Dark:  If you control, all non-unique Imperials are power and forfeit +1 and Imperial trooper guards may move.  Light:  If you control, Force drain -1 here.") {
+            finalImage = 'media/MEDIA/images\\' + finalImage;
+        };
         let type = card.type;
         let subType = card.subType;
-        let gempId = card.gempId;
-        let destiny = card.destiny;
+        // let gempId = card.gempId;
+        // let destiny = card.destiny;
         // let power = card.power;
         // let ability = card.ability;
         // let deploy = card.deploy;
@@ -370,19 +383,19 @@ function searchQuery(object) {
             imageElement.setAttribute('loading', 'lazy');
             resultCard.append(imageElement);
         };
-        resultCard.setAttribute('data-type', type);
-        resultCard.setAttribute('id', name);
-        resultCard.setAttribute('data-gametext', gametext);
-        resultCard.setAttribute('data-lore', lore);
-        resultCard.setAttribute('gempId', gempId);
-        resultCard.setAttribute('destiny', destiny);
+        // resultCard.setAttribute('data-type', type);
+        // resultCard.setAttribute('id', name);
+        // resultCard.setAttribute('data-gametext', gametext);
+        // resultCard.setAttribute('data-lore', lore);
+        // resultCard.setAttribute('gempId', gempId);
+        // resultCard.setAttribute('destiny', destiny);
         resultCard.addEventListener('click', (e) => {
             if(e.shiftKey) {
                 draggableZoom(finalImage, subType)
             } else {
                 if(activeDiv == "deck") {
                     addCard(deckOnDeck, card);
-                } else if(activeDiv == "defensive") {
+                } else if(activeDiv == "cardsOutsideDeck") {
                     addCard(cardsOutsideDeck, card);
                 } else if(activeDiv == "sixtyFirst") {
                     addCard(sixtyFirstCards, card);
@@ -426,23 +439,48 @@ function draggableZoom(finalImage, subType) {
 //create copy of object, add copy to deck
 function addCard(activeArray, card) {
     var newCard = true;
+    var type = card.type + "s";
+    // if (activeDiv == 'deck') {
+    //     var position = chartTypes.findIndex(str => type.includes(str));
+    //     typeCount[position] += 1;
+    // };
     for (i = 0; i < activeArray.length; i++) {
         let tempCard = activeArray[i]
         if(tempCard.name == card.name) {
-            tempCard.count += 1;
-            newCard = false;
-            break;
+            if(activeArray == sixtyFirstCards && tempCard.sixtyFirstCount > 0){
+                tempCard.sixtyFirstCount += 1;
+                newCard = false;
+                break;
+            } else if (activeArray == deckOnDeck && tempCard.count > 0){
+                tempCard.count += 1;
+                newCard = false;
+                break;
+            } else if (activeArray == cardsOutsideDeck && tempCard.outsideCardCount > 0){
+                tempCard.outsideCardCount += 1;
+                newCard = false;
+                break;
+            }
         }
         else {
             continue;
         };
     };
     if (newCard) {
-        var addCard = card;
-        addCard.count = 1;
-        activeArray.push(addCard);
-    }
+        if (activeArray == sixtyFirstCards) {
+            card.sixtyFirstCount = 1;
+        } else if(activeArray == deckOnDeck) {
+            console.log('deckk add')
+            card.count = 1;
+        } else if (activeArray == cardsOutsideDeck){
+            card.outsideCardCount = 1;
+            console.log('cardoutsidedeckworking')
+        }
+        card.deck = activeDiv;
+        // card.deck = activeDiv;
+        activeArray.push(card);
+    };
     deckPopulate(activeArray);
+    typeChart.update();
 };
 
 function deckPopulate(activeArray) {
@@ -451,29 +489,47 @@ function deckPopulate(activeArray) {
         deckArea = document.querySelector("#deckBuilder");
     } else if(activeDiv == "sixtyFirst") {
         deckArea = document.querySelector("#sixtyFirst");
-    } else if(activeDiv =="defensive") {
+    } else if(activeDiv =="cardsOutsideDeck") {
         deckArea = document.querySelector('#cardsOutsideDeck');
     } else if(activeDiv == "random") {
         deckArea = document.querySelector('#randomHand');
     };
+    console.log(activeDiv);
+    console.log(deckArea);
     deckArea.innerHTML = '';
     for(i = 0; i < activeArray.length; i++) {
         let tempCard = activeArray[i];
         let parentContainer = document.createElement("div");
-        let parentWidth = 90 + (10*(tempCard.count - 1));
+        var parentWidth;
+        if(activeDiv == 'random') {
+            parentWidth = 90;
+        } else if(activeArray == sixtyFirstCards) {
+            parentWidth = 90 + (10*(tempCard.sixtyFirstCount - 1));
+            var cardCount = tempCard.sixtyFirstCount;
+        } else if(activeArray == deckOnDeck){
+            console.log('i loop')
+            parentWidth = 90 + (10*(tempCard.count - 1));
+            var cardCount = tempCard.count;
+            console.log(cardCount)
+        } else if(activeArray == cardsOutsideDeck) {
+            parentWidth = 90 + (10*(tempCard.outsideCardCount - 1));
+            var cardCount = tempCard.outsideCardCount;
+        };
         parentContainer.style.width = `${parentWidth}px`;
         parentContainer.classList.add("cardContainer");
-        for(j = 0; j < tempCard.count; j++){
+        for(j = 0; j < cardCount; j++){
+            console.log('j loop')
             //creates seperate div for each card
             let cardDiv = document.createElement('div');
             //moves the card to the right j*10 pixels
             if (j > 0) {cardDiv.style.left = `${j*10}px`};
             //gives card child and deckcard attributes to be controlled by parent container
-            cardDiv.classList.add("child", "deckCard");
+            cardDiv.classList.add("child", "deckCard", `${activeDiv}`);
             //grabs the image, takes out the path which messes with the image display
             let imageUrl = tempCard.image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
             //removes quotations from the path which also affects the image display
             let finalImage = imageUrl.replaceAll('"', '');
+            //site image generator
             if (activeArray[i].subType == "Site"){
                 let rotatedCard = document.createElement('div');
                 rotatedCard.classList.add('site-wrapper');
@@ -484,25 +540,30 @@ function deckPopulate(activeArray) {
                 cardDiv.append(rotatedCard);
                 if (j == tempCard.count - 1) {
                     if(tempCard.startingCard) {
-                        console.log("once")
                         imageElement.classList.add('starting');
+                        deckTotal();
                     };
                 };
                 cardDiv.addEventListener('click', (e) => {
                     if(e.shiftKey) {
-                        draggableZoom(finalImage, "Site")
+                        draggableZoom(finalImage, 'Site')
                     } if(e.ctrlKey) {
-                        if (!tempCard.startingCard) {
+                        if (!tempCard.startingCard && cardDiv.classList.contains('deck')) {
                             imageElement.classList.toggle('starting');
                             tempCard.startingCard = true;
-                        } else if (tempCard.startingCard){
+                            deckTotal();
+                        } else if (tempCard.startingCard && cardDiv.classList.contains('deck')){
                             imageElement.classList.toggle('starting');
                             tempCard.startingCard = false;
+                            deckTotal();
                         };
                     } else {
                         deleteCard(activeArray, tempCard);
                     };
                 });
+                if(activeDiv == 'random'){
+                    j = tempCard.count;
+                };
             } else {
                 let imageElement = document.createElement('img');
                 imageElement.setAttribute('src', `${finalImage}`);
@@ -511,30 +572,34 @@ function deckPopulate(activeArray) {
                 if (j == tempCard.count - 1) {
                     if(tempCard.startingCard) {
                         imageElement.classList.add('starting');
+                        deckTotal();
                     };
                 };
                 cardDiv.addEventListener('click', (e) => {
-                    console.log(e)
-                    if(e.shiftKey) {
-                        draggableZoom(finalImage, tempCard.subType)
-                    } else if(e.ctrlKey) {
-                        console.log("control pressed")
-                        if (!tempCard.startingCard) {
-                            imageElement.classList.toggle('starting');
-                            tempCard.startingCard = true;
-                        } else if (tempCard.startingCard) {
-                            imageElement.classList.toggle('starting');
-                            tempCard.startingCard = false;
+                        if(e.shiftKey) {
+                            draggableZoom(finalImage, tempCard.subType)
+                        } else if(e.ctrlKey) {
+                            if (!tempCard.startingCard && cardDiv.classList.contains('deck')) {
+                                imageElement.classList.toggle('starting');
+                                tempCard.startingCard = true;
+                                deckTotal();
+                            } else if (tempCard.startingCard  && cardDiv.classList.contains('deck')) {
+                                imageElement.classList.toggle('starting');
+                                tempCard.startingCard = false;
+                                deckTotal();
+                            };
+                        } else {
+                            deleteCard(activeArray, tempCard);   
                         };
-                    } else {
-                        deleteCard(activeArray, tempCard);
-                    }
-                });
+                    });
+                if(activeDiv == 'random'){
+                    j = tempCard.count;
+                };
             };
             parentContainer.append(cardDiv);
             };
         deckArea.append(parentContainer);
-    }; 
+    };
     deckTotal();
 };
 
@@ -545,21 +610,67 @@ function deckTotal() {
     let deckAverageDestiny = document.querySelector('#averageDestiny');
     var totalDestiny = 0;
     for (i = 0; i < deckOnDeck.length; i++) {
-        totalDestiny += deckOnDeck[i].destiny * deckOnDeck[i].count;
-    }
+        let startingNumber = 0;
+        if(deckOnDeck[i].startingCard) {
+            startingNumber += 1;
+        };
+        totalDestiny += deckOnDeck[i].destiny * (deckOnDeck[i].count - startingNumber);
+    };
     let destinyAverage = totalDestiny / getDeckTotal;
     deckCount.innerHTML = `${getDeckTotal}`;
     deckAverageDestiny.innerHTML = `${destinyAverage.toFixed(2)}`;
+
 };
 
 //stoppage june 9th, figure out delete card too tired
 function deleteCard(activeArray, card){
-    card.count = card.count - 1;
-    if (card.count == 0) {
-        let tempIndex = activeArray.indexOf(card);
-        activeArray.splice(tempIndex, 1);
+    let tempDiv = activeDiv;
+    if(activeArray == deckOnDeck) {
+        card.count -= 1;
+        if (card.count == 0) {
+            let tempIndex = activeArray.indexOf(card);
+            activeArray.splice(tempIndex, 1);
+        };
+        var type = card.type + "s";
+        var position = chartTypes.findIndex(str => type.includes(str));
+        typeCount[position] -= 1;
+        if (activeDiv == "sixtyFirst") {
+            addCard(sixtyFirstCards, card);
+        }
+    } else if (activeArray == sixtyFirstCards) {
+        card.sixtyFirstCount -= 1;
+        if (card.sixtyFirstCount == 0) {
+            let tempIndex = activeArray.indexOf(card);
+            activeArray.splice(tempIndex, 1);
+        };
+        addCard(deckOnDeck, card);
+    } else if (activeArray == cardsOutsideDeck) {
+        card.cardsOutsideDeck -= 1;
+        if (card.outsideCardCount == 0) {
+            let tempIndex = activeArray.indexOf(card);
+            activeArray.splice(tempIndex, 1);
+        };
     };
-    deckPopulate(activeArray);
+    activeDiv = 'cardsOutsideDeck';
+    deckPopulate(cardsOutsideDeck);
+    //add card to opposite div
+    // if(card.deck == "sixtyFirst") {
+    //     activeDiv = 'deck';
+    //     card.deck = 'deck';
+    //     addCard(deckOnDeck, card);
+    //     activeDiv = 'sixtyFirst';
+    // } else if (card.deck == 'deck' && activeDiv == 'sixtyFirst') {
+    //     addCard(sixtyFirstCards, card);
+    //     card.deck = 'sixtyFirst';
+    // };
+    //repopulate the divs
+    activeDiv = 'deck';
+    deckPopulate(deckOnDeck);
+    activeDiv = 'sixtyFirst';
+    deckPopulate(sixtyFirstCards);
+    typeChart.update();
+    activeDiv = tempDiv;
+    console.log(activeDiv);
 };
 
 // function buildDeck(event) {
@@ -655,6 +766,12 @@ function downloadDeck (file) {
 };
 
 function importLightDeck() {
+    var sixtyFirstDiv = document.querySelector('#sixtyFirst');
+    var defensiveShieldDiv = document.querySelector('#cardsOutsideDeck');
+    sixtyFirstDiv.style.display = 'none';
+    defensiveShieldDiv.style.display = 'none';
+    activeDiv = 'deck';
+    side = 'light';
     deckOnDeck = [];
     let importFile = document.querySelector('#importLightDeck').files;
     if (importFile.length == 0) return;
@@ -702,6 +819,12 @@ function importLightDeck() {
 };
 
 function importDarkDeck() {
+    var sixtyFirstDiv = document.querySelector('#sixtyFirst');
+    var defensiveShieldDiv = document.querySelector('#cardsOutsideDeck');
+    sixtyFirstDiv.style.display = 'none';
+    defensiveShieldDiv.style.display = 'none';
+    activeDiv = 'deck';
+    side = 'dark';
     deckOnDeck = [];
     let importFile = document.querySelector('#importDarkDeck').files;
     if (importFile.length == 0) return;
@@ -791,8 +914,14 @@ function sortDeck() {
         var nameB = b.name.toUpperCase();
         nameA = nameA.replace("Â€¢", "");
         nameA = nameA.replace("Â€¢", "");
+        nameA = nameA.replace("<>", "");
+        nameA = nameA.replace("<>", "");
+        nameA = nameA.replace("<>", "");
         nameB = nameB.replace("Â€¢", "");
         nameB = nameB.replace("Â€¢", "");
+        nameB = nameB.replace("<>", "");
+        nameB = nameB.replace("<>", "");
+        nameB = nameB.replace("<>", "");
         if (nameA > nameB) {
             return 1;
         } if (nameA < nameB) {
@@ -812,7 +941,10 @@ function sortDeck() {
             return 0;
         }
     });
+    tempDiv = activeDiv;
+    activeDiv = 'deck';
     deckPopulate(deckOnDeck);
+    activeDiv = tempDiv;
 };
 
 function sortAlphabet() {
@@ -837,7 +969,10 @@ function sortAlphabet() {
             return 0;
         }
     });
+    tempDiv = activeDiv;
+    activeDiv = 'deck';
     deckPopulate(deckOnDeck);
+    activeDiv = tempDiv;
 };
 
 function addShields() {
@@ -847,7 +982,11 @@ function addShields() {
         cardsOutsideDeck = [];
         deckArea.innerHTML = '';
     } else {
-        var tempDeck = tempDictionary.filter(card => card.type == "Defensive Shield");
+        if (side == 'light') {
+            var tempDeck = lightDictionary.filter(card => card.type == "Defensive Shield");
+        } else {
+            var tempDeck = darkDictionary.filter(card => card.type == "Defensive Shield");
+        }
         for(i = 0; i < tempDeck.length; i++) {
             tempDeck[i].count = 1;
             cardsOutsideDeck.push(tempDeck[i]);
@@ -860,38 +999,44 @@ function clearDeck() {
     let deckArea = document.querySelector('#deckBuilder');
     deckOnDeck = [];
     deckArea.innerHTML = '';
+    for(i=0;i<typeCount.length;i++){
+        typeCount[i] = 0;
+    };
+    typeChart.update();
     deckTotal();
 };
+
+function clearSixtyFirst() {
+    let deckArea = document.querySelector('#sixtyFirst');
+    sixtyFirstCards = [];
+    deckArea.innerHTML = '';
+}
 
 function randomStartingHand () {
     var randomHandDiv = document.querySelector('#randomHand');
     if (activeDiv == "deck") {
         activeDiv = "random";
         randomHandDiv.style.display = 'flex';
-        var newArray = deckOnDeck.filter(card => !card.startingCard);
+        var tempArray = deckOnDeck;
+        var newArray = tempArray.filter(card => !card.startingCard);
         var temp = [];
-        console.log(temp)
         for(i=0;i<newArray.length;i++){
             if(newArray[i].count > 0) {
                 var tempObject = newArray[i];
                 count = newArray[i].count
                 for(j=0; j < count; j++) {
-                    tempObject.count = 1;
                     temp.push(tempObject);
                 }
             } else{
                 temp.push(newArray[i]);
             }
         };
-        console.log(temp)
         randomHand = [];
-        var tempNumber = 0;
         for(i=0; i<8; i++) {
             var randomCard = Math.floor(Math.random() * temp.length);
             randomHand.push(temp[randomCard]);
             temp.splice(randomCard, 1);
         };
-        console.log(temp)
         deckPopulate(randomHand);
     } else if (randomHandDiv.style.display == 'flex') {
         randomHandDiv.style.display = "none"
@@ -908,9 +1053,20 @@ function replaceString(tempCard) {
     tempCard = tempCard.replace("<>", "");
     tempCard = tempCard.replace(" (V)", "");
     tempCard = tempCard.replace(" (AI)", "");
-    var temp = tempCard.split("/");
+    var temp = tempCard.split(" / ");
     tempCard = temp[0];
-    tempCard = tempCard.trim();
+    // tempCard = tempCard.trim();
     tempCard = tempCard.replace('&', '&amp;');
     return tempCard;
 }
+
+// function updateGraph() {
+//     for(i=0;i<deckOnDeck.length;i++){
+//         for(j=0;j<deckOnDeck[i].count; )
+//     }
+//     if(activeArray == deckOnDeck){
+//         for
+//         var position = chartTypes.findIndex(str => activeArray[i].type.includes(str));
+//         typeCount[position] += 1;
+//     }
+// }

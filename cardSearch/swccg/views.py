@@ -87,7 +87,13 @@ def index(request):
 #         return render(request, 'swccg/card_save.html')
 # This adds images to the database, because accessing the url was too slow
 def card_save(request):
-#     if request.method == "POST":
+    if request.method == "POST":
+        card = starwarscard.objects.filter(id=555)
+        save_path = "C:/Users/Jx1/Documents/GitHub/projects/cardSearch/media/MEDIA/images"
+        card_name = 'â€¢corulag dark.jpg'
+        join_path_image = os.path.join(save_path, card_name)
+        card.update(backSideImage = join_path_image)
+        print(join_path_image)
 #         card_db = starwarscard.objects.all();
 #         for card in card_db:
 #             url = card.imageUrl
@@ -118,7 +124,7 @@ def card_save(request):
         #         File(open(result[0], encoding="utf8"))
         #     )
         #     test_card.save()
-    #     return render(request, 'swccg/card_save.html')
+        return render(request, 'swccg/card_save.html')
     if request.method == "GET":
         return render(request, 'swccg/card_save.html')
     # for card in card_db:

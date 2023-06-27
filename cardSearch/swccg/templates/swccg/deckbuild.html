@@ -22,10 +22,13 @@
         </div>
         <div id="cardsOutsideDeck" class="cardArea h-screen border-2 text-left flex-grid">
         </div>
+        <div id="sixtyFirstButtons">
             <button id="sixtyFirstButton" class="collapsible px-6">61st Cards</button>
+            <button id="clearSixtyFirst" class="image-button">Clear 61st Cards</button>
+        </div>
             <div id="sixtyFirst" class="cardArea h-screen border-2 text-left flex-grid">
-            </div>
-        <span class="mr-10 text-white">Card Total : <span id="deckCount"></span> / 60</span>
+        </div>
+        <span class="mr-10 text-white ml-10">Card Total : <span id="deckCount"></span> / 60</span>
         <span class="text-white">Average Destiny : <span id="averageDestiny"></span></span>
             <div id="sortButtons">
                 <button id="sortDeckByType">Sort By Type</button>
@@ -35,7 +38,7 @@
     </div>
 </div>
 <div id="deckStats"class="float-right text-center">
-    Star Wars Deck builder
+    <canvas id="typeBreakdown" style="width:10px;height:10px"></canvas>
 </div>
 <div id="search" class="float-right mr-6 mt-1 text-left h-screen">
     <div class="search_div">

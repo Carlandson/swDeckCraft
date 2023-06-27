@@ -213,7 +213,6 @@ html {
     background-color: #42ADC7;
     border-radius: 10px;
     border: 1px solid black;
-
   }
 
   #shieldButton {
@@ -224,6 +223,13 @@ html {
   #sixtyFirstButton{
     background-color: orange;
     border-radius: 10px;
+  }
+
+  #clearSixtyFirst{
+    background-color: orange;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 200px;
   }
   
   #outsideDecks{
