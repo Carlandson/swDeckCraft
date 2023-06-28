@@ -440,10 +440,10 @@ function draggableZoom(finalImage, subType) {
 function addCard(activeArray, card) {
     var newCard = true;
     var type = card.type + "s";
-    // if (activeDiv == 'deck') {
-    //     var position = chartTypes.findIndex(str => type.includes(str));
-    //     typeCount[position] += 1;
-    // };
+    if (activeArray == deckOnDeck) {
+        var position = chartTypes.findIndex(str => type.includes(str));
+        typeCount[position] += 1;
+    };
     for (i = 0; i < activeArray.length; i++) {
         let tempCard = activeArray[i]
         if(tempCard.name == card.name) {
@@ -469,11 +469,9 @@ function addCard(activeArray, card) {
         if (activeArray == sixtyFirstCards) {
             card.sixtyFirstCount = 1;
         } else if(activeArray == deckOnDeck) {
-            console.log('deckk add')
             card.count = 1;
         } else if (activeArray == cardsOutsideDeck){
             card.outsideCardCount = 1;
-            console.log('cardoutsidedeckworking')
         }
         card.deck = activeDiv;
         // card.deck = activeDiv;
@@ -494,8 +492,6 @@ function deckPopulate(activeArray) {
     } else if(activeDiv == "random") {
         deckArea = document.querySelector('#randomHand');
     };
-    console.log(activeDiv);
-    console.log(deckArea);
     deckArea.innerHTML = '';
     for(i = 0; i < activeArray.length; i++) {
         let tempCard = activeArray[i];
@@ -507,10 +503,8 @@ function deckPopulate(activeArray) {
             parentWidth = 90 + (10*(tempCard.sixtyFirstCount - 1));
             var cardCount = tempCard.sixtyFirstCount;
         } else if(activeArray == deckOnDeck){
-            console.log('i loop')
             parentWidth = 90 + (10*(tempCard.count - 1));
             var cardCount = tempCard.count;
-            console.log(cardCount)
         } else if(activeArray == cardsOutsideDeck) {
             parentWidth = 90 + (10*(tempCard.outsideCardCount - 1));
             var cardCount = tempCard.outsideCardCount;
@@ -518,7 +512,6 @@ function deckPopulate(activeArray) {
         parentContainer.style.width = `${parentWidth}px`;
         parentContainer.classList.add("cardContainer");
         for(j = 0; j < cardCount; j++){
-            console.log('j loop')
             //creates seperate div for each card
             let cardDiv = document.createElement('div');
             //moves the card to the right j*10 pixels
@@ -645,7 +638,8 @@ function deleteCard(activeArray, card){
         };
         addCard(deckOnDeck, card);
     } else if (activeArray == cardsOutsideDeck) {
-        card.cardsOutsideDeck -= 1;
+        console.log(cardsOutsideDeck)
+        card.outsideCardCount -= 1;
         if (card.outsideCardCount == 0) {
             let tempIndex = activeArray.indexOf(card);
             activeArray.splice(tempIndex, 1);
@@ -653,24 +647,12 @@ function deleteCard(activeArray, card){
     };
     activeDiv = 'cardsOutsideDeck';
     deckPopulate(cardsOutsideDeck);
-    //add card to opposite div
-    // if(card.deck == "sixtyFirst") {
-    //     activeDiv = 'deck';
-    //     card.deck = 'deck';
-    //     addCard(deckOnDeck, card);
-    //     activeDiv = 'sixtyFirst';
-    // } else if (card.deck == 'deck' && activeDiv == 'sixtyFirst') {
-    //     addCard(sixtyFirstCards, card);
-    //     card.deck = 'sixtyFirst';
-    // };
-    //repopulate the divs
     activeDiv = 'deck';
     deckPopulate(deckOnDeck);
     activeDiv = 'sixtyFirst';
     deckPopulate(sixtyFirstCards);
     typeChart.update();
     activeDiv = tempDiv;
-    console.log(activeDiv);
 };
 
 // function buildDeck(event) {
