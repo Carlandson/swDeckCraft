@@ -330,9 +330,11 @@ function searchCards() {
     if (cardSide == "Light") {
         searchQuery(lightDictionary);
         tempDictionary = JSON.parse(JSON.stringify(lightDictionary));
+        side = 'light';
     } else {
         searchQuery(darkDictionary);
         tempDictionary = JSON.parse(JSON.stringify(darkDictionary));
+        side = 'dark';
     };
     newSearchArrayTest();
 };
@@ -482,6 +484,7 @@ function addCard(activeArray, card) {
 };
 
 function deckPopulate(activeArray) {
+    console.log(activeDiv)
     var deckArea;
     if(activeDiv == "deck") {
         deckArea = document.querySelector("#deckBuilder");
@@ -499,6 +502,7 @@ function deckPopulate(activeArray) {
         var parentWidth;
         if(activeDiv == 'random') {
             parentWidth = 90;
+            var cardCount = 1;
         } else if(activeArray == sixtyFirstCards) {
             parentWidth = 90 + (10*(tempCard.sixtyFirstCount - 1));
             var cardCount = tempCard.sixtyFirstCount;
@@ -511,7 +515,8 @@ function deckPopulate(activeArray) {
         };
         parentContainer.style.width = `${parentWidth}px`;
         parentContainer.classList.add("cardContainer");
-        for(j = 0; j < cardCount; j++){
+        for(j = 0; j < cardCount; j++){ 
+            console.log('testing random hand')
             //creates seperate div for each card
             let cardDiv = document.createElement('div');
             //moves the card to the right j*10 pixels
@@ -534,7 +539,6 @@ function deckPopulate(activeArray) {
                 if (j == tempCard.count - 1) {
                     if(tempCard.startingCard) {
                         imageElement.classList.add('starting');
-                        deckTotal();
                     };
                 };
                 cardDiv.addEventListener('click', (e) => {
@@ -562,10 +566,10 @@ function deckPopulate(activeArray) {
                 imageElement.setAttribute('src', `${finalImage}`);
                 imageElement.setAttribute('mix-blend-mode', 'multiply');
                 cardDiv.append(imageElement);
-                if (j == tempCard.count - 1) {
-                    if(tempCard.startingCard) {
+                if (tempCard.startingCard) {
+                    if(j == tempCard.count - 1) {
                         imageElement.classList.add('starting');
-                        deckTotal();
+                        console.log('starting added')
                     };
                 };
                 cardDiv.addEventListener('click', (e) => {
@@ -576,7 +580,7 @@ function deckPopulate(activeArray) {
                                 imageElement.classList.toggle('starting');
                                 tempCard.startingCard = true;
                                 deckTotal();
-                            } else if (tempCard.startingCard  && cardDiv.classList.contains('deck')) {
+                            } else if (tempCard.startingCard && cardDiv.classList.contains('deck')) {
                                 imageElement.classList.toggle('starting');
                                 tempCard.startingCard = false;
                                 deckTotal();
@@ -612,7 +616,6 @@ function deckTotal() {
     let destinyAverage = totalDestiny / getDeckTotal;
     deckCount.innerHTML = `${getDeckTotal}`;
     deckAverageDestiny.innerHTML = `${destinyAverage.toFixed(2)}`;
-
 };
 
 //stoppage june 9th, figure out delete card too tired
@@ -651,6 +654,8 @@ function deleteCard(activeArray, card){
     deckPopulate(deckOnDeck);
     activeDiv = 'sixtyFirst';
     deckPopulate(sixtyFirstCards);
+    activeDiv = 'random';
+    deckPopulate(randomHand)
     typeChart.update();
     activeDiv = tempDiv;
 };
@@ -970,7 +975,7 @@ function addShields() {
             var tempDeck = darkDictionary.filter(card => card.type == "Defensive Shield");
         }
         for(i = 0; i < tempDeck.length; i++) {
-            tempDeck[i].count = 1;
+            tempDeck[i].outsideCardCount = 1;
             cardsOutsideDeck.push(tempDeck[i]);
         };
         deckPopulate(cardsOutsideDeck);
@@ -997,6 +1002,7 @@ function clearSixtyFirst() {
 function randomStartingHand () {
     var randomHandDiv = document.querySelector('#randomHand');
     if (activeDiv == "deck") {
+        console.log('working')
         activeDiv = "random";
         randomHandDiv.style.display = 'flex';
         var tempArray = deckOnDeck;
@@ -1018,10 +1024,11 @@ function randomStartingHand () {
             var randomCard = Math.floor(Math.random() * temp.length);
             randomHand.push(temp[randomCard]);
             temp.splice(randomCard, 1);
+            console.log('splicing')
         };
         deckPopulate(randomHand);
     } else if (randomHandDiv.style.display == 'flex') {
-        randomHandDiv.style.display = "none"
+        randomHandDiv.style.display = "none";
         activeDiv = "deck";
     };
 };
