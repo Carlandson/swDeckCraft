@@ -13,6 +13,7 @@ var parameterCount = 0;
 var currentSearchType = "Null";
 var currentSearchQuery = "Null";
 var currentSet = "Null";
+var currentIcon = "Null";
 var activeDiv = "deck";
 var side;
 var chartTypes = [`Admiral's Orders`, 'Characters', 'Creatures', 'Effects', 'Epic Event', 'Interrupts', 'Jedi Tests', 'Locations', 'Objective', 'Starships', 'Vehicles', 'Weapons'];
@@ -47,6 +48,7 @@ class cardObject {
         deploy,
         forfeit,
         set,
+        icons = {},
     ) {
     this.name = name;
     this.gametext = gametext;
@@ -62,6 +64,7 @@ class cardObject {
     this.deploy = deploy;
     this.forfeit = forfeit;
     this.set = set;
+    this.icons = icons;
     }
 };
 
@@ -97,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#optionOne').addEventListener('change', () => typeFilterTest(document.querySelector('#optionOne').value));
     // document.querySelector('#setOption').addEventListener('change', () => setFilter(tempDictionary, document.querySelector('#setOption').value));
     document.querySelector('#setOption').addEventListener('change', () => setFilterTest(document.querySelector('#setOption').value));
+    document.querySelector('#icon').addEventListener('change', () => iconFilterTest(document.querySelector('#icon').value));
     // document.querySelector('#textSearchOne').addEventListener('input', () => textFilter(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
     document.querySelector('#textSearchOne').addEventListener('input', () => textFilterTest(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
     // document.querySelector('#saveParameter').addEventListener('click', () => saveParameters(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
@@ -186,6 +190,11 @@ function setFilterTest(set){
     newSearchArrayTest();
 };
 
+function iconFilterTest(icon){
+    currentIcon = icon;
+    newSearchArrayTest();
+}
+
 function newSearchArrayTest() {
     tempArray = tempDictionary;
     if (currentSearchType != "Null") {
@@ -193,6 +202,9 @@ function newSearchArrayTest() {
     }
     if (currentSet != "Null"){
         tempArray = tempArray.filter(card => card.set == currentSet);
+    }
+    if (currentIcon != "Null"){
+        tempArray = tempArray.filter(card => card.icons.includes(currentIcon));
     }
     if (currentSearchQuery != "Null") {
         let property = currentSearchQuery.property;
@@ -299,7 +311,6 @@ function loadCards() {
         .then(response => response.json())
         .then(results => {
             results.forEach(card => {
-                // cardName = card['name'];
                 cardName = new cardObject(
                     card['name'],
                     card['gametext'],
@@ -315,6 +326,7 @@ function loadCards() {
                     card['deploy'],
                     card['forfeit'],
                     card['set'],
+                    card['icons'],
                 )
                 if (card['side'] == "Light") {
                     lightDictionary.push(cardName);
@@ -357,9 +369,6 @@ function searchQuery(object) {
         let imageUrl = image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
         let finalImage = imageUrl.replaceAll('"', '');
         let gametext = card.gametext;
-        if(name=="corulag" && gametext == "Dark:  If you control, all non-unique Imperials are power and forfeit +1 and Imperial trooper guards may move.  Light:  If you control, Force drain -1 here.") {
-            finalImage = 'media/MEDIA/images\\' + finalImage;
-        };
         let type = card.type;
         let subType = card.subType;
         // let gempId = card.gempId;
@@ -484,7 +493,6 @@ function addCard(activeArray, card) {
 };
 
 function deckPopulate(activeArray) {
-    console.log(activeDiv)
     var deckArea;
     if(activeDiv == "deck") {
         deckArea = document.querySelector("#deckBuilder");
@@ -516,7 +524,6 @@ function deckPopulate(activeArray) {
         parentContainer.style.width = `${parentWidth}px`;
         parentContainer.classList.add("cardContainer");
         for(j = 0; j < cardCount; j++){ 
-            console.log('testing random hand')
             //creates seperate div for each card
             let cardDiv = document.createElement('div');
             //moves the card to the right j*10 pixels
@@ -569,7 +576,6 @@ function deckPopulate(activeArray) {
                 if (tempCard.startingCard) {
                     if(j == tempCard.count - 1) {
                         imageElement.classList.add('starting');
-                        console.log('starting added')
                     };
                 };
                 cardDiv.addEventListener('click', (e) => {
@@ -641,7 +647,6 @@ function deleteCard(activeArray, card){
         };
         addCard(deckOnDeck, card);
     } else if (activeArray == cardsOutsideDeck) {
-        console.log(cardsOutsideDeck)
         card.outsideCardCount -= 1;
         if (card.outsideCardCount == 0) {
             let tempIndex = activeArray.indexOf(card);
@@ -734,9 +739,13 @@ function saveDeck(deckOnDeck) {
     deckList = deckList + "</deck>";
     //june 3rd stoppage
     let deckName = prompt("Save deck list as: ");
-    let newDeck = new File([`${deckList}`], `${deckName}.txt`);
-    downloadDeck(newDeck);
-}
+    if (deckName) {
+        let newDeck = new File([`${deckList}`], `${deckName}.txt`);
+        downloadDeck(newDeck);
+    };
+    let title = document.querySelector('#deckTitle')
+    title.innerHTML = deckName;
+};
 
 //decksave to txt
 function downloadDeck (file) {
@@ -755,6 +764,7 @@ function downloadDeck (file) {
 function importLightDeck() {
     var sixtyFirstDiv = document.querySelector('#sixtyFirst');
     var defensiveShieldDiv = document.querySelector('#cardsOutsideDeck');
+    var deckTitle = document.querySelector('#deckTitle');
     sixtyFirstDiv.style.display = 'none';
     defensiveShieldDiv.style.display = 'none';
     activeDiv = 'deck';
@@ -763,6 +773,9 @@ function importLightDeck() {
     let importFile = document.querySelector('#importLightDeck').files;
     if (importFile.length == 0) return;
     const importedDeck = importFile[0];
+    let titleCleaned = importedDeck.name;
+    titleCleaned = titleCleaned.replace('.txt', '');
+    deckTitle.innerHTML = titleCleaned;
     let reader = new FileReader();
     reader.onload = (e) => {
         const file = e.target.result;
@@ -991,6 +1004,8 @@ function clearDeck() {
     };
     typeChart.update();
     deckTotal();
+    let deckTitle = document.querySelector('#deckTitle');
+    deckTitle.innerHTML = 'New Deck';
 };
 
 function clearSixtyFirst() {
@@ -1002,7 +1017,6 @@ function clearSixtyFirst() {
 function randomStartingHand () {
     var randomHandDiv = document.querySelector('#randomHand');
     if (activeDiv == "deck") {
-        console.log('working')
         activeDiv = "random";
         randomHandDiv.style.display = 'flex';
         var tempArray = deckOnDeck;
@@ -1024,7 +1038,6 @@ function randomStartingHand () {
             var randomCard = Math.floor(Math.random() * temp.length);
             randomHand.push(temp[randomCard]);
             temp.splice(randomCard, 1);
-            console.log('splicing')
         };
         deckPopulate(randomHand);
     } else if (randomHandDiv.style.display == 'flex') {
@@ -1047,15 +1060,4 @@ function replaceString(tempCard) {
     // tempCard = tempCard.trim();
     tempCard = tempCard.replace('&', '&amp;');
     return tempCard;
-}
-
-// function updateGraph() {
-//     for(i=0;i<deckOnDeck.length;i++){
-//         for(j=0;j<deckOnDeck[i].count; )
-//     }
-//     if(activeArray == deckOnDeck){
-//         for
-//         var position = chartTypes.findIndex(str => activeArray[i].type.includes(str));
-//         typeCount[position] += 1;
-//     }
-// }
+};

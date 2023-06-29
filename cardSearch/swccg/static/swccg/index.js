@@ -2,42 +2,42 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#deckSearch').addEventListener('click', () => searchDecks(event))
 });
 
-//const api_url = "https://scomp.starwarsccg.org/Light.json";
-async function sets() {
-    await fetch("https://scomp.starwarsccg.org/Light.json", {
-    "credentials": "include",
-    "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0",
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "en-US,en;q=0.5",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin"
-    },
-    "referrer": "https://scomp.starwarsccg.org/",
-    "method": "GET",
-    "mode": "cors"
-    });
-}
-console.log(sets);
-async function fourLom() {
-    await fetch("https://res.starwarsccg.org/cards/EnhancedCloudCity-Dark/large/4lomwithconcussionrifle.gif", {
-    "credentials": "include",
-    "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0",
-        "Accept": "image/avif,image/webp,*/*",
-        "Accept-Language": "en-US,en;q=0.5",
-        "Sec-Fetch-Dest": "image",
-        "Sec-Fetch-Mode": "no-cors",
-        "Sec-Fetch-Site": "same-site"
-    },
-    "referrer": "https://scomp.starwarsccg.org/",
-    "method": "GET",
-    "mode": "cors"
-    });
-}
-fourLom();
-console.log(fourLom)
+// //const api_url = "https://scomp.starwarsccg.org/Light.json";
+// async function sets() {
+//     await fetch("https://scomp.starwarsccg.org/Light.json", {
+//     "credentials": "include",
+//     "headers": {
+//         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0",
+//         "Accept": "application/json, text/plain, */*",
+//         "Accept-Language": "en-US,en;q=0.5",
+//         "Sec-Fetch-Dest": "empty",
+//         "Sec-Fetch-Mode": "cors",
+//         "Sec-Fetch-Site": "same-origin"
+//     },
+//     "referrer": "https://scomp.starwarsccg.org/",
+//     "method": "GET",
+//     "mode": "cors"
+//     });
+// }
+// console.log(sets);
+// async function fourLom() {
+//     await fetch("https://res.starwarsccg.org/cards/EnhancedCloudCity-Dark/large/4lomwithconcussionrifle.gif", {
+//     "credentials": "include",
+//     "headers": {
+//         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0",
+//         "Accept": "image/avif,image/webp,*/*",
+//         "Accept-Language": "en-US,en;q=0.5",
+//         "Sec-Fetch-Dest": "image",
+//         "Sec-Fetch-Mode": "no-cors",
+//         "Sec-Fetch-Site": "same-site"
+//     },
+//     "referrer": "https://scomp.starwarsccg.org/",
+//     "method": "GET",
+//     "mode": "cors"
+//     });
+// }
+// fourLom();
+// console.log(fourLom)
 // async function getapi(url) {
 //     const response = await fetch(url);
 

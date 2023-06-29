@@ -4,13 +4,16 @@
 <div id="randomHand"></div>
 <div id="deckBuild" class="float-left pl-2 text-center h-screen">
     <div class="pt-2">
-        <a href="{% url 'index' %}"class="float-left text-white">Return Home</a>
-        <input id="importLightDeck" type="file" class="hidden"/>
-        <label for="importLightDeck" class="import bg-gray-200 px-6">Import Light Deck</label>
-        <input id="importDarkDeck" type="file" class="hidden"/>
-        <label for="importDarkDeck" class="import bg-red-400 px-6">Import Dark Deck</label>
-        <button id="saveDeck" class="bg-teal-400 px-6">Save Deck</button>
-        <button id="randomHandButton">Generate Random Hand</button>
+        <a href="{% url 'index' %}"class="float-left text-yellow-100">Return Home</a>
+        <span id="deckTitle" class="text-white">New Deck</span>
+        <div class="pt-2 mb-1 float-right">
+            <input id="importLightDeck" type="file" class="hidden"/>
+            <label for="importLightDeck" class="import bg-gray-200 px-6">Import Light Deck</label>
+            <input id="importDarkDeck" type="file" class="hidden"/>
+            <label for="importDarkDeck" class="import bg-red-400 px-6">Import Dark Deck</label>
+            <button id="saveDeck" class="bg-teal-400 px-6">Save Deck</button>
+            <button id="randomHandButton">Generate Random Hand</button>
+        </div>
     </div>
     
     <div class="cardArea active h-screen mt-2 border-2 mb-3 text-left flex-grid" id="deckBuilder">     
@@ -96,6 +99,75 @@
             <option value="220">Virtual Set 20</option>
             <option value="221">Virtual Set 21</option>
             <option value="301">Virtual Premium Set</option>
+        </select>
+        <select id="icon" label="Icons">
+            <option disabled value="chooseIcon">Icon:</option>
+            <option value="Null">all</option>
+            <option value="A New Hope">A New Hope</option>
+            <option value="Clone Army">Clone Army</option>
+            <option value="Coruscant">Coruscant</option>
+            <option value="Creature Site">Creature Site</option>
+            <option value="Dagobah">Dagobah</option>
+            <option value="Death Star II">Death Star II</option>
+            <option value="Endor">Endor</option>
+            <option value="Episode I">Episode I</option>
+            <option value="Episode VII">Episode VII</option>
+            <option value="Exterior Site">Exterior Site</option>
+            <option value="First Order">First Order</option>
+            <option value="Grabber">Grabber</option>
+            <option value="Hoth">Hoth</option>
+            <option value="Independent">Independent</option>
+            <option value="Interior Site">Interior Site</option>
+            <option value="Jabba's Palace">Jabba's Palace</option>
+            <option value="Maintenance">Maintenance</option>
+            <option value="Mobile">Mobile</option>
+            <option value="Nav Computer">Nav Computer</option>
+            <option value="Permanent Weapon">Permanent Weapon</option>
+            <option value="Pilot">Pilot</option>
+            <option value="Planet">Planet</option>
+            <option value="Premium">Premiume</option>
+            <option value="Presence">Presence</option>
+            <option value="Reflections II">Reflections II</option>
+            <option value="Reflections III">Reflections III</option>
+            <option value="Republic">Republic</option>
+            <option value="Resistance">Resistance</option>
+            <option value="Scomp Link">Scomp Link</option>
+            <option value="Selective Creature">Selective Creature</option>
+            <option value="Seperatist">Seperatist</option>
+            <option value="Skywalker">Skywalker</option>
+            <option value="Set 0">Set 0</option>
+            <option value="Set 1">Set 1</option>
+            <option value="Set 2">Set 2</option>
+            <option value="Set 3">Set 3</option>
+            <option value="Set 4">Set 4</option>
+            <option value="Set 5">Set 5</option>
+            <option value="Set 6">Set 6</option>
+            <option value="Set 7">Set 7</option>
+            <option value="Set 8">Set 8</option>
+            <option value="Set 9">Set 9</option>
+            <option value="Set 10">Set 10</option>
+            <option value="Set 11">Set 11</option>
+            <option value="Set 12">Set 12</option>
+            <option value="Set 13">Set 13</option>
+            <option value="Set 14">Set 14</option>
+            <option value="Set 15">Set 15</option>
+            <option value="Set 16">Set 16</option>
+            <option value="Set 17">Set 17</option>
+            <option value="Set 18">Set 18</option>
+            <option value="Set 19">Set 19</option>
+            <option value="Set 20">Set 20</option>
+            <option value="Set 21">Set 21</option>
+            <option value="Set P">Set P</option>
+            <option value="Space">Space</option>
+            <option value="Special Edition">Special Edition</option>
+            <option value="Starship Site">Starship Site</option>
+            <option value="Tatooine">Tatooine</option>
+            <option value="Theed Palace">Theed Palace</option>
+            <option value="Trade Federation">Trade Federation</option>
+            <option value="Underground Site">Underground Site</option>
+            <option value="Vehicle Site">Vehicle Site</option>
+            <option value="Virtual Defensive Shield">Virtual Defensive Shield</option>
+            <option value="Warrior">Warrior</option>
         </select>
         <ul class="searchBars">
             <li class="cardSearchBar">

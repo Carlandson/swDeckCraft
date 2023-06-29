@@ -11,7 +11,7 @@ class starwarscard(models.Model):
     errataNotes = models.TextField(max_length=10000, null=True, default='', blank=True)
     previousId = models.CharField(max_length=200, null=True, default="", blank=True)
     side = models.CharField(max_length=200, null=True, default="", blank=True)
-    gametext = models.TextField(max_length=200, null=True, default="", blank=True)
+    gametext = models.TextField(max_length=400, null=True, default="", blank=True)
     deploy = models.CharField(max_length=200, default="", blank=True)
     characteristics = models.CharField(max_length=200, null=True, default="", blank=True)
     destiny = models.CharField(max_length=200, null=True, default="", blank=True)
@@ -43,7 +43,10 @@ class starwarscard(models.Model):
     ferocity = models.CharField(max_length=200, null=True, default="", blank=True)
     destinyValues = ArrayField(models.CharField(max_length=200, null=True, default=""), default=list, null=True, blank=True)
     image = models.ImageField(upload_to='', max_length=255, blank=True)
+    backsideImageUrl = models.URLField(max_length=200, null=True, default="", blank=True)
     backSideImage = models.ImageField(upload_to='', max_length=255, blank=True)
+    backSideText = models.TextField(max_length=400, null=True, default="", blank=True)
+    backSideTitle = models.CharField(max_length=200, null=True, default="", blank=True)
     def __str__(self):
         return f"{self.title}"
 
@@ -63,6 +66,7 @@ class starwarscard(models.Model):
             "deploy" : self.deploy,
             "forfeit" : self.forfeit,
             "set" : self.set,
+            "icons" : self.icons
         }
 
 class decklist(models.Model):

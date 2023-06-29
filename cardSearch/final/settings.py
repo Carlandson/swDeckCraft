@@ -85,7 +85,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'final.wsgi.application'
 
-
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 #Remember: Don’t keep sensitive data in the setting file, instead, use the environment variable AKA .env file
