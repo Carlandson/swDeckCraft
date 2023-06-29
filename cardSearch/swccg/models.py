@@ -66,7 +66,8 @@ class starwarscard(models.Model):
             "deploy" : self.deploy,
             "forfeit" : self.forfeit,
             "set" : self.set,
-            "icons" : self.icons
+            "icons" : self.icons,
+            "imageUrl" : self.imageUrl
         }
 
 class decklist(models.Model):
