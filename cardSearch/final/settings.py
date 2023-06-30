@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import environ
 import os
+import dj_database_url
 
 env = environ.Env()
 environ.Env.read_env()
@@ -30,6 +31,10 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:    
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 #media/user uploads
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -101,6 +106,13 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+    'default': dj_database_url.config(        
+        # Feel free to alter this value to suit your needs.        
+        default='postgresql://postgres:postgres@https://star-wars-ccg-deckbuilder.onrender.com',        
+        conn_max_age=600   
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
