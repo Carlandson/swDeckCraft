@@ -37,7 +37,7 @@ class cardObject {
         name,
         gametext,
         lore,
-        image,
+        // image,
         type,
         side,
         subType,
@@ -54,7 +54,7 @@ class cardObject {
     this.name = name;
     this.gametext = gametext;
     this.lore = lore;
-    this.image = image;
+    // this.image = image;
     this.type = type;
     this.side = side;
     this.subType = subType;
@@ -318,7 +318,7 @@ function loadCards() {
                     card['name'],
                     card['gametext'],
                     card['lore'],
-                    card['image'],
+                    // card['image'],
                     card['type'],
                     card['side'],
                     card['subType'],
@@ -368,13 +368,13 @@ function searchQuery(object) {
             break;
         };
         let name = card.name;
-        let image = card.image;
+        // let image = card.image;
         // let lore = card.lore;
         let imageUrlTest = card.imageUrl;
-        let imageUrl = image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
-        let finalImage = imageUrl.replaceAll('"', '');
-        let gametext = card.gametext;
-        let type = card.type;
+        // let imageUrl = image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
+        // let finalImage = imageUrl.replaceAll('"', '');
+        // let gametext = card.gametext;
+        // let type = card.type;
         let subType = card.subType;
         // let gempId = card.gempId;
         // let destiny = card.destiny;
@@ -409,7 +409,8 @@ function searchQuery(object) {
         // resultCard.setAttribute('destiny', destiny);
         resultCard.addEventListener('click', (e) => {
             if(e.shiftKey) {
-                draggableZoom(finalImage, subType)
+                // draggableZoom(finalImage, subType)
+                draggableZoom(imageUrlTest, subType)
             } else {
                 if(activeDiv == "deck") {
                     addCard(deckOnDeck, card);
@@ -538,9 +539,9 @@ function deckPopulate(activeArray) {
             //gives card child and deckcard attributes to be controlled by parent container
             cardDiv.classList.add("child", "deckCard", `${activeDiv}`);
             //grabs the image, takes out the path which messes with the image display
-            let imageUrl = tempCard.image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
+            // let imageUrl = tempCard.image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
             //removes quotations from the path which also affects the image display
-            let finalImage = imageUrl.replaceAll('"', '');
+            // let finalImage = imageUrl.replaceAll('"', '');
             let testImageUrl = tempCard.imageUrl;
             //site image generator
             if (activeArray[i].subType == "Site"){
@@ -548,7 +549,7 @@ function deckPopulate(activeArray) {
                 rotatedCard.classList.add('site-wrapper');
                 let imageElement = document.createElement('img');
                 imageElement.classList.add('deckSite');
-                imageElement.setAttribute('src', `${finalImage}`);
+                // imageElement.setAttribute('src', `${finalImage}`);
                 imageElement.setAttribute('src', `${testImageUrl}`);
                 rotatedCard.append(imageElement);
                 cardDiv.append(rotatedCard);
@@ -559,7 +560,8 @@ function deckPopulate(activeArray) {
                 };
                 cardDiv.addEventListener('click', (e) => {
                     if(e.shiftKey) {
-                        draggableZoom(finalImage, 'Site')
+                        draggableZoom(testImageUrl, 'Site')
+                        // draggableZoom(finalImage, 'Site')
                     } if(e.ctrlKey) {
                         if (!tempCard.startingCard && cardDiv.classList.contains('deck')) {
                             imageElement.classList.toggle('starting');
@@ -590,7 +592,8 @@ function deckPopulate(activeArray) {
                 };
                 cardDiv.addEventListener('click', (e) => {
                         if(e.shiftKey) {
-                            draggableZoom(finalImage, tempCard.subType)
+                            draggableZoom(testImageUrl, tempCard.subType)
+                            // draggableZoom(finalImage, tempCard.subType)
                         } else if(e.ctrlKey) {
                             if (!tempCard.startingCard && cardDiv.classList.contains('deck')) {
                                 imageElement.classList.toggle('starting');
