@@ -1,6 +1,5 @@
 web: gunicorn final.wsgi
 
-
 -- waitress-serve --listen "*:$PORT" \
 --     --trusted-proxy '*' \
 --     --trusted-proxy-headers 'x-forwarded-for x-forwarded-proto x-forwarded-port' \
