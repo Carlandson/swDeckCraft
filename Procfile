@@ -1,1 +1,1 @@
-web: gunicorn swccg.wsgi
+web: gunicorn final.wsgi
