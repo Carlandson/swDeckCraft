@@ -28,7 +28,6 @@ IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
 if IS_HEROKU_APP:
     ALLOWED_HOSTS = ["*"]
@@ -108,7 +107,6 @@ if IS_HEROKU_APP:
         "default": dj_database_url.config(
             conn_max_age=600,
             conn_health_checks=True,
-            ssl_require=True,
         ),
     }
 else:
