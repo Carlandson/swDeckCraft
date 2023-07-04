@@ -80,12 +80,25 @@ document.addEventListener('DOMContentLoaded', () => {
             datasets: [{
                 backgroundColor: backgroundColors,
                 data: typeCount,
+                hoverOffset: 4
             }]
         },
         options: {
             maintainAspectRatio: false,
             responsiveness: true,
-        }
+            plugins: {
+                legend: {
+                    // display: false,
+                    labels: {
+                        filter: function(item, chartData){
+                            return chartData.datasets[0].data[item.index] > 0;
+                        }
+                    }
+                    // filter: function(item, chartData) {
+                    //     return chartData.data >= 1;
+                }
+            }     
+        },
     });
     typeChart.update();
     document.querySelector('#importLightDeck').addEventListener('change', () => {importLightDeck()});
@@ -427,24 +440,25 @@ function searchQuery(object) {
 };
 
 //draggable function for zoomed card - user shift clicks
-function draggableZoom(finalImage, subType) {
-    var cardDiv = document.createElement('div');
+function draggableZoom(imageUrlTest, subType) {
+    var cardDiv = document.getElementById('zoomCard');
+    cardDiv.innerHTML = '';
+    console.log(imageUrlTest);
     cardDiv.classList.add("focusCardDiv");
     //add second div that changes the dimensions of the first div, give the movable properties to focusCardDiv, and the dimensions to the next div
     if(subType == "Site") {
         let rotatedCard = document.createElement('div');
         rotatedCard.classList.add('site-wrapper');
         var imageElement = document.createElement('img');
-        imageElement.setAttribute("src", `${finalImage}`);
+        imageElement.setAttribute("src", `${imageUrlTest}`);
         imageElement.classList.add('focusSite');
     } else {
         var imageElement = document.createElement('img');
-        imageElement.setAttribute('src', `${finalImage}`);
-        imageElement.setAttribute('loading', 'lazy');
+        imageElement.setAttribute('src', `${imageUrlTest}`);
         imageElement.classList.add('focusCard');
     };
     cardDiv.append(imageElement);
-    document.body.append(cardDiv);
+    cardDiv.style.display = "block";
     dragElement(cardDiv);
     cardDiv.addEventListener('click', (e) => {
         if(e.shiftKey) {
