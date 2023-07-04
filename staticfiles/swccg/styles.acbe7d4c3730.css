@@ -1,0 +1,303 @@
+* {
+    font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif; font-weight:600; font-stretch:condensed;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    clip: auto;
+    position: absolute;
+    overflow: hidden;
+    background-image: url("/static/swccg/Test1background.1851c208b5fb.png");
+}
+#deckBuild {
+  width: 66vw;
+}
+
+#searchResults {
+    display: flex;
+    flex-wrap: wrap;
+    width: 30vw;
+    height: 55vh;
+    overflow: auto;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+#sixtyFirst {
+    position: absolute;
+    bottom: 160px;
+    left: 30px;
+    display: none;
+    flex-wrap: wrap;
+    width: 60vw;
+    height: 15vh;
+    overflow: auto;
+    flex-direction: row;
+    align-content: flex-start;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#cardsOutsideDeck {
+    position: absolute;
+    z-index: auto;
+    display: none;
+    flex-wrap: wrap;
+    width: 60vw;
+    height: 40vh;
+    bottom: 160px;
+    left: 30px;
+    overflow: auto;
+    flex-direction: row;
+    align-content: flex-start;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#deckBuilder {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    overflow: auto;
+    width: 65vw;
+    height: 80vh;
+    background-color: transparent;
+    position: relative;
+}
+
+#deckStats {
+    display: flex;
+    width: 30vw;
+    height: 20vh;
+    text-align: center;
+    color: white;
+}
+#search {
+    position: relative;
+    width: 30vw;
+    padding-left: 0pt;
+    bottom: 0;
+}
+
+.collapsible {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    /* padding: 12px; */
+    cursor: pointer;
+    width: 200px;
+    height: 45px;
+    font-size: 18px;
+}
+
+.active, .collapsible:hover {
+    background-color:aliceblue;
+}
+
+.card {
+    display: flex;
+    flex-basis: auto;
+    height: 138.3px;
+    width: 100px;
+    background-color: transparent;
+}
+
+.deckCard {
+    height: 125.5px; 
+    width: 90px;
+}
+
+.site {
+  transform-origin: 0 0;
+  transform: rotate(.25turn);
+  width: 100px;
+  margin-left: 100%;
+  max-width: none;
+  width: 137.4px;
+}
+
+.cardContainer {
+  display: flex;
+  position: relative;
+  height: 126px;
+}
+
+#parameterDiv {
+    height: 100px;
+    border: 3px solid #C7C7C7;
+
+}
+.searchBar {
+    background-image: url("/static/swccg/Sketch002.81e482926a4c.png");
+    background-position: center;
+    width: 200px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+}
+
+#randomHandButton {
+    margin-left: auto;
+    background-color: papayawhip;
+    border-radius: 5px;
+}
+
+#randomHand {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: 15vh;
+    width: 41.5vw;
+    z-index: 100;
+    background-color:#1DACD0;
+    border: 5px solid blue;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+.focusCardDiv {
+    position: absolute; 
+    /* right: 165px;
+    bottom: 132px; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+    cursor: move;
+    border-radius: 20px;
+}
+
+.focusSite {
+    position: absolute;
+    z-index: 9;
+    cursor: move;
+    top: 50%;
+    left: 50%;
+    border-radius:12px;
+    transform-origin: 0 0;
+    transform: rotate(.25turn);
+    transform: translate(-50%, -50%);
+    margin-left: 100%;
+    width: 28vw;
+    max-width: none;
+}
+.focusCard {
+    width: 20vw;
+    border-radius: 12px;
+
+    /* height: 498px;   */
+}
+
+.deckSite {
+    transform-origin: 0 0;
+    transform: rotate(.25turn);
+    width: 90px;
+    margin-left: 100%;
+    max-width: none;
+    width: 125.5px;
+}
+
+.cardStack {
+    transform: translate(10px);
+}
+
+.child {
+    position: absolute;
+  }
+
+  .import:hover {
+    cursor: pointer;
+  }
+
+  #lsShields {
+    /* background-image: url("/static/swccg/image.77b178ff9dc6.jpg"); */
+    background-position: center;
+    background-color: #42ADC7;
+    border-radius: 10px;
+    border: 1px solid black;
+  }
+
+  #shieldButton {
+    background-color: #1DACD0;
+    border-radius: 10px;
+  }
+
+  #sixtyFirstButton{
+    background-color: orange;
+    border-radius: 10px;
+  }
+
+  #clearSixtyFirst{
+    background-color: orange;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 200px;
+  }
+  
+  #outsideDecks{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    width: 65vw;
+  }
+
+  .opaque {
+    background-color: green;
+  }
+
+  #sortButtons {
+    margin-left: auto;
+    display:flex;
+    flex-direction: column;
+  }
+  #sortDeckByType {
+    background-color: greenyellow;
+    border-radius: 10px;
+    width: 150px;
+    margin-bottom: 1px;
+    /* align-self: flex-end; */
+  }
+
+  #sortDeckByName {
+    background-color: greenyellow;
+    border-radius: 10px;
+    width: 150px;
+    margin-bottom: 1px;
+    /* align-self: flex-end; */
+  }
+
+  #clearDeck{
+    background-color: rgb(205,92,92);
+    border-radius: 10px;
+  }
+
+  #outsideButtons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* .starting {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 3px solid red;
+    margin: 2px;
+  } */
+
+  /* .starting {
+    box-shadow:inset 0px 0px 0px 10px rgb(170, 96, 96);
+    -webkit-box-shadow:inset 0px 0px 0px 10px rgb(209, 134, 134);
+    -moz-box-shadow:inset 0px 0px 0px 10px rgb(170, 101, 101);
+    box-sizing: border-box;
+  } */
+  .starting {
+    outline: 3px solid red;
+    outline-offset: -3px;
+  }
