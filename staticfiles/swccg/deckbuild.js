@@ -443,7 +443,6 @@ function searchQuery(object) {
 function draggableZoom(imageUrlTest, subType) {
     var cardDiv = document.getElementById('zoomCard');
     cardDiv.innerHTML = '';
-    console.log(imageUrlTest);
     cardDiv.classList.add("focusCardDiv");
     //add second div that changes the dimensions of the first div, give the movable properties to focusCardDiv, and the dimensions to the next div
     if(subType == "Site") {
@@ -576,7 +575,7 @@ function deckPopulate(activeArray) {
                     if(e.shiftKey) {
                         draggableZoom(testImageUrl, 'Site')
                         // draggableZoom(finalImage, 'Site')
-                    } if(e.ctrlKey) {
+                    } else if(e.ctrlKey) {
                         if (!tempCard.startingCard && cardDiv.classList.contains('deck')) {
                             imageElement.classList.toggle('starting');
                             tempCard.startingCard = true;
@@ -636,6 +635,7 @@ function deckPopulate(activeArray) {
 function deckTotal() {   
     //reduce function calculates total with count element
     const getDeckTotal = deckOnDeck.reduce((n, {count}) => n + count, 0)
+    var deckTotalMinusStarting = getDeckTotal;
     let deckCount = document.querySelector('#deckCount');
     let deckAverageDestiny = document.querySelector('#averageDestiny');
     var totalDestiny = 0;
@@ -643,10 +643,12 @@ function deckTotal() {
         let startingNumber = 0;
         if(deckOnDeck[i].startingCard) {
             startingNumber += 1;
-        };
+            deckTotalMinusStarting -= 1;
+        }
         totalDestiny += deckOnDeck[i].destiny * (deckOnDeck[i].count - startingNumber);
     };
-    let destinyAverage = totalDestiny / getDeckTotal;
+    console.log(deckTotalMinusStarting)
+    let destinyAverage = totalDestiny / deckTotalMinusStarting;
     deckCount.innerHTML = `${getDeckTotal}`;
     deckAverageDestiny.innerHTML = `${destinyAverage.toFixed(2)}`;
 };
