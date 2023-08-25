@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // document.querySelector('#textSearchOne').addEventListener('input', () => textFilter(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
     document.querySelector('#textSearchOne').addEventListener('input', () => textFilterTest(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
     // document.querySelector('#saveParameter').addEventListener('click', () => saveParameters(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
+    document.querySelector('#secondaryParameter').addEventListener('change', () => textFilterTest(document.querySelector('#searchOneType').value, document.querySelector('#secondaryParameter').value, document.querySelector('#textSearchOne').value));
     document.querySelector('#side').value = "choose";
     document.querySelector('#optionOne').value = "choose";
     document.querySelector('#icon').value = "chooseIcon";
@@ -229,8 +230,7 @@ function newSearchArrayTest() {
         if(currentSearchQuery.operator == "contains") {
             tempArray = tempArray.filter(card => card[property].toLowerCase().includes(query.toLowerCase()));
         } else {
-            temp = tempArray.filter(card => card.type == currentSearchType);
-            tempArray = temp.reduce(card => evaluate(card, property, query, operator));
+            tempArray = tempArray.filter(card => evaluate(card, property, query, operator));
         };
     };
     searchQuery(tempArray);
