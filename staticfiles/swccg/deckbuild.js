@@ -54,7 +54,6 @@ class cardObject {
     this.name = name;
     this.gametext = gametext;
     this.lore = lore;
-    // this.image = image;
     this.type = type;
     this.side = side;
     this.subType = subType;

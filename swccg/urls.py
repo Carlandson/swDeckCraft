@@ -6,7 +6,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('card_save', views.card_save, name='card_save'),
+    # path('card_save', views.card_save, name='card_save'),
+    #<a class="text-2xl" href="{% url 'card_save' %}" hidden>Save Cards To DB</a>
     path('deckbuild', views.deckbuild, name='deckbuild'),
     path('deckview/<str:deckid>', views.deckview, name='deckview'),
     path('card_search/<str:cardside>/', views.card_search, name='card_search'),

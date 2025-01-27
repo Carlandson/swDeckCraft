@@ -47,6 +47,8 @@ class starwarscard(models.Model):
     backSideImage = models.ImageField(upload_to='', max_length=255, blank=True)
     backSideText = models.TextField(max_length=400, null=True, default="", blank=True)
     backSideTitle = models.CharField(max_length=200, null=True, default="", blank=True)
+    printableSlipUrl = models.CharField(max_length=200, null=True, default="", blank=True)
+    printableSlipType = models.CharField(max_length=200, null=True, default="", blank=True)
     def __str__(self):
         return f"{self.title}"
 
