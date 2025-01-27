@@ -264,7 +264,13 @@ html {
     margin-bottom: 1px;
     /* align-self: flex-end; */
   }
-
+  #sortDeckByDestiny {
+    background-color: greenyellow;
+    border-radius: 10px;
+    width: 150px;
+    margin-bottom: 1px;
+    /* align-self: flex-end; */
+  }
   #sortDeckByName {
     background-color: greenyellow;
     border-radius: 10px;

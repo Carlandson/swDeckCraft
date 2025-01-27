@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
     typeChart.update();
+    document.querySelector('#sortDeckByDestiny').addEventListener('click', () => sortByDestiny());
     document.querySelector('#importLightDeck').addEventListener('change', () => {importLightDeck()});
     document.querySelector('#importDarkDeck').addEventListener('change', () => {importDarkDeck()});
     document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
@@ -655,6 +656,7 @@ function deckTotal() {
     deckAverageDestiny.innerHTML = `${destinyAverage.toFixed(2)}`;
 };
 
+
 //stoppage june 9th, figure out delete card too tired
 function deleteCard(activeArray, card){
     let tempDiv = activeDiv;
@@ -943,6 +945,12 @@ function evaluate(card, parameter1, parameter2, operator) {
     //eval is security risk
     // return eval(parameter1 + operator + parameter2);
 };
+
+function sortByDestiny() {
+    deckOnDeck.sort((a, b) => a.destiny - b.destiny);
+    deckPopulate(deckOnDeck);
+};
+
 
 function sortDeck() {
     deckOnDeck.sort(function(a, b) {
