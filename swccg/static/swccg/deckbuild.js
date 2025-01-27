@@ -644,9 +644,12 @@ function deckTotal() {
             startingNumber += 1;
             deckTotalMinusStarting -= 1;
         }
+        if (deckOnDeck[i].destiny.includes('or')) {
+            const lastNumber = deckOnDeck[i].destiny.split('or').pop().trim();
+            deckOnDeck[i].destiny = lastNumber;
+        }
         totalDestiny += deckOnDeck[i].destiny * (deckOnDeck[i].count - startingNumber);
     };
-    console.log(deckTotalMinusStarting)
     let destinyAverage = totalDestiny / deckTotalMinusStarting;
     deckCount.innerHTML = `${getDeckTotal}`;
     deckAverageDestiny.innerHTML = `${destinyAverage.toFixed(2)}`;
@@ -894,6 +897,7 @@ function importDarkDeck() {
         //we need to clean the string up first - or we can parse the string and find matches in the dictionary to add without needing to change string at all
         try {
             cleanedDeck.forEach((card) => {
+                var card = card.replace("*", "");
                 var matchingCard = darkDictionary.find(item => item.gempId == card);
                 if (matchingCard === undefined) throw "Wrong Side!";
                 addCard(deckOnDeck, matchingCard);
