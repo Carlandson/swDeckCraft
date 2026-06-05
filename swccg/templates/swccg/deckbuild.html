@@ -1,17 +1,21 @@
 {% extends 'swccg/layout.html' %}
 {% load static %}
 {% block body %}
-<div id="randomHand"></div>
+<div id="randomHand" class="floating-card-panel">
+    <div class="panel-drag-handle">
+        <span class="panel-drag-title">Random Hand</span>
+        <button type="button" class="panel-close-btn" data-panel="randomHand" aria-label="Close">×</button>
+    </div>
+    <div class="floating-card-content"></div>
+</div>
 <div id="zoomCard" class="hidden"></div>
 <div id="deckBuild" class="float-left pl-2 text-center h-screen">
     <div class="pt-2">
         <a href="{% url 'index' %}"class="float-left text-yellow-100 md:visible hidden">Return Home</a>
         <span id="deckTitle" class="text-white">New Deck</span>
         <div class="pt-2 mb-1 float-right">
-            <input id="importLightDeck" type="file" class="hidden"/>
-            <label for="importLightDeck" class="import bg-gray-200 px-6">Import Light Deck</label>
-            <input id="importDarkDeck" type="file" class="hidden"/>
-            <label for="importDarkDeck" class="import bg-red-400 px-6">Import Dark Deck</label>
+            <input id="importDeck" type="file" accept=".txt,.html" class="hidden"/>
+            <label for="importDeck" class="import bg-indigo-300 px-6">Import Deck</label>
             <button id="saveDeck" class="bg-teal-400 px-6">Save Deck</button>
             <button id="randomHandButton">Generate Random Hand</button>
         </div>
@@ -24,14 +28,24 @@
             <button id="shieldButton" class="collapsible">Defensive Shields</button>
             <button id="lsShields" class="image-button">Add/Remove Shields</button>
         </div>
-        <div id="cardsOutsideDeck" class="cardArea h-screen border-2 text-left flex-grid">
+        <div id="cardsOutsideDeck" class="cardArea floating-card-panel">
+            <div class="panel-drag-handle">
+                <span class="panel-drag-title">Defensive Shields</span>
+                <button type="button" class="panel-close-btn" data-panel="cardsOutsideDeck" aria-label="Close">×</button>
+            </div>
+            <div class="floating-card-content flex-grid"></div>
         </div>
         <div id="sixtyFirstButtons">
             <button id="sixtyFirstButton" class="collapsible px-6">61st Cards</button>
             <button id="clearSixtyFirst" class="image-button">Clear 61st Cards</button>
         </div>
-            <div id="sixtyFirst" class="cardArea h-screen border-2 text-left flex-grid">
-        </div>
+            <div id="sixtyFirst" class="cardArea floating-card-panel">
+                <div class="panel-drag-handle">
+                    <span class="panel-drag-title">61st Cards</span>
+                    <button type="button" class="panel-close-btn" data-panel="sixtyFirst" aria-label="Close">×</button>
+                </div>
+                <div class="floating-card-content flex-grid"></div>
+            </div>
         <span class="mr-10 text-white ml-10">Card Total : <span id="deckCount"></span> / 60</span>
         <span class="text-white">Average Destiny : <span id="averageDestiny"></span></span>
             <div id="sortButtons">

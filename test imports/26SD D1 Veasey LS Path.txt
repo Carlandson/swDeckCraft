@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<deck>
+    <card blueprintId="301_1" horizontal="false" title="Ahsoka Tano With Lightsabers"/>
+    <card blueprintId="215_4" horizontal="false" title="Cal Kestis"/>
+    <card blueprintId="210_14" horizontal="false" title="Ezra Bridger"/>
+    <card blueprintId="226_18" horizontal="false" title="Kelleran Beq"/>
+    <card blueprintId="13_27" horizontal="false" title="Lando Calrissian, Scoundrel"/>
+    <card blueprintId="13_29" horizontal="false" title="Leia, Rebel Princess"/>
+    <card blueprintId="218_25" horizontal="false" title="Master Luke"/>
+    <card blueprintId="218_25" horizontal="false" title="Master Luke"/>
+    <card blueprintId="226_24" horizontal="false" title="Obi-Wan Kenobi, Jedi In Exile"/>
+    <card blueprintId="203_10" horizontal="false" title="Padme Naberrie"/>
+    <card blueprintId="226_26" horizontal="false" title="Quinlan Vos"/>
+    <card blueprintId="201_6^" horizontal="false" title="R2-D2 (Artoo-Detoo)"/>
+    <card blueprintId="204_9^" horizontal="false" title="Rey"/>
+    <card blueprintId="223_46" horizontal="false" title="Sabine, Padawan Learner"/>
+    <card blueprintId="11_13" horizontal="false" title="Threepio With His Parts Showing"/>
+    <card blueprintId="216_31" horizontal="false" title="Jedi Holocron"/>
+    <card blueprintId="4_11" horizontal="false" title="Landing Claw"/>
+    <card blueprintId="10_15" horizontal="false" title="Obi-Wan's Journal"/>
+    <card blueprintId="7_53" horizontal="false" title="Portable Scanner"/>
+    <card blueprintId="200_35" horizontal="false" title="Anger, Fear, Aggression"/>
+    <card blueprintId="1_45" horizontal="false" title="Crash Site Memorial"/>
+    <card blueprintId="200_42" horizontal="false" title="K'lor'slug"/>
+    <card blueprintId="1_55" horizontal="false" title="Mantellian Savrip"/>
+    <card blueprintId="226_14" horizontal="false" title="Fallen Order"/>
+    <card blueprintId="200_48" horizontal="false" title="Alter"/>
+    <card blueprintId="6_61" horizontal="false" title="Blaster Deflection"/>
+    <card blueprintId="5_38" horizontal="false" title="Clash Of Sabers"/>
+    <card blueprintId="10_4" horizontal="false" title="Control &amp; Tunnel Vision"/>
+    <card blueprintId="5_45" horizontal="false" title="Dodge"/>
+    <card blueprintId="200_51" horizontal="false" title="Don't Tread On Me"/>
+    <card blueprintId="204_18" horizontal="false" title="Escape Pod &amp; We're Doomed"/>
+    <card blueprintId="201_12" horizontal="false" title="Escape Pod"/>
+    <card blueprintId="202_6" horizontal="false" title="Force Levitation"/>
+    <card blueprintId="216_28" horizontal="false" title="Free Ride &amp; Endor Celebration"/>
+    <card blueprintId="1_82" horizontal="false" title="Gift Of The Mentor"/>
+    <card blueprintId="207_12" horizontal="false" title="Help Me Obi-Wan Kenobi"/>
+    <card blueprintId="2_50" horizontal="false" title="Houjix"/>
+    <card blueprintId="204_20" horizontal="false" title="Keep Your Eyes Open"/>
+    <card blueprintId="209_21" horizontal="false" title="Odin Nesloor &amp; First Aid"/>
+    <card blueprintId="1_101" horizontal="false" title="On The Edge"/>
+    <card blueprintId="210_24" horizontal="false" title="Quite A Mercenary"/>
+    <card blueprintId="211_2" horizontal="false" title="See You Around, Kid"/>
+    <card blueprintId="1_109" horizontal="false" title="Sense"/>
+    <card blueprintId="10_21" horizontal="false" title="Sense &amp; Recoil In Fear"/>
+    <card blueprintId="12_72" horizontal="false" title="We Wish To Board At Once"/>
+    <card blueprintId="6_79" horizontal="false" title="Weapon Levitation"/>
+    <card blueprintId="8_64" horizontal="false" title="Were You Looking For Me?"/>
+    <card blueprintId="8_64" horizontal="false" title="Were You Looking For Me?"/>
+    <card blueprintId="226_15" horizontal="true" title="Jabiim: Path Operations Center"/>
+    <card blueprintId="226_16" horizontal="true" title="Jabiim: Starship Hangar"/>
+    <card blueprintId="226_21" horizontal="true" title="Mapuzo: Mining Village"/>
+    <card blueprintId="226_22" horizontal="true" title="Mapuzo: Safehouse"/>
+    <card blueprintId="226_23" horizontal="true" title="Mapuzo: Underground Corridor"/>
+    <card blueprintId="226_28" horizontal="false" title="The Hidden Path"/>
+    <card blueprintId="200_62" horizontal="false" title="Gold Leader In Gold 1"/>
+    <card blueprintId="205_7" horizontal="false" title="Han, Chewie, And The Falcon"/>
+    <card blueprintId="200_63" horizontal="false" title="Madakor In Radiant VII"/>
+    <card blueprintId="214_15" horizontal="false" title="Ahsoka's Shoto Lightsaber"/>
+    <card blueprintId="210_3^" horizontal="false" title="Anakin's Lightsaber"/>
+    <card blueprintId="1_157" horizontal="false" title="Obi-Wan's Lightsaber"/>
+    <cardOutsideDeck blueprintId="206_4^" horizontal="false" title="Jyn Erso"/>
+    <cardOutsideDeck blueprintId="200_16" horizontal="false" title="The Mythrol"/>
+    <cardOutsideDeck blueprintId="13_1" horizontal="false" title="A Close Race"/>
+    <cardOutsideDeck blueprintId="223_30" horizontal="false" title="A Close Race"/>
+    <cardOutsideDeck blueprintId="13_3" horizontal="false" title="A Tragedy Has Occurred"/>
+    <cardOutsideDeck blueprintId="13_4" horizontal="false" title="Aim High"/>
+    <cardOutsideDeck blueprintId="13_6" horizontal="false" title="Another Pathetic Lifeform"/>
+    <cardOutsideDeck blueprintId="13_8" horizontal="false" title="Battle Plan"/>
+    <cardOutsideDeck blueprintId="13_15" horizontal="false" title="Do, Or Do Not"/>
+    <cardOutsideDeck blueprintId="200_26" horizontal="false" title="Don't Do That Again"/>
+    <cardOutsideDeck blueprintId="13_22" horizontal="false" title="He Can Go About His Business"/>
+    <cardOutsideDeck blueprintId="225_51" horizontal="false" title="Let's Keep A Little Optimism Here"/>
+    <cardOutsideDeck blueprintId="221_68" horizontal="false" title="Only Jedi Carry That Weapon"/>
+    <cardOutsideDeck blueprintId="13_37" horizontal="false" title="Ounee Ta"/>
+    <cardOutsideDeck blueprintId="203_13" horizontal="false" title="Planetary Defenses"/>
+    <cardOutsideDeck blueprintId="200_28*" horizontal="false" title="Simple Tricks And Nonsense"/>
+    <cardOutsideDeck blueprintId="200_29" horizontal="false" title="The Republic No Longer Functions"/>
+    <cardOutsideDeck blueprintId="209_15" horizontal="false" title="There Is Another"/>
+    <cardOutsideDeck blueprintId="220_10" horizontal="false" title="Thrown Back"/>
+    <cardOutsideDeck blueprintId="13_44" horizontal="false" title="Ultimatum"/>
+    <cardOutsideDeck blueprintId="13_47" horizontal="false" title="Wise Advice"/>
+    <cardOutsideDeck blueprintId="223_49" horizontal="false" title="Yavin Sentry &amp; Goldenrod"/>
+    <cardOutsideDeck blueprintId="200_32" horizontal="false" title="Your Insight Serves You Well"/>
+    <cardOutsideDeck blueprintId="301_5" horizontal="false" title="Your Ship?"/>
+    <cardOutsideDeck blueprintId="210_24" horizontal="false" title="Quite A Mercenary"/>
+</deck>

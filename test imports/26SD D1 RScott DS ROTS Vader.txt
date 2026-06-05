@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<deck>
+    <card blueprintId="222_2" horizontal="false" title="Ap'lek"/>
+    <card blueprintId="221_8" horizontal="false" title="Asajj Ventress"/>
+    <card blueprintId="212_3" horizontal="false" title="Aurra Sing With Blaster Rifle"/>
+    <card blueprintId="208_30^" horizontal="false" title="Darth Vader, Emperor's Enforcer"/>
+    <card blueprintId="208_30^" horizontal="false" title="Darth Vader, Emperor's Enforcer"/>
+    <card blueprintId="10_37" horizontal="false" title="Dr. Evazan &amp; Ponda Baba"/>
+    <card blueprintId="200_82" horizontal="false" title="Grand Moff Tarkin"/>
+    <card blueprintId="200_82" horizontal="false" title="Grand Moff Tarkin"/>
+    <card blueprintId="209_37^" horizontal="false" title="Kylo Ren With Lightsaber"/>
+    <card blueprintId="9_113" horizontal="false" title="Lord Vader"/>
+    <card blueprintId="226_8" horizontal="false" title="Mara Jade, The Emperor's Hand"/>
+    <card blueprintId="226_8" horizontal="false" title="Mara Jade, The Emperor's Hand"/>
+    <card blueprintId="225_22" horizontal="false" title="Master Sidious"/>
+    <card blueprintId="225_22" horizontal="false" title="Master Sidious"/>
+    <card blueprintId="12_114" horizontal="false" title="P-59"/>
+    <card blueprintId="207_23^" horizontal="false" title="Savage Opress"/>
+    <card blueprintId="217_14" horizontal="false" title="Blast Door Controls"/>
+    <card blueprintId="1_214" horizontal="false" title="Disarmed"/>
+    <card blueprintId="7_229" horizontal="false" title="First Strike"/>
+    <card blueprintId="205_17^" horizontal="false" title="I Am Your Father"/>
+    <card blueprintId="200_110^" horizontal="false" title="Knowledge And Defense"/>
+    <card blueprintId="112_16" horizontal="false" title="No Escape"/>
+    <card blueprintId="222_16" horizontal="false" title="Vader's Machination"/>
+    <card blueprintId="221_40" horizontal="false" title="Vader's Malediction"/>
+    <card blueprintId="217_20" horizontal="false" title="Revenge Of The Sith"/>
+    <card blueprintId="201_33" horizontal="false" title="A Dark Time For The Rebellion"/>
+    <card blueprintId="211_12^" horizontal="false" title="Always Two There Are"/>
+    <card blueprintId="221_13" horizontal="false" title="ComScan Detection"/>
+    <card blueprintId="200_119" horizontal="false" title="Force Field"/>
+    <card blueprintId="200_119" horizontal="false" title="Force Field"/>
+    <card blueprintId="200_120" horizontal="false" title="Force Push"/>
+    <card blueprintId="2_132*" horizontal="false" title="Ghhhk"/>
+    <card blueprintId="209_48" horizontal="false" title="Lana Dobreed &amp; Sacrifice"/>
+    <card blueprintId="12_152" horizontal="false" title="Masterful Move &amp; Endor Occupation"/>
+    <card blueprintId="205_20" horizontal="false" title="Point Man"/>
+    <card blueprintId="217_21" horizontal="false" title="Rise Of The Sith"/>
+    <card blueprintId="218_2" horizontal="false" title="Seal Off The Bridge"/>
+    <card blueprintId="218_2" horizontal="false" title="Seal Off The Bridge"/>
+    <card blueprintId="1_267" horizontal="false" title="Sense"/>
+    <card blueprintId="200_123" horizontal="false" title="Sith Fury"/>
+    <card blueprintId="10_47" horizontal="false" title="Sniper &amp; Dark Strike"/>
+    <card blueprintId="223_24" horizontal="false" title="The Emperor's Hand"/>
+    <card blueprintId="211_16" horizontal="false" title="Vader's Anger"/>
+    <card blueprintId="221_41" horizontal="false" title="Vader's Obsession"/>
+    <card blueprintId="221_41" horizontal="false" title="Vader's Obsession"/>
+    <card blueprintId="221_41" horizontal="false" title="Vader's Obsession"/>
+    <card blueprintId="221_41" horizontal="false" title="Vader's Obsession"/>
+    <card blueprintId="12_163" horizontal="false" title="We Must Accelerate Our Plans"/>
+    <card blueprintId="5_163" horizontal="false" title="You Are Beaten"/>
+    <card blueprintId="223_27" horizontal="false" title="Young Fool"/>
+    <card blueprintId="12_164" horizontal="true" title="Blockade Flagship: Bridge"/>
+    <card blueprintId="221_11" horizontal="true" title="Cloud City: Chasm Walkway"/>
+    <card blueprintId="216_4^" horizontal="true" title="Coruscant: The Works"/>
+    <card blueprintId="216_9" horizontal="true" title="Mustafar: Private Platform (Docking Bay)"/>
+    <card blueprintId="209_50^" horizontal="true" title="Mustafar: Vader's Castle"/>
+    <card blueprintId="223_17" horizontal="false" title="Maul In Scimitar"/>
+    <card blueprintId="221_9" horizontal="false" title="Asajj Ventress' Lightsabers"/>
+    <card blueprintId="208_59" horizontal="false" title="Darth Vader's Lightsaber"/>
+    <card blueprintId="110_11" horizontal="false" title="Mara Jade's Lightsaber"/>
+    <card blueprintId="217_22" horizontal="false" title="Sidious' Lightsaber"/>
+    <cardOutsideDeck blueprintId="13_51" horizontal="false" title="A Useless Gesture"/>
+    <cardOutsideDeck blueprintId="223_7" horizontal="false" title="A Useless Gesture &amp; Death Star Sentry"/>
+    <cardOutsideDeck blueprintId="13_52" horizontal="false" title="Allegations Of Corruption"/>
+    <cardOutsideDeck blueprintId="13_54" horizontal="false" title="Battle Order"/>
+    <cardOutsideDeck blueprintId="225_3" horizontal="false" title="Come Here You Big Coward"/>
+    <cardOutsideDeck blueprintId="216_5" horizontal="false" title="Crossfire"/>
+    <cardOutsideDeck blueprintId="13_66" horizontal="false" title="Do They Have A Code Clearance?"/>
+    <cardOutsideDeck blueprintId="220_2" horizontal="false" title="Drop!"/>
+    <cardOutsideDeck blueprintId="213_13" horizontal="false" title="Failure At The Cave"/>
+    <cardOutsideDeck blueprintId="200_95" horizontal="false" title="Fanfare"/>
+    <cardOutsideDeck blueprintId="13_72" horizontal="false" title="Leave Them To Me"/>
+    <cardOutsideDeck blueprintId="13_78" horizontal="false" title="No Escape"/>
+    <cardOutsideDeck blueprintId="13_81" horizontal="false" title="Oppressive Enforcement"/>
+    <cardOutsideDeck blueprintId="13_84" horizontal="false" title="Resistance"/>
+    <cardOutsideDeck blueprintId="13_86" horizontal="false" title="Secret Plans"/>
+    <cardOutsideDeck blueprintId="13_90" horizontal="false" title="There Is No Try"/>
+    <cardOutsideDeck blueprintId="200_99" horizontal="false" title="Vote Of No Confidence"/>
+    <cardOutsideDeck blueprintId="223_26" horizontal="false" title="We'll Let Fate-a Decide, Huh?"/>
+    <cardOutsideDeck blueprintId="13_95" horizontal="false" title="Weapon Of A Sith"/>
+    <cardOutsideDeck blueprintId="13_98" horizontal="false" title="Wipe Them Out, All Of Them"/>
+    <cardOutsideDeck blueprintId="200_100" horizontal="false" title="You Cannot Hide Forever"/>
+    <cardOutsideDeck blueprintId="223_29" horizontal="false" title="You've Never Won A Race?"/>
+    <cardOutsideDeck blueprintId="106_13" horizontal="false" title="Dreadnaught-Class Heavy Cruiser"/>
+</deck>

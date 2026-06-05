@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<deck>
+    <card blueprintId="211_59" horizontal="false" title="Ahsoka Tano"/>
+    <card blueprintId="200_2" horizontal="false" title="Anakin Skywalker, Padawan Learner"/>
+    <card blueprintId="204_3" horizontal="false" title="Captain Hera Syndulla"/>
+    <card blueprintId="210_14" horizontal="false" title="Ezra Bridger"/>
+    <card blueprintId="13_27" horizontal="false" title="Lando Calrissian, Scoundrel"/>
+    <card blueprintId="13_27" horizontal="false" title="Lando Calrissian, Scoundrel"/>
+    <card blueprintId="13_29" horizontal="false" title="Leia, Rebel Princess"/>
+    <card blueprintId="200_21" horizontal="false" title="Luke Skywalker, Rebel Scout"/>
+    <card blueprintId="108_4" horizontal="false" title="Obi-Wan With Lightsaber"/>
+    <card blueprintId="108_4" horizontal="false" title="Obi-Wan With Lightsaber"/>
+    <card blueprintId="203_36" horizontal="false" title="Padme Naberrie"/>
+    <card blueprintId="14_27" horizontal="false" title="Qui-Gon Jinn With Lightsaber"/>
+    <card blueprintId="14_27" horizontal="false" title="Qui-Gon Jinn With Lightsaber"/>
+    <card blueprintId="204_9" horizontal="false" title="Rey"/>
+    <card blueprintId="209_10" horizontal="false" title="Rey With Lightsaber"/>
+    <card blueprintId="213_44" horizontal="false" title="Yoda, Master Of The Force"/>
+    <card blueprintId="213_44" horizontal="false" title="Yoda, Master Of The Force"/>
+    <card blueprintId="200_35" horizontal="false" title="Anger, Fear, Aggression"/>
+    <card blueprintId="7_60" horizontal="false" title="Draw Their Fire"/>
+    <card blueprintId="9_34" horizontal="false" title="I Feel The Conflict"/>
+    <card blueprintId="200_41" horizontal="false" title="I Must Be Allowed To Speak"/>
+    <card blueprintId="207_11" horizontal="false" title="Rebellions Are Built On Hope"/>
+    <card blueprintId="200_47" horizontal="false" title="Wokling"/>
+    <card blueprintId="11_29" horizontal="false" title="A Jedi's Resilience"/>
+    <card blueprintId="11_29" horizontal="false" title="A Jedi's Resilience"/>
+    <card blueprintId="11_29" horizontal="false" title="A Jedi's Resilience"/>
+    <card blueprintId="6_61" horizontal="false" title="Blaster Deflection"/>
+    <card blueprintId="5_38" horizontal="false" title="Clash Of Sabers"/>
+    <card blueprintId="9_51" horizontal="false" title="Heading For The Medical Frigate"/>
+    <card blueprintId="201_13" horizontal="false" title="Hear Me Baby, Hold Together"/>
+    <card blueprintId="2_50" horizontal="false" title="Houjix"/>
+    <card blueprintId="225_8" horizontal="false" title="I Don't Need Their Scum, Either"/>
+    <card blueprintId="200_53" horizontal="false" title="Impressive, Most Impressive"/>
+    <card blueprintId="210_18" horizontal="false" title="Jedi Mind Trick"/>
+    <card blueprintId="210_18" horizontal="false" title="Jedi Mind Trick"/>
+    <card blueprintId="1_97" horizontal="false" title="Nabrun Leids"/>
+    <card blueprintId="1_97" horizontal="false" title="Nabrun Leids"/>
+    <card blueprintId="201_14" horizontal="false" title="Perimeter Scan"/>
+    <card blueprintId="210_24" horizontal="false" title="Quite A Mercenary"/>
+    <card blueprintId="217_46" horizontal="false" title="Return Of A Jedi"/>
+    <card blueprintId="217_46" horizontal="false" title="Return Of A Jedi"/>
+    <card blueprintId="217_46" horizontal="false" title="Return Of A Jedi"/>
+    <card blueprintId="1_109" horizontal="false" title="Sense"/>
+    <card blueprintId="1_109" horizontal="false" title="Sense"/>
+    <card blueprintId="10_23" horizontal="false" title="Sorry About The Mess &amp; Blaster Proficiency"/>
+    <card blueprintId="14_46" horizontal="false" title="Wesa Gotta Grand Army"/>
+    <card blueprintId="14_46" horizontal="false" title="Wesa Gotta Grand Army"/>
+    <card blueprintId="14_46" horizontal="false" title="Wesa Gotta Grand Army"/>
+    <card blueprintId="214_19" horizontal="true" title="Endor: Chief Chirpa's Hut"/>
+    <card blueprintId="8_76" horizontal="true" title="Endor: Landing Platform (Docking Bay)"/>
+    <card blueprintId="9_59" horizontal="false" title="Mon Calamari"/>
+    <card blueprintId="14_49" horizontal="true" title="Naboo: Boss Nass' Chambers"/>
+    <card blueprintId="205_6" horizontal="true" title="Tatooine: Lars' Moisture Farm"/>
+    <card blueprintId="216_43" horizontal="true" title="Tatooine: Obi-Wan's Hut"/>
+    <card blueprintId="9_61" horizontal="false" title="There Is Good In Him"/>
+    <card blueprintId="203_20" horizontal="false" title="Bright Hope"/>
+    <card blueprintId="205_7" horizontal="false" title="Han, Chewie, And The Falcon"/>
+    <card blueprintId="209_30" horizontal="false" title="Lightmaker"/>
+    <card blueprintId="207_18" horizontal="false" title="Profundity"/>
+    <card blueprintId="9_90" horizontal="false" title="Luke's Lightsaber"/>
+    <cardOutsideDeck blueprintId="200_16" horizontal="false" title="The Mythrol"/>
+    <cardOutsideDeck blueprintId="13_1" horizontal="false" title="A Close Race"/>
+    <cardOutsideDeck blueprintId="223_30" horizontal="false" title="A Close Race"/>
+    <cardOutsideDeck blueprintId="13_3" horizontal="false" title="A Tragedy Has Occurred"/>
+    <cardOutsideDeck blueprintId="13_4" horizontal="false" title="Aim High"/>
+    <cardOutsideDeck blueprintId="13_6" horizontal="false" title="Another Pathetic Lifeform"/>
+    <cardOutsideDeck blueprintId="13_8" horizontal="false" title="Battle Plan"/>
+    <cardOutsideDeck blueprintId="13_15" horizontal="false" title="Do, Or Do Not"/>
+    <cardOutsideDeck blueprintId="13_16" horizontal="false" title="Don't Do That Again"/>
+    <cardOutsideDeck blueprintId="200_26" horizontal="false" title="Don't Do That Again"/>
+    <cardOutsideDeck blueprintId="13_22" horizontal="false" title="He Can Go About His Business"/>
+    <cardOutsideDeck blueprintId="13_30" horizontal="false" title="Let's Keep A Little Optimism Here"/>
+    <cardOutsideDeck blueprintId="13_35" horizontal="false" title="Only Jedi Carry That Weapon"/>
+    <cardOutsideDeck blueprintId="221_68" horizontal="false" title="Only Jedi Carry That Weapon"/>
+    <cardOutsideDeck blueprintId="13_37" horizontal="false" title="Ounee Ta"/>
+    <cardOutsideDeck blueprintId="13_38" horizontal="false" title="Planetary Defenses"/>
+    <cardOutsideDeck blueprintId="203_13" horizontal="false" title="Planetary Defenses"/>
+    <cardOutsideDeck blueprintId="200_28" horizontal="false" title="Simple Tricks And Nonsense"/>
+    <cardOutsideDeck blueprintId="200_29" horizontal="false" title="The Republic No Longer Functions"/>
+    <cardOutsideDeck blueprintId="209_15" horizontal="false" title="There Is Another"/>
+    <cardOutsideDeck blueprintId="220_10" horizontal="false" title="Thrown Back"/>
+    <cardOutsideDeck blueprintId="13_44" horizontal="false" title="Ultimatum"/>
+    <cardOutsideDeck blueprintId="13_47" horizontal="false" title="Wise Advice"/>
+    <cardOutsideDeck blueprintId="223_49" horizontal="false" title="Yavin Sentry &amp; Goldenrod"/>
+    <cardOutsideDeck blueprintId="13_49" horizontal="false" title="Your Insight Serves You Well"/>
+    <cardOutsideDeck blueprintId="200_32" horizontal="false" title="Your Insight Serves You Well"/>
+    <cardOutsideDeck blueprintId="13_50" horizontal="false" title="Your Ship?"/>
+    <cardOutsideDeck blueprintId="301_5" horizontal="false" title="Your Ship?"/>
+</deck>

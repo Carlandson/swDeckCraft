@@ -25,10 +25,21 @@ pip install -r requirements.txt
 CREATE DATABASE "StarWarsCCG";
 ```
 
-4. **Run migrations and start the dev server:**
+4. **Run migrations:**
 
 ```powershell
 python manage.py migrate
+```
+
+5. **Import card data** from the bundled JSON files:
+
+```powershell
+python manage.py import_cards
+```
+
+6. **Start the dev server:**
+
+```powershell
 .\run_dev.ps1
 ```
 

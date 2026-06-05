@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<deck>
+    <card blueprintId="109_6" horizontal="false" title="4-LOM With Concussion Rifle"/>
+    <card blueprintId="212_3" horizontal="false" title="Aurra Sing With Blaster Rifle"/>
+    <card blueprintId="225_1" horizontal="false" title="Bib Fortuna"/>
+    <card blueprintId="13_59" horizontal="false" title="Boba Fett, Bounty Hunter"/>
+    <card blueprintId="203_24" horizontal="false" title="Cad Bane"/>
+    <card blueprintId="222_6" horizontal="false" title="Danz Borin"/>
+    <card blueprintId="226_4" horizontal="false" title="Garindan, Imperial Spy"/>
+    <card blueprintId="223_13" horizontal="false" title="Gor Koresh"/>
+    <card blueprintId="204_42" horizontal="false" title="Greedo"/>
+    <card blueprintId="204_42" horizontal="false" title="Greedo"/>
+    <card blueprintId="217_11" horizontal="false" title="Grummgar"/>
+    <card blueprintId="205_13" horizontal="false" title="Hondo Ohnaka"/>
+    <card blueprintId="200_84" horizontal="false" title="Jabba The Hutt"/>
+    <card blueprintId="201_25" horizontal="false" title="Jango Fett"/>
+    <card blueprintId="211_3" horizontal="false" title="Lady Proxima"/>
+    <card blueprintId="200_86" horizontal="false" title="Mara Jade With Lightsaber"/>
+    <card blueprintId="200_87" horizontal="false" title="Ponda Baba"/>
+    <card blueprintId="10_45" horizontal="false" title="Prince Xizor"/>
+    <card blueprintId="200_88" horizontal="false" title="Probot"/>
+    <card blueprintId="211_5" horizontal="false" title="Ree-Yees"/>
+    <card blueprintId="226_11" horizontal="false" title="Salacious Crumb"/>
+    <card blueprintId="205_16" horizontal="false" title="Velken Tezeri"/>
+    <card blueprintId="201_27" horizontal="false" title="Wooof"/>
+    <card blueprintId="12_129" horizontal="false" title="Battle Order &amp; First Strike"/>
+    <card blueprintId="217_14" horizontal="false" title="Blast Door Controls"/>
+    <card blueprintId="200_108" horizontal="false" title="Imperial Decree"/>
+    <card blueprintId="201_31" horizontal="false" title="Jabba's Haven"/>
+    <card blueprintId="200_110*" horizontal="false" title="Knowledge And Defense"/>
+    <card blueprintId="225_4" horizontal="false" title="No Bargain"/>
+    <card blueprintId="112_16" horizontal="false" title="No Escape"/>
+    <card blueprintId="221_27" horizontal="false" title="Power Of The Hutt"/>
+    <card blueprintId="6_149" horizontal="false" title="Scum And Villainy"/>
+    <card blueprintId="6_149" horizontal="false" title="Scum And Villainy"/>
+    <card blueprintId="218_7" horizontal="false" title="A Dark Time For The Rebellion &amp; Tarkin's Orders"/>
+    <card blueprintId="225_2" horizontal="false" title="Blast Points"/>
+    <card blueprintId="14_101" horizontal="false" title="Cease Fire!"/>
+    <card blueprintId="14_101" horizontal="false" title="Cease Fire!"/>
+    <card blueprintId="222_7" horizontal="false" title="Force Push &amp; Podracer Collision"/>
+    <card blueprintId="10_39" horizontal="false" title="Ghhhk &amp; Those Rebels Won't Escape Us"/>
+    <card blueprintId="1_249" horizontal="false" title="Imperial Barrier"/>
+    <card blueprintId="6_157" horizontal="false" title="None Shall Pass"/>
+    <card blueprintId="6_157" horizontal="false" title="None Shall Pass"/>
+    <card blueprintId="9_139" horizontal="false" title="Prepared Defenses"/>
+    <card blueprintId="5_149" horizontal="false" title="Projective Telepathy"/>
+    <card blueprintId="2_140" horizontal="false" title="Stunning Leader"/>
+    <card blueprintId="2_140" horizontal="false" title="Stunning Leader"/>
+    <card blueprintId="2_140" horizontal="false" title="Stunning Leader"/>
+    <card blueprintId="7_276" horizontal="true" title="Coruscant: Docking Bay"/>
+    <card blueprintId="7_282" horizontal="true" title="Executor: Docking Bay"/>
+    <card blueprintId="6_162" horizontal="true" title="Jabba's Palace: Audience Chamber"/>
+    <card blueprintId="6_164" horizontal="true" title="Jabba's Palace: Dungeon"/>
+    <card blueprintId="6_167" horizontal="true" title="Jabba's Sail Barge: Passenger Deck"/>
+    <card blueprintId="6_168" horizontal="false" title="Nal Hutta"/>
+    <card blueprintId="221_34" horizontal="true" title="Tatooine: Great Pit Of Carkoon"/>
+    <card blueprintId="110_6" horizontal="false" title="Court Of The Vile Gangster"/>
+    <card blueprintId="200_131" horizontal="false" title="Bossk In Hound's Tooth"/>
+    <card blueprintId="109_10" horizontal="false" title="Dengar In Punishing One"/>
+    <card blueprintId="200_134" horizontal="false" title="Elis In Hinthra"/>
+    <card blueprintId="110_12" horizontal="false" title="Zuckuss In Mist Hunter"/>
+    <card blueprintId="204_56" horizontal="false" title="Jabba's Sail Barge"/>
+    <cardOutsideDeck blueprintId="205_14*" horizontal="false" title="Luke Skywalker, The Emperor's Prize"/>
+    <cardOutsideDeck blueprintId="13_51*" horizontal="false" title="A Useless Gesture"/>
+    <cardOutsideDeck blueprintId="223_7*" horizontal="false" title="A Useless Gesture &amp; Death Star Sentry"/>
+    <cardOutsideDeck blueprintId="13_52*" horizontal="false" title="Allegations Of Corruption"/>
+    <cardOutsideDeck blueprintId="13_54*" horizontal="false" title="Battle Order"/>
+    <cardOutsideDeck blueprintId="225_3" horizontal="false" title="Come Here You Big Coward"/>
+    <cardOutsideDeck blueprintId="216_5*" horizontal="false" title="Crossfire"/>
+    <cardOutsideDeck blueprintId="13_66*" horizontal="false" title="Do They Have A Code Clearance?"/>
+    <cardOutsideDeck blueprintId="220_2*" horizontal="false" title="Drop!"/>
+    <cardOutsideDeck blueprintId="213_13*" horizontal="false" title="Failure At The Cave"/>
+    <cardOutsideDeck blueprintId="200_95*" horizontal="false" title="Fanfare"/>
+    <cardOutsideDeck blueprintId="13_72*" horizontal="false" title="Leave Them To Me"/>
+    <cardOutsideDeck blueprintId="13_78*" horizontal="false" title="No Escape"/>
+    <cardOutsideDeck blueprintId="13_81*" horizontal="false" title="Oppressive Enforcement"/>
+    <cardOutsideDeck blueprintId="13_84*" horizontal="false" title="Resistance"/>
+    <cardOutsideDeck blueprintId="13_86*" horizontal="false" title="Secret Plans"/>
+    <cardOutsideDeck blueprintId="13_90*" horizontal="false" title="There Is No Try"/>
+    <cardOutsideDeck blueprintId="200_99*" horizontal="false" title="Vote Of No Confidence"/>
+    <cardOutsideDeck blueprintId="223_26*" horizontal="false" title="We'll Let Fate-a Decide, Huh?"/>
+    <cardOutsideDeck blueprintId="13_95*" horizontal="false" title="Weapon Of A Sith"/>
+    <cardOutsideDeck blueprintId="13_98*" horizontal="false" title="Wipe Them Out, All Of Them"/>
+    <cardOutsideDeck blueprintId="200_100*" horizontal="false" title="You Cannot Hide Forever"/>
+    <cardOutsideDeck blueprintId="223_29*" horizontal="false" title="You've Never Won A Race?"/>
+    <cardOutsideDeck blueprintId="106_13*" horizontal="false" title="Dreadnaught-Class Heavy Cruiser"/>
+    <cardOutsideDeck blueprintId="7_312*" horizontal="false" title="Dewback"/>
+    <cardOutsideDeck blueprintId="1_308*" horizontal="false" title="Lift Tube"/>
+</deck>

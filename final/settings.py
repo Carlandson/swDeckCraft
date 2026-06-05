@@ -37,7 +37,11 @@ if IS_HEROKU_APP:  # Only enable SSL related settings on Heroku
     SECURE_HSTS_PRELOAD = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    ALLOWED_HOSTS = ['deckpub.com', 'www.deckpub.com', '.herokuapp.com'] 
+    ALLOWED_HOSTS = [
+        'deckpub.org', 'www.deckpub.org',
+        'deckpub.com', 'www.deckpub.com',
+        '.herokuapp.com',
+    ] 
 else:
     # Development settings (locally)
     DEBUG = True

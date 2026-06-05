@@ -24,33 +24,112 @@ html {
     align-content: flex-start;
 }
 
-#sixtyFirst {
-    position: absolute;
-    bottom: 160px;
-    left: 30px;
+.floating-card-panel {
+    position: fixed;
     display: none;
+    flex-direction: column;
+    z-index: 90;
+    border: 2px solid #444;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --card-width: 90px;
+    --card-height: 125.5px;
+    --card-overlap: 10px;
+    --card-container-height: 126px;
+}
+
+.panel-drag-handle {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 8px 36px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: move;
+    user-select: none;
+    border-bottom: 1px solid #444;
+    border-radius: 8px 8px 0 0;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+}
+
+.panel-drag-title {
+    pointer-events: none;
+}
+
+.panel-close-btn {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.panel-close-btn:hover {
+    background: rgba(220, 80, 80, 0.85);
+}
+
+.floating-card-content {
+    display: flex;
     flex-wrap: wrap;
-    width: 60vw;
-    height: 15vh;
+    flex: 1;
+    min-height: 0;
     overflow: auto;
     flex-direction: row;
-    align-content: flex-start;
-    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 4px;
+}
+
+#sixtyFirst {
+    z-index: 95;
+    max-height: calc(100vh - 32px);
+    background: rgba(0, 0, 0, 0.94);
+}
+
+#sixtyFirst .floating-card-content {
+    padding: 12px;
 }
 
 #cardsOutsideDeck {
-    position: absolute;
-    z-index: auto;
-    display: none;
-    flex-wrap: wrap;
-    width: 60vw;
-    height: 40vh;
-    bottom: 160px;
-    left: 30px;
-    overflow: auto;
-    flex-direction: row;
-    align-content: flex-start;
-    background: rgba(0, 0, 0, 0.5);
+    width: 75vw;
+    height: 60vh;
+    min-height: 320px;
+    background: rgba(0, 0, 0, 0.92);
+}
+
+#randomHand {
+    width: 65vw;
+    height: auto;
+    max-height: 80vh;
+    z-index: 100;
+    background-color: #000;
+}
+
+#randomHand .floating-card-content {
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 14px 36px;
+    gap: 8px;
+}
+
+#randomHand .cardContainer {
+    margin-right: 0;
 }
 
 #deckBuilder {
@@ -63,6 +142,10 @@ html {
     height: 80vh;
     background-color: transparent;
     position: relative;
+    --card-width: 90px;
+    --card-height: 125.5px;
+    --card-overlap: 10px;
+    --card-container-height: 126px;
 }
 
 #deckStats {
@@ -97,29 +180,53 @@ html {
 .card {
     display: flex;
     flex-basis: auto;
-    height: 138.3px;
-    width: 100px;
+    --search-card-width: 100px;
+    --search-card-height: calc(var(--search-card-width) * 125.5 / 90);
+    height: var(--search-card-height);
+    width: var(--search-card-width);
     background-color: transparent;
+    flex-shrink: 0;
 }
 
-.deckCard {
-    height: 125.5px; 
-    width: 90px;
+.card > img {
+    width: 100%;
+    height: auto;
+}
+
+.site-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .site {
+  display: block;
   transform-origin: 0 0;
   transform: rotate(.25turn);
-  width: 100px;
   margin-left: 100%;
   max-width: none;
-  width: 137.4px;
+  width: var(--search-card-height);
+  height: auto;
 }
 
 .cardContainer {
   display: flex;
   position: relative;
-  height: 126px;
+  height: var(--card-container-height, 126px);
+  flex-shrink: 0;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+.deckCard {
+    height: var(--card-height, 125.5px);
+    width: var(--card-width, 90px);
+}
+
+.deckCard > img {
+    width: 100%;
+    height: auto;
 }
 
 #parameterDiv {
@@ -142,24 +249,6 @@ html {
     border-radius: 5px;
 }
 
-#randomHand {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    height: 15vh;
-    width: 41.5vw;
-    z-index: 100;
-    background-color:#1DACD0;
-    border: 5px solid blue;
-    border-radius: 10px;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-content: flex-start;
-}
 
 .focusCardDiv {
     position: absolute; 
@@ -181,10 +270,9 @@ html {
     left: 50%;
     border-radius:12px;
     transform-origin: 0 0;
-    transform: rotate(.25turn);
-    transform: translate(-50%, -50%);
+    transform: rotate(.25turn) translate(-50%, -50%);
     margin-left: 100%;
-    width: 28vw;
+    width: calc(20vw * 125.5 / 90);
     max-width: none;
 }
 .focusCard {
@@ -194,13 +282,21 @@ html {
     /* height: 498px;   */
 }
 
+.deckCard .site-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
 .deckSite {
+    display: block;
     transform-origin: 0 0;
     transform: rotate(.25turn);
-    width: 90px;
     margin-left: 100%;
     max-width: none;
-    width: 125.5px;
+    width: var(--card-height, 125.5px);
+    height: auto;
 }
 
 .cardStack {

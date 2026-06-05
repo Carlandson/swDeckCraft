@@ -66,8 +66,486 @@ class cardObject {
     this.set = set;
     this.icons = icons;
     this.imageUrl = imageUrl;
+    this.isHolographic = false;
     }
 };
+
+const LAYOUT = {
+    baseWidth: 90,
+    baseHeight: 125.5,
+    baseOverlap: 10,
+    minScale: 0.45,
+    maxScale: 4,
+    stackGap: 4,
+};
+
+function isHorizontalCard(card) {
+    return card.subType === 'Site' || card.horizontal === true;
+}
+
+let lastSearchResults = [];
+
+function isAlternateImageUrl(imageUrl) {
+    if (!imageUrl) {
+        return false;
+    }
+    return imageUrl.includes('AlternateImage') || imageUrl.includes('_ai.');
+}
+
+function normalizeBlueprintId(blueprintId) {
+    const raw = (blueprintId || '').trim();
+    const isHolographic = /[*^]$/.test(raw);
+    const baseId = raw.replace(/[*^]$/, '');
+    return { baseId, isHolographic };
+}
+
+function normalizeTitle(title) {
+    return (title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function resolveCard(blueprintId, title, dictionary) {
+    const { baseId, isHolographic } = normalizeBlueprintId(blueprintId);
+    const matches = dictionary.filter(item => item.gempId === baseId);
+    if (matches.length === 0) {
+        return null;
+    }
+
+    let match;
+    if (matches.length === 1) {
+        match = matches[0];
+    } else {
+        const alternateMatches = matches.filter(card => isAlternateImageUrl(card.imageUrl));
+        const regularMatches = matches.filter(card => !isAlternateImageUrl(card.imageUrl));
+        if (isHolographic && alternateMatches.length) {
+            match = alternateMatches[0];
+        } else if (!isHolographic && regularMatches.length) {
+            match = regularMatches[0];
+        } else {
+            const normalizedTitle = normalizeTitle(title);
+            match = matches.find(card => {
+                const cardTitle = normalizeTitle(card.name);
+                return cardTitle.includes(normalizedTitle) || normalizedTitle.includes(cardTitle);
+            }) || matches[0];
+        }
+    }
+
+    const copy = JSON.parse(JSON.stringify(match));
+    copy.isHolographic = isHolographic;
+    if (copy.subType === 'Site') {
+        copy.horizontal = true;
+    }
+    return copy;
+}
+
+function parseDeckXml(text) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, 'text/xml');
+    if (doc.querySelector('parsererror')) {
+        throw new Error('Invalid deck file format');
+    }
+
+    const main = [];
+    const outside = [];
+    doc.querySelectorAll('card').forEach(node => {
+        main.push({
+            blueprintId: node.getAttribute('blueprintId'),
+            title: node.getAttribute('title'),
+            horizontal: node.getAttribute('horizontal') === 'true',
+        });
+    });
+    doc.querySelectorAll('cardOutsideDeck').forEach(node => {
+        outside.push({
+            blueprintId: node.getAttribute('blueprintId'),
+            title: node.getAttribute('title'),
+            horizontal: node.getAttribute('horizontal') === 'true',
+        });
+    });
+    return { main, outside };
+}
+
+function parseGempCollectionXml(text) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, 'text/xml');
+    if (doc.querySelector('parsererror')) {
+        throw new Error('Invalid GEMP shield collection response');
+    }
+
+    const entries = [];
+    doc.querySelectorAll('collection > card').forEach(node => {
+        entries.push({
+            blueprintId: node.getAttribute('blueprintId'),
+            horizontal: node.getAttribute('horizontal') === 'true',
+        });
+    });
+    return entries;
+}
+
+const GEMP_SHIELD_FILES = {
+    Light: '/static/swccg/gemp-shields/light.xml',
+    Dark: '/static/swccg/gemp-shields/dark.xml',
+};
+
+async function fetchGempShields(deckSide) {
+    const response = await fetch(GEMP_SHIELD_FILES[deckSide]);
+    if (!response.ok) {
+        throw new Error(`Failed to load shields (${response.status})`);
+    }
+    return parseGempCollectionXml(await response.text());
+}
+
+function detectDeckSide(entries) {
+    let lightMatches = 0;
+    let darkMatches = 0;
+
+    entries.forEach(entry => {
+        const { baseId } = normalizeBlueprintId(entry.blueprintId);
+        if (lightDictionary.some(card => card.gempId === baseId)) {
+            lightMatches += 1;
+        }
+        if (darkDictionary.some(card => card.gempId === baseId)) {
+            darkMatches += 1;
+        }
+    });
+
+    if (lightMatches === 0 && darkMatches === 0) {
+        return null;
+    }
+    if (lightMatches === darkMatches) {
+        return null;
+    }
+    return lightMatches > darkMatches ? 'Light' : 'Dark';
+}
+
+function getStackCounts(activeArray, countField) {
+    return activeArray.map(card => card[countField] || 1);
+}
+
+function getStackWidth(count, cardWidth, overlap) {
+    return cardWidth + overlap * (Math.max(count, 1) - 1);
+}
+
+function measureWrappedLayout(stackCounts, containerWidth, containerHeight, scale) {
+    const cardWidth = LAYOUT.baseWidth * scale;
+    const overlap = LAYOUT.baseOverlap * scale;
+    const rowHeight = LAYOUT.baseHeight * scale + LAYOUT.stackGap;
+    let rowWidth = 0;
+    let rows = 1;
+    let maxRowWidth = 0;
+
+    stackCounts.forEach(count => {
+        const stackWidth = getStackWidth(count, cardWidth, overlap) + LAYOUT.stackGap;
+        if (rowWidth > 0 && rowWidth + stackWidth > containerWidth) {
+            maxRowWidth = Math.max(maxRowWidth, rowWidth);
+            rows += 1;
+            rowWidth = stackWidth;
+        } else {
+            rowWidth += stackWidth;
+            maxRowWidth = Math.max(maxRowWidth, rowWidth);
+        }
+    });
+
+    return {
+        cardWidth,
+        overlap,
+        rows,
+        totalHeight: rows * rowHeight,
+        maxRowWidth,
+    };
+}
+
+function findOptimalScale(stackCounts, containerWidth, containerHeight) {
+    let low = LAYOUT.minScale;
+    let high = LAYOUT.maxScale;
+    let bestScale = LAYOUT.minScale;
+
+    for (let i = 0; i < 50; i++) {
+        const mid = (low + high) / 2;
+        const layout = measureWrappedLayout(stackCounts, containerWidth, containerHeight, mid);
+        if (layout.maxRowWidth <= containerWidth && layout.totalHeight <= containerHeight) {
+            bestScale = mid;
+            low = mid;
+        } else {
+            high = mid;
+        }
+    }
+
+    return bestScale;
+}
+
+function measureSingleRowLayout(cardCount, containerWidth, containerHeight, scale, itemGap = LAYOUT.stackGap) {
+    const cardWidth = LAYOUT.baseWidth * scale;
+    const overlap = LAYOUT.baseOverlap * scale;
+    const rowHeight = LAYOUT.baseHeight * scale + LAYOUT.stackGap;
+    const rowWidth = cardCount * cardWidth + Math.max(0, cardCount - 1) * itemGap;
+
+    return {
+        cardWidth,
+        overlap,
+        rows: 1,
+        totalHeight: rowHeight,
+        maxRowWidth: rowWidth,
+    };
+}
+
+function findOptimalSingleRowScale(cardCount, containerWidth, containerHeight, itemGap = LAYOUT.stackGap) {
+    let low = LAYOUT.minScale;
+    let high = LAYOUT.maxScale;
+    let bestScale = LAYOUT.minScale;
+
+    for (let i = 0; i < 50; i++) {
+        const mid = (low + high) / 2;
+        const layout = measureSingleRowLayout(cardCount, containerWidth, containerHeight, mid, itemGap);
+        if (layout.maxRowWidth <= containerWidth && layout.totalHeight <= containerHeight) {
+            bestScale = mid;
+            low = mid;
+        } else {
+            high = mid;
+        }
+    }
+
+    return bestScale;
+}
+
+function getContentLayoutWidth(container) {
+    const styles = getComputedStyle(container);
+    const paddingX = parseFloat(styles.paddingLeft) + parseFloat(styles.paddingRight);
+    return Math.max(container.clientWidth - paddingX, 1);
+}
+
+function applySingleRowLayout(container, cardCount) {
+    if (!container || cardCount <= 0) {
+        return { cardWidth: LAYOUT.baseWidth, overlap: LAYOUT.baseOverlap };
+    }
+
+    const containerWidth = getContentLayoutWidth(container);
+    const containerHeight = Math.max(
+        container.clientHeight,
+        LAYOUT.baseHeight * LAYOUT.maxScale + LAYOUT.stackGap
+    );
+    const itemGap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap) || LAYOUT.stackGap;
+    const scale = findOptimalSingleRowScale(cardCount, containerWidth, containerHeight, itemGap);
+    const cardWidth = LAYOUT.baseWidth * scale;
+    const cardHeight = LAYOUT.baseHeight * scale;
+    const overlap = LAYOUT.baseOverlap * scale;
+
+    container.style.setProperty('--card-width', `${cardWidth}px`);
+    container.style.setProperty('--card-height', `${cardHeight}px`);
+    container.style.setProperty('--card-overlap', `${overlap}px`);
+    container.style.setProperty('--card-container-height', `${cardHeight + 1}px`);
+    return { cardWidth, overlap };
+}
+
+function getMainDeckLayoutScale() {
+    const deckBuilder = document.querySelector('#deckBuilder');
+    if (!deckBuilder || !deckOnDeck.length) {
+        return 1;
+    }
+
+    const cardWidth = parseFloat(getComputedStyle(deckBuilder).getPropertyValue('--card-width'));
+    if (cardWidth && !Number.isNaN(cardWidth)) {
+        return cardWidth / LAYOUT.baseWidth;
+    }
+
+    const deckContent = getDeckContentArea(deckBuilder) || deckBuilder;
+    return findOptimalScale(
+        getStackCounts(deckOnDeck, 'count'),
+        Math.max(deckContent.clientWidth, 1),
+        Math.max(deckContent.clientHeight, 1)
+    );
+}
+
+function applyDeckStackLayout(container, stackCounts, maxScale = null) {
+    if (!container) {
+        return { cardWidth: LAYOUT.baseWidth, overlap: LAYOUT.baseOverlap };
+    }
+
+    if (!stackCounts.length) {
+        container.style.setProperty('--card-width', `${LAYOUT.baseWidth}px`);
+        container.style.setProperty('--card-height', `${LAYOUT.baseHeight}px`);
+        container.style.setProperty('--card-overlap', `${LAYOUT.baseOverlap}px`);
+        container.style.setProperty('--card-container-height', `${LAYOUT.baseHeight + 1}px`);
+        return { cardWidth: LAYOUT.baseWidth, overlap: LAYOUT.baseOverlap };
+    }
+
+    const containerWidth = Math.max(container.clientWidth, 1);
+    const containerHeight = Math.max(container.clientHeight, 1);
+    let scale = findOptimalScale(stackCounts, containerWidth, containerHeight);
+    if (maxScale !== null) {
+        scale = Math.min(scale, maxScale);
+    }
+    const cardWidth = LAYOUT.baseWidth * scale;
+    const cardHeight = LAYOUT.baseHeight * scale;
+    const overlap = LAYOUT.baseOverlap * scale;
+
+    container.style.setProperty('--card-width', `${cardWidth}px`);
+    container.style.setProperty('--card-height', `${cardHeight}px`);
+    container.style.setProperty('--card-overlap', `${overlap}px`);
+    container.style.setProperty('--card-container-height', `${cardHeight + 1}px`);
+    return { cardWidth, overlap };
+}
+
+function getLayoutContainer(selector) {
+    const panel = document.querySelector(selector);
+    if (!panel) {
+        return null;
+    }
+    return panel.querySelector('.floating-card-content') || panel;
+}
+
+function getDeckContentArea(panel) {
+    if (!panel) {
+        return null;
+    }
+    return panel.querySelector('.floating-card-content') || panel;
+}
+
+function syncRandomHandWidth() {
+    const deckBuilder = document.querySelector('#deckBuilder');
+    const randomHandPanel = document.querySelector('#randomHand');
+    if (!deckBuilder || !randomHandPanel) {
+        return;
+    }
+    randomHandPanel.style.width = `${deckBuilder.offsetWidth}px`;
+}
+
+function positionSixtyFirstOverSearch(panel) {
+    const searchResults = document.querySelector('#searchResults');
+    const search = document.querySelector('#search');
+    const target = searchResults || search;
+    if (!target || !panel) {
+        return;
+    }
+    const rect = target.getBoundingClientRect();
+    const maxHeight = Math.max(180, window.innerHeight - rect.top - 16);
+    const panelHeight = Math.min(rect.height, maxHeight);
+    panel.style.width = `${rect.width}px`;
+    panel.style.height = `${panelHeight}px`;
+    panel.style.left = `${rect.left}px`;
+    panel.style.top = `${rect.top}px`;
+    panel.style.transform = 'none';
+    panel.style.margin = '0';
+}
+
+function centerFloatingPanel(panel) {
+    if (!panel) {
+        return;
+    }
+    if (panel.id === 'sixtyFirst') {
+        positionSixtyFirstOverSearch(panel);
+        return;
+    }
+    if (panel.id === 'randomHand') {
+        syncRandomHandWidth();
+    }
+    panel.style.transform = 'none';
+    panel.style.margin = '0';
+    const width = panel.offsetWidth;
+    const height = panel.offsetHeight;
+    panel.style.left = `${Math.max(16, (window.innerWidth - width) / 2)}px`;
+    panel.style.top = `${Math.max(16, (window.innerHeight - height) / 2)}px`;
+}
+
+function hideFloatingPanel(panelId) {
+    const panel = document.getElementById(panelId);
+    if (!panel) {
+        return;
+    }
+    panel.style.display = 'none';
+
+    if (panelId === 'randomHand') {
+        activeDiv = 'deck';
+        return;
+    }
+    if (panelId === 'cardsOutsideDeck' || panelId === 'sixtyFirst') {
+        activeDiv = 'deck';
+    }
+}
+
+function showFloatingPanel(panel) {
+    if (!panel) {
+        return;
+    }
+    panel.style.display = 'flex';
+    requestAnimationFrame(() => centerFloatingPanel(panel));
+}
+
+function setupFloatingPanels() {
+    document.querySelectorAll('.floating-card-panel').forEach(panel => {
+        const handle = panel.querySelector('.panel-drag-handle');
+        dragElement(panel, { handle });
+    });
+
+    document.querySelectorAll('.panel-close-btn').forEach(button => {
+        button.addEventListener('mousedown', (event) => {
+            event.stopPropagation();
+        });
+        button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            hideFloatingPanel(button.dataset.panel);
+        });
+    });
+
+    const deckBuilder = document.querySelector('#deckBuilder');
+    if (typeof ResizeObserver !== 'undefined') {
+        if (deckBuilder) {
+            const deckWidthObserver = new ResizeObserver(() => {
+                const randomHandPanel = document.querySelector('#randomHand');
+                if (randomHandPanel?.style.display === 'flex' && randomHand.length) {
+                    syncRandomHandWidth();
+                    centerFloatingPanel(randomHandPanel);
+                    refreshDeckArea('random', randomHand);
+                }
+            });
+            deckWidthObserver.observe(deckBuilder);
+        }
+        const searchResults = document.querySelector('#searchResults');
+        if (searchResults) {
+            const searchPanelObserver = new ResizeObserver(() => {
+                const sixtyFirstPanel = document.querySelector('#sixtyFirst');
+                if (sixtyFirstPanel?.style.display === 'flex') {
+                    positionSixtyFirstOverSearch(sixtyFirstPanel);
+                    refreshDeckArea('sixtyFirst', sixtyFirstCards);
+                }
+            });
+            searchPanelObserver.observe(searchResults);
+        }
+    }
+}
+
+function setupLayoutObservers() {
+    const containers = [
+        { element: document.querySelector('#deckBuilder'), populate: () => refreshDeckArea('deck', deckOnDeck) },
+        { element: getLayoutContainer('#cardsOutsideDeck'), populate: () => refreshDeckArea('cardsOutsideDeck', cardsOutsideDeck) },
+        { element: getLayoutContainer('#sixtyFirst'), populate: () => refreshDeckArea('sixtyFirst', sixtyFirstCards) },
+        { element: getLayoutContainer('#randomHand'), populate: () => refreshDeckArea('random', randomHand) },
+    ];
+
+    if (typeof ResizeObserver === 'undefined') {
+        return;
+    }
+
+    const observer = new ResizeObserver(entries => {
+        entries.forEach(entry => {
+            const match = containers.find(item => item.element === entry.target);
+            if (match) {
+                match.populate();
+            }
+        });
+    });
+
+    containers.forEach(item => {
+        if (item.element) {
+            observer.observe(item.element);
+        }
+    });
+}
+
+function refreshDeckArea(areaName, activeArray) {
+    const previousActiveDiv = activeDiv;
+    activeDiv = areaName;
+    deckPopulate(activeArray);
+    activeDiv = previousActiveDiv;
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -101,9 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     typeChart.update();
     document.querySelector('#sortDeckByDestiny').addEventListener('click', () => sortByDestiny());
-    document.querySelector('#importLightDeck').addEventListener('change', () => {importLightDeck()});
-    document.querySelector('#importDarkDeck').addEventListener('change', () => {importDarkDeck()});
-    document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
+    document.querySelector('#importDeck').addEventListener('change', () => { importDeck(); });    document.querySelector('#saveDeck').addEventListener('click', () => saveDeck(deckOnDeck));
     document.querySelector('#side').addEventListener('change', () => searchCards());
     document.querySelector('#lsShields').addEventListener('click', () => addShields());
     document.querySelector('#sortDeckByType').addEventListener('click', () => sortDeck());
@@ -139,6 +615,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //         };
     // });
     // };    
+    setupLayoutObservers();
+    setupFloatingPanels();
     let bars = document.querySelectorAll('.searchBar');
     bars.forEach(bar => {
         bar.value = "";
@@ -152,25 +630,25 @@ function defensiveShieldTest() {
         defensiveShieldDiv.style.display = "none";
         activeDiv = "deck";
     } else {
-        defensiveShieldDiv.style.display = "flex";
+        showFloatingPanel(defensiveShieldDiv);
         sixtyFirstDiv.style.display = "none";
         activeDiv = "cardsOutsideDeck";
+        if (cardsOutsideDeck.length) {
+            refreshDeckArea('cardsOutsideDeck', cardsOutsideDeck);
+        }
     };
 };
 
 function sixtyFirstTest() {
-    var mainDeck = document.querySelector('#deckBuilder');
     var sixtyFirstDiv = document.querySelector('#sixtyFirst');
     var defensiveShieldDiv = document.querySelector('#cardsOutsideDeck');
     if (sixtyFirstDiv.style.display == "flex"){
         sixtyFirstDiv.style.display = "none";
         activeDiv = "deck";
-        mainDeck.classList.remove("opaque");
     } else {
-        sixtyFirstDiv.style.display = "flex";
+        showFloatingPanel(sixtyFirstDiv);
         defensiveShieldDiv.style.display = "none";
         activeDiv = "sixtyFirst";
-        mainDeck.classList.add("opaque");
     };
 };
 
@@ -323,15 +801,19 @@ function SaveParameters(property, operator, query) {
 };
 
 function loadCards() {
-    fetch ('load_cards')
-        .then(response => response.json())
+    fetch('load_cards')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load cards (${response.status})`);
+            }
+            return response.json();
+        })
         .then(results => {
             results.forEach(card => {
-                cardName = new cardObject(
+                const cardName = new cardObject(
                     card['name'],
                     card['gametext'],
                     card['lore'],
-                    // card['image'],
                     card['type'],
                     card['side'],
                     card['subType'],
@@ -344,13 +826,26 @@ function loadCards() {
                     card['set'],
                     card['icons'],
                     card['imageUrl']
-                )
-                if (card['side'] == "Light") {
+                );
+                cardName.isAlternateImage = card['isAlternateImage'] ?? isAlternateImageUrl(card['imageUrl']);
+                cardName.isHolographic = false;
+                cardName.horizontal = card['subType'] === 'Site';
+                if (card['side'] === "Light") {
                     lightDictionary.push(cardName);
                 } else {
                     darkDictionary.push(cardName);
                 }
-            })
+            });
+
+            const selectedSide = document.querySelector('#side').value;
+            if (selectedSide === "Light" || selectedSide === "Dark") {
+                searchCards();
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            document.querySelector('#resultCount').textContent =
+                `Could not load cards: ${error.message}. Ensure the dev server is running and the database has been imported (python manage.py import_cards).`;
         });
 };
 
@@ -369,10 +864,8 @@ function searchCards() {
 };
 
 function searchQuery(object) {
+    lastSearchResults = object;
     count = 0;
-    //loader displays while populating, hidden after finishing
-    // let loader = document.querySelector("#loading");
-    // loader.classList.add("display");
     let resultDiv = document.querySelector('#searchResults');
     resultDiv.innerHTML = "";
     for (const card of object) {
@@ -397,7 +890,7 @@ function searchQuery(object) {
         // let forfeit = card.forfeit;
         let resultCard = document.createElement('div');
         resultCard.setAttribute('class', 'card');
-        if(subType=="Site"){
+        if(isHorizontalCard(card)){
             let rotatedCard = document.createElement('div');
             rotatedCard.classList.add('site-wrapper');
             let imageElement = document.createElement('img');
@@ -423,7 +916,7 @@ function searchQuery(object) {
         resultCard.addEventListener('click', (e) => {
             if(e.shiftKey) {
                 // draggableZoom(finalImage, subType)
-                draggableZoom(imageUrlTest, subType)
+                draggableZoom(imageUrlTest, isHorizontalCard(card))
             } else {
                 if(activeDiv == "deck") {
                     addCard(deckOnDeck, card);
@@ -438,25 +931,26 @@ function searchQuery(object) {
     };
     document.querySelector("#resultCount").innerHTML = "showing " + count + " results out of " + object.length;
 };
-
 //draggable function for zoomed card - user shift clicks
-function draggableZoom(imageUrlTest, subType) {
+function draggableZoom(imageUrlTest, isHorizontal) {
     var cardDiv = document.getElementById('zoomCard');
     cardDiv.innerHTML = '';
     cardDiv.classList.add("focusCardDiv");
     //add second div that changes the dimensions of the first div, give the movable properties to focusCardDiv, and the dimensions to the next div
-    if(subType == "Site") {
+    if(isHorizontal) {
         let rotatedCard = document.createElement('div');
         rotatedCard.classList.add('site-wrapper');
         var imageElement = document.createElement('img');
         imageElement.setAttribute("src", `${imageUrlTest}`);
         imageElement.classList.add('focusSite');
+        rotatedCard.append(imageElement);
+        cardDiv.append(rotatedCard);
     } else {
         var imageElement = document.createElement('img');
         imageElement.setAttribute('src', `${imageUrlTest}`);
         imageElement.classList.add('focusCard');
+        cardDiv.append(imageElement);
     };
-    cardDiv.append(imageElement);
     cardDiv.style.display = "block";
     dragElement(cardDiv);
     cardDiv.addEventListener('click', (e) => {
@@ -514,42 +1008,72 @@ function addCard(activeArray, card) {
 };
 
 function deckPopulate(activeArray) {
-    var deckArea;
+    var deckPanel;
     if(activeDiv == "deck") {
-        deckArea = document.querySelector("#deckBuilder");
+        deckPanel = document.querySelector("#deckBuilder");
     } else if(activeDiv == "sixtyFirst") {
-        deckArea = document.querySelector("#sixtyFirst");
+        deckPanel = document.querySelector("#sixtyFirst");
     } else if(activeDiv =="cardsOutsideDeck") {
-        deckArea = document.querySelector('#cardsOutsideDeck');
+        deckPanel = document.querySelector('#cardsOutsideDeck');
     } else if(activeDiv == "random") {
-        deckArea = document.querySelector('#randomHand');
+        deckPanel = document.querySelector('#randomHand');
     };
+    const deckArea = getDeckContentArea(deckPanel);
+    if (!deckArea) {
+        return;
+    }
+
+    let stackCounts = [];
+    let countField = 'count';
+    if(activeDiv == 'random') {
+        stackCounts = activeArray.map(() => 1);
+    } else if(activeArray == sixtyFirstCards) {
+        stackCounts = getStackCounts(activeArray, 'sixtyFirstCount');
+        countField = 'sixtyFirstCount';
+    } else if(activeArray == deckOnDeck) {
+        stackCounts = getStackCounts(activeArray, 'count');
+        countField = 'count';
+    } else if(activeArray == cardsOutsideDeck) {
+        stackCounts = getStackCounts(activeArray, 'outsideCardCount');
+        countField = 'outsideCardCount';
+    }
+
+    let layoutValues = { cardWidth: LAYOUT.baseWidth, overlap: LAYOUT.baseOverlap };
+    if (deckArea && stackCounts.length) {
+        if (activeDiv === 'random') {
+            syncRandomHandWidth();
+            layoutValues = applySingleRowLayout(deckArea, stackCounts.length);
+        } else if (activeDiv === 'sixtyFirst') {
+            layoutValues = applyDeckStackLayout(deckArea, stackCounts, getMainDeckLayoutScale());
+        } else {
+            layoutValues = applyDeckStackLayout(deckArea, stackCounts);
+        }
+    }
+
     deckArea.innerHTML = '';
     for(i = 0; i < activeArray.length; i++) {
         let tempCard = activeArray[i];
         let parentContainer = document.createElement("div");
         var parentWidth;
+        var cardCount;
         if(activeDiv == 'random') {
-            parentWidth = 90;
-            var cardCount = 1;
+            parentWidth = layoutValues.cardWidth;
+            cardCount = 1;
         } else if(activeArray == sixtyFirstCards) {
-            parentWidth = 90 + (10*(tempCard.sixtyFirstCount - 1));
-            var cardCount = tempCard.sixtyFirstCount;
+            cardCount = tempCard.sixtyFirstCount;
+            parentWidth = layoutValues.cardWidth + (layoutValues.overlap * (cardCount - 1));
         } else if(activeArray == deckOnDeck){
-            parentWidth = 90 + (10*(tempCard.count - 1));
-            var cardCount = tempCard.count;
+            cardCount = tempCard.count;
+            parentWidth = layoutValues.cardWidth + (layoutValues.overlap * (cardCount - 1));
         } else if(activeArray == cardsOutsideDeck) {
-            parentWidth = 90 + (10*(tempCard.outsideCardCount - 1));
-            var cardCount = tempCard.outsideCardCount;
+            cardCount = tempCard.outsideCardCount;
+            parentWidth = layoutValues.cardWidth + (layoutValues.overlap * (cardCount - 1));
         };
         parentContainer.style.width = `${parentWidth}px`;
         parentContainer.classList.add("cardContainer");
         for(j = 0; j < cardCount; j++){ 
-            //creates seperate div for each card
             let cardDiv = document.createElement('div');
-            //moves the card to the right j*10 pixels
-            if (j > 0) {cardDiv.style.left = `${j*10}px`};
-            //gives card child and deckcard attributes to be controlled by parent container
+            if (j > 0) {cardDiv.style.left = `${j * layoutValues.overlap}px`};            //gives card child and deckcard attributes to be controlled by parent container
             cardDiv.classList.add("child", "deckCard", `${activeDiv}`);
             //grabs the image, takes out the path which messes with the image display
             // let imageUrl = tempCard.image.replace("C:/Users/Jx1/Documents/GitHub/projects/cardSearch/", "");
@@ -557,7 +1081,7 @@ function deckPopulate(activeArray) {
             // let finalImage = imageUrl.replaceAll('"', '');
             let testImageUrl = tempCard.imageUrl;
             //site image generator
-            if (activeArray[i].subType == "Site"){
+            if (isHorizontalCard(activeArray[i])){
                 let rotatedCard = document.createElement('div');
                 rotatedCard.classList.add('site-wrapper');
                 let imageElement = document.createElement('img');
@@ -573,7 +1097,7 @@ function deckPopulate(activeArray) {
                 };
                 cardDiv.addEventListener('click', (e) => {
                     if(e.shiftKey) {
-                        draggableZoom(testImageUrl, 'Site')
+                        draggableZoom(testImageUrl, true)
                         // draggableZoom(finalImage, 'Site')
                     } else if(e.ctrlKey) {
                         if (!tempCard.startingCard && cardDiv.classList.contains('deck')) {
@@ -605,7 +1129,7 @@ function deckPopulate(activeArray) {
                 };
                 cardDiv.addEventListener('click', (e) => {
                         if(e.shiftKey) {
-                            draggableZoom(testImageUrl, tempCard.subType)
+                            draggableZoom(testImageUrl, isHorizontalCard(tempCard))
                             // draggableZoom(finalImage, tempCard.subType)
                         } else if(e.ctrlKey) {
                             if (!tempCard.startingCard && cardDiv.classList.contains('deck')) {
@@ -730,13 +1254,15 @@ function deleteCard(activeArray, card){
 // }
 // dragElement(document.getElementById("focusCardDiv"));
 //draggable zoom card function
-function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if (document.getElementById(elmnt.id)) {
-        document.getElementById(elmnt.id).onmousedown = dragMouseDown;
-    } else {
-    elmnt.onmousedown = dragMouseDown;
-    }
+function dragElement(elmnt, options = {}) {
+    const handle = options.handle || elmnt;
+    let pos1 = 0;
+    let pos2 = 0;
+    let pos3 = 0;
+    let pos4 = 0;
+
+    handle.onmousedown = dragMouseDown;
+
     function dragMouseDown(e) {
         e = e || window.event;
         e.preventDefault();
@@ -745,6 +1271,7 @@ function dragElement(elmnt) {
         document.onmouseup = closeDragElement;
         document.onmousemove = elementDrag;
     }
+
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
@@ -752,13 +1279,14 @@ function dragElement(elmnt) {
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        elmnt.style.top = `${elmnt.offsetTop - pos2}px`;
+        elmnt.style.left = `${elmnt.offsetLeft - pos1}px`;
     }
+
     function closeDragElement() {
         document.onmouseup = null;
         document.onmousemove = null;
-    };
+    }
 };
 
 function saveDeck(deckOnDeck) {
@@ -767,9 +1295,11 @@ function saveDeck(deckOnDeck) {
     for (i = 0; i < deckOnDeck.length; i++){
         let tempCard = deckOnDeck[i].name;
         tempCard = replaceString(tempCard);
-        deckList = deckList + `    <card blueprintId="${deckOnDeck[i].gempId}" title="${tempCard}"/>\n`.repeat(deckOnDeck[i].count);
-    };
-    deckList = deckList + "</deck>";
+        const blueprintId = deckOnDeck[i].isHolographic
+            ? `${deckOnDeck[i].gempId}*`
+            : deckOnDeck[i].gempId;
+        deckList = deckList + `    <card blueprintId="${blueprintId}" title="${tempCard}"/>\n`.repeat(deckOnDeck[i].count);
+    };    deckList = deckList + "</deck>";
     //june 3rd stoppage
     let deckName = prompt("Save deck list as: ");
     if (deckName) {
@@ -777,7 +1307,7 @@ function saveDeck(deckOnDeck) {
         downloadDeck(newDeck);
     };
     let title = document.querySelector('#deckTitle')
-    title.innerHTML = deckName;
+    title.textContent = deckName;
 };
 
 //decksave to txt
@@ -794,129 +1324,92 @@ function downloadDeck (file) {
     }, 0);
 };
 
-function importLightDeck() {
-    var sixtyFirstDiv = document.querySelector('#sixtyFirst');
-    var defensiveShieldDiv = document.querySelector('#cardsOutsideDeck');
-    var deckTitle = document.querySelector('#deckTitle');
-    sixtyFirstDiv.style.display = 'none';
-    defensiveShieldDiv.style.display = 'none';
-    activeDiv = 'deck';
-    side = 'light';
-    deckOnDeck = [];
-    let importFile = document.querySelector('#importLightDeck').files;
-    if (importFile.length == 0) return;
-    const importedDeck = importFile[0];
-    let titleCleaned = importedDeck.name;
-    titleCleaned = titleCleaned.replace('.txt', '');
-    deckTitle.innerHTML = titleCleaned;
-    let reader = new FileReader();
-    reader.onload = (e) => {
-        const file = e.target.result;
-        var deck = [];
-        var cleanedDeck = [];
-        var outsideCards = [];
-        var regBrackets = /\<(.*?)\>/g;
-        var reg = /\"(.*?)\"/g;
-        file.match(regBrackets).forEach((element) => {
-            deck.push(element);
-        });
-        for (i = 0; i < deck.length; i++) {
-            var outsideDeck = true;
-            //opt-chaining operator skips null
-            if(deck[i].match("card b")){
-                outsideDeck = false;
-            };
-            deck[i].match(reg)?.forEach((element) => {
-                if(element.includes("_")) {
-                    element = element.replace(/["]/g, '');
-                    if(!outsideDeck) {
-                        cleanedDeck.push(element);
-                    } else {
-                        outsideCards.push(element);
-                    };
-                };
-            });
-        };
-        try {
-            cleanedDeck.forEach((card) => {
-                var matchingCard = lightDictionary.find(item => item.gempId == card);
-                if (matchingCard === undefined) throw "Wrong Side!";
-                addCard(deckOnDeck, matchingCard);
-            });
-        } catch (e) {
-            alert(e);
-        };
-    };
-    reader.onerror = (e) => alert("check" + e.target.error.name);
-    reader.readAsText(importedDeck);        
-};
+function importDeckEntries(entries, targetArray, dictionary, areaName) {
+    const previousActiveDiv = activeDiv;
+    activeDiv = areaName;
+    const missing = [];
 
-function importDarkDeck() {
-    var sixtyFirstDiv = document.querySelector('#sixtyFirst');
-    var defensiveShieldDiv = document.querySelector('#cardsOutsideDeck');
-    var deckTitle = document.querySelector('#deckTitle');
-    sixtyFirstDiv.style.display = 'none';
-    defensiveShieldDiv.style.display = 'none';
-    activeDiv = 'deck';
-    side = 'dark';
-    deckOnDeck = [];
-    let importFile = document.querySelector('#importDarkDeck').files;
-    if (importFile.length == 0) return;
-    const importedDeck = importFile[0];
-    let titleCleaned = importedDeck.name;
-    titleCleaned = titleCleaned.replace('.txt', '');
-    deckTitle.innerHTML = titleCleaned;
-    let reader = new FileReader();
+    entries.forEach(entry => {
+        const resolvedCard = resolveCard(entry.blueprintId, entry.title, dictionary);
+        if (!resolvedCard) {
+            missing.push(entry.title || entry.blueprintId);
+            return;
+        }
+        if (entry.horizontal) {
+            resolvedCard.horizontal = true;
+        }
+        addCard(targetArray, resolvedCard);
+    });
+
+    activeDiv = previousActiveDiv;
+    return missing;
+}
+
+function importDeck() {
+    const sixtyFirstDiv = document.querySelector('#sixtyFirst');
+    const defensiveShieldDiv = document.querySelector('#cardsOutsideDeck');
+    const deckTitle = document.querySelector('#deckTitle');
+    const sideSelect = document.querySelector('#side');
+    const importInput = document.querySelector('#importDeck');
+
+    if (importInput.files.length === 0) {
+        return;
+    }
+
+    const importedDeck = importInput.files[0];
+    const reader = new FileReader();
     reader.onload = (e) => {
-        const file = e.target.result;
-        var deck = [];
-        var cleanedDeck = [];
-        var outsideCards = [];
-        var regBrackets = /\<(.*?)\>/g;
-        var reg = /\"(.*?)\"/g;
-        file.match(regBrackets).forEach((element) => {
-            deck.push(element);
-        });
-        for (i = 0; i < deck.length; i++) {
-            var outsideDeck = true;
-            //opt-chaining operator skips null
-            if(deck[i].match("card b")){
-                outsideDeck = false;
-            };
-            deck[i].match(reg)?.forEach((element) => {
-                if(element.includes("_")) {
-                    element = element.replace(/["]/g, '');
-                    if(!outsideDeck) {
-                        cleanedDeck.push(element);
-                    } else {
-                        outsideCards.push(element);
-                    };
-                };
-            });
-        };
-        //file is a string
-        //file is going to fetch each card from the dictionary, then use the addcard function to add them to the deckview
-        //we need to clean the string up first - or we can parse the string and find matches in the dictionary to add without needing to change string at all
         try {
-            cleanedDeck.forEach((card) => {
-                var card = card.replace("*", "");
-                var matchingCard = darkDictionary.find(item => item.gempId == card);
-                if (matchingCard === undefined) throw "Wrong Side!";
-                addCard(deckOnDeck, matchingCard);
-            });
-            // outsideCards.forEach((card) => {
-            //     var matchingCard = darkDictionary.find(item => item.gempId == card);
-            //     if (matchingCard === undefined) throw "Wrong Side!";
-            //     addCard(cardsOutsideDeck, matchingCard);
-            // });
-        } catch (e) {
-            alert(e);
-        };
+            const parsedDeck = parseDeckXml(e.target.result);
+            const allEntries = parsedDeck.main.concat(parsedDeck.outside);
+            const detectedSide = detectDeckSide(allEntries);
+
+            if (!detectedSide) {
+                alert('Could not determine deck side. Check that cards exist in the database.');
+                importInput.value = '';
+                return;
+            }
+
+            const dictionary = detectedSide === 'Light' ? lightDictionary : darkDictionary;
+            sideSelect.value = detectedSide;
+            searchCards();
+
+            deckOnDeck = [];
+            cardsOutsideDeck = [];
+            sixtyFirstCards = [];
+            for (let i = 0; i < typeCount.length; i++) {
+                typeCount[i] = 0;
+            }
+
+            sixtyFirstDiv.style.display = 'none';
+            defensiveShieldDiv.style.display = 'none';
+            activeDiv = 'deck';
+
+            let titleCleaned = importedDeck.name.replace(/\.(txt|html)$/i, '');
+            deckTitle.textContent = titleCleaned;
+
+            const missingMain = importDeckEntries(parsedDeck.main, deckOnDeck, dictionary, 'deck');
+            const missingOutside = importDeckEntries(parsedDeck.outside, cardsOutsideDeck, dictionary, 'cardsOutsideDeck');
+
+            activeDiv = 'deck';
+            deckPopulate(deckOnDeck);
+
+            const missing = missingMain.concat(missingOutside);
+            if (missing.length) {
+                alert(`Imported ${detectedSide} deck with ${missing.length} unmatched card(s):\n${missing.slice(0, 5).join('\n')}`);
+            }
+
+            typeChart.update();
+            deckTotal();
+            importInput.value = '';
+        } catch (error) {
+            alert(error.message || error);
+            importInput.value = '';
+        }
     };
-    reader.onerror = (e) => alert(e.target.error.name);
+    reader.onerror = () => alert('Could not read deck file.');
     reader.readAsText(importedDeck);
-};
-
+}
 //evaulate
 function evaluate(card, parameter1, parameter2, operator) {
     if(card[parameter1]) {
@@ -1019,24 +1512,63 @@ function sortAlphabet() {
     activeDiv = tempDiv;
 };
 
-function addShields() {
+async function addShields() {
     activeDiv = "cardsOutsideDeck";
+    const shieldPanel = document.querySelector('#cardsOutsideDeck');
+    const shieldArea = getDeckContentArea(shieldPanel);
     if (cardsOutsideDeck.length > 0) {
-        let deckArea = document.querySelector('#cardsOutsideDeck');
         cardsOutsideDeck = [];
-        deckArea.innerHTML = '';
-    } else {
-        if (side == 'light') {
-            var tempDeck = lightDictionary.filter(card => card.type == "Defensive Shield");
-        } else {
-            var tempDeck = darkDictionary.filter(card => card.type == "Defensive Shield");
+        if (shieldArea) {
+            shieldArea.innerHTML = '';
         }
-        for(i = 0; i < tempDeck.length; i++) {
-            tempDeck[i].outsideCardCount = 1;
-            cardsOutsideDeck.push(tempDeck[i]);
-        };
+        return;
+    }
+
+    const deckSide = document.querySelector('#side').value;
+    if (deckSide !== 'Light' && deckSide !== 'Dark') {
+        alert('Choose a side before loading defensive shields.');
+        return;
+    }
+
+    const dictionary = deckSide === 'Light' ? lightDictionary : darkDictionary;
+    const shieldButton = document.querySelector('#lsShields');
+    const previousLabel = shieldButton.textContent;
+    shieldButton.textContent = 'Loading shields...';
+    shieldButton.disabled = true;
+
+    try {
+        const entries = await fetchGempShields(deckSide);
+        const shields = [];
+        const missing = [];
+
+        entries.forEach(entry => {
+            const resolvedCard = resolveCard(entry.blueprintId, '', dictionary);
+            if (!resolvedCard) {
+                missing.push(entry.blueprintId);
+                return;
+            }
+            if (entry.horizontal) {
+                resolvedCard.horizontal = true;
+            }
+            const copy = JSON.parse(JSON.stringify(resolvedCard));
+            copy.outsideCardCount = 1;
+            shields.push(copy);
+        });
+
+        cardsOutsideDeck = shields;
+        showFloatingPanel(shieldPanel);
         deckPopulate(cardsOutsideDeck);
-    };
+        centerFloatingPanel(shieldPanel);
+
+        if (missing.length) {
+            console.warn(`Could not resolve ${missing.length} GEMP shield(s):`, missing);
+        }
+    } catch (error) {
+        alert(`Could not load shields from GEMP: ${error.message}`);
+    } finally {
+        shieldButton.textContent = previousLabel;
+        shieldButton.disabled = false;
+    }
 };
 
 function clearDeck() {
@@ -1049,20 +1581,22 @@ function clearDeck() {
     typeChart.update();
     deckTotal();
     let deckTitle = document.querySelector('#deckTitle');
-    deckTitle.innerHTML = 'New Deck';
+    deckTitle.textContent = 'New Deck';
 };
 
 function clearSixtyFirst() {
-    let deckArea = document.querySelector('#sixtyFirst');
+    const deckArea = getDeckContentArea(document.querySelector('#sixtyFirst'));
     sixtyFirstCards = [];
-    deckArea.innerHTML = '';
+    if (deckArea) {
+        deckArea.innerHTML = '';
+    }
 }
 
 function randomStartingHand () {
     var randomHandDiv = document.querySelector('#randomHand');
     if (activeDiv == "deck") {
         activeDiv = "random";
-        randomHandDiv.style.display = 'flex';
+        showFloatingPanel(randomHandDiv);
         var tempArray = deckOnDeck;
         var newArray = tempArray.filter(card => !card.startingCard);
         var temp = [];
@@ -1084,6 +1618,7 @@ function randomStartingHand () {
             temp.splice(randomCard, 1);
         };
         deckPopulate(randomHand);
+        centerFloatingPanel(randomHandDiv);
     } else if (randomHandDiv.style.display == 'flex') {
         randomHandDiv.style.display = "none";
         activeDiv = "deck";

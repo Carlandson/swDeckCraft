@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import starwarscard, decklist, copies
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 import requests
 import urllib3
@@ -177,7 +176,6 @@ def index(request):
     #     card.update(backSideImage = join_path_image)
     #     print(join_path_image)
 
-@csrf_exempt
 def deckbuild(request):
     if request.method == "GET":
         cards = starwarscard.objects.all()

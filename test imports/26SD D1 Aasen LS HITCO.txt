@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<deck>
+    <card blueprintId="211_59" horizontal="false" title="Ahsoka Tano"/>
+    <card blueprintId="204_3" horizontal="false" title="Captain Hera Syndulla"/>
+    <card blueprintId="210_14" horizontal="false" title="Ezra Bridger"/>
+    <card blueprintId="13_27" horizontal="false" title="Lando Calrissian, Scoundrel"/>
+    <card blueprintId="13_27" horizontal="false" title="Lando Calrissian, Scoundrel"/>
+    <card blueprintId="200_18" horizontal="false" title="Leia"/>
+    <card blueprintId="108_4" horizontal="false" title="Obi-Wan With Lightsaber"/>
+    <card blueprintId="108_4" horizontal="false" title="Obi-Wan With Lightsaber"/>
+    <card blueprintId="226_26" horizontal="false" title="Quinlan Vos"/>
+    <card blueprintId="223_46" horizontal="false" title="Sabine, Padawan Learner"/>
+    <card blueprintId="213_44" horizontal="false" title="Yoda, Master Of The Force"/>
+    <card blueprintId="213_44" horizontal="false" title="Yoda, Master Of The Force"/>
+    <card blueprintId="222_29" horizontal="false" title="Young Skywalker"/>
+    <card blueprintId="222_29" horizontal="false" title="Young Skywalker"/>
+    <card blueprintId="222_29" horizontal="false" title="Young Skywalker"/>
+    <card blueprintId="222_29" horizontal="false" title="Young Skywalker"/>
+    <card blueprintId="222_29" horizontal="false" title="Young Skywalker"/>
+    <card blueprintId="200_33" horizontal="false" title="Luke's Bionic Hand"/>
+    <card blueprintId="200_35" horizontal="false" title="Anger, Fear, Aggression"/>
+    <card blueprintId="200_39" horizontal="false" title="I Don't Like Sand"/>
+    <card blueprintId="9_34" horizontal="false" title="I Feel The Conflict"/>
+    <card blueprintId="202_5" horizontal="false" title="Like My Father Before Me"/>
+    <card blueprintId="218_26" horizontal="false" title="Ounee Ta"/>
+    <card blueprintId="208_14" horizontal="false" title="Prophecy Of The Force"/>
+    <card blueprintId="221_72" horizontal="false" title="Scanner Techs"/>
+    <card blueprintId="222_28" horizontal="false" title="Twilight Is Upon Me"/>
+    <card blueprintId="221_66" horizontal="false" title="His Destiny"/>
+    <card blueprintId="221_43" horizontal="false" title="A Jedi's Fury"/>
+    <card blueprintId="213_49" horizontal="false" title="Anakin Skywalker"/>
+    <card blueprintId="221_47" horizontal="false" title="Anakin's Destiny"/>
+    <card blueprintId="6_61" horizontal="false" title="Blaster Deflection"/>
+    <card blueprintId="6_61" horizontal="false" title="Blaster Deflection"/>
+    <card blueprintId="5_38" horizontal="false" title="Clash Of Sabers"/>
+    <card blueprintId="5_38" horizontal="false" title="Clash Of Sabers"/>
+    <card blueprintId="201_13" horizontal="false" title="Hear Me Baby, Hold Together"/>
+    <card blueprintId="2_50" horizontal="false" title="Houjix"/>
+    <card blueprintId="225_8" horizontal="false" title="I Don't Need Their Scum, Either"/>
+    <card blueprintId="4_53" horizontal="false" title="Jedi Levitation"/>
+    <card blueprintId="4_53" horizontal="false" title="Jedi Levitation"/>
+    <card blueprintId="200_54" horizontal="false" title="Jedi Levitation"/>
+    <card blueprintId="214_20" horizontal="false" title="Our Only Hope"/>
+    <card blueprintId="214_20" horizontal="false" title="Our Only Hope"/>
+    <card blueprintId="214_20" horizontal="false" title="Our Only Hope"/>
+    <card blueprintId="214_20" horizontal="false" title="Our Only Hope"/>
+    <card blueprintId="210_24" horizontal="false" title="Quite A Mercenary"/>
+    <card blueprintId="210_24" horizontal="false" title="Quite A Mercenary"/>
+    <card blueprintId="101_3" horizontal="false" title="Run Luke, Run!"/>
+    <card blueprintId="10_21" horizontal="false" title="Sense &amp; Recoil In Fear"/>
+    <card blueprintId="10_23" horizontal="false" title="Sorry About The Mess &amp; Blaster Proficiency"/>
+    <card blueprintId="216_26" horizontal="true" title="Dagobah: Yoda's Hut"/>
+    <card blueprintId="217_34" horizontal="true" title="Endor: Anakin's Funeral Pyre"/>
+    <card blueprintId="208_23" horizontal="true" title="Endor: Ewok Village"/>
+    <card blueprintId="9_57" horizontal="true" title="Home One: Docking Bay"/>
+    <card blueprintId="217_44" horizontal="true" title="Profundity: Docking Bay"/>
+    <card blueprintId="208_25" horizontal="false" title="He Is The Chosen One"/>
+    <card blueprintId="13_21" horizontal="false" title="Han, Chewie, And The Falcon"/>
+    <card blueprintId="214_15" horizontal="false" title="Ahsoka's Shoto Lightsaber"/>
+    <card blueprintId="211_33" horizontal="false" title="Jedi Lightsaber"/>
+    <card blueprintId="9_90" horizontal="false" title="Luke's Lightsaber"/>
+    <card blueprintId="9_90" horizontal="false" title="Luke's Lightsaber"/>
+    <cardOutsideDeck blueprintId="200_16" horizontal="false" title="The Mythrol"/>
+    <cardOutsideDeck blueprintId="223_30" horizontal="false" title="A Close Race"/>
+    <cardOutsideDeck blueprintId="13_3" horizontal="false" title="A Tragedy Has Occurred"/>
+    <cardOutsideDeck blueprintId="13_4" horizontal="false" title="Aim High"/>
+    <cardOutsideDeck blueprintId="13_6" horizontal="false" title="Another Pathetic Lifeform"/>
+    <cardOutsideDeck blueprintId="13_8" horizontal="false" title="Battle Plan"/>
+    <cardOutsideDeck blueprintId="13_15" horizontal="false" title="Do, Or Do Not"/>
+    <cardOutsideDeck blueprintId="200_26" horizontal="false" title="Don't Do That Again"/>
+    <cardOutsideDeck blueprintId="13_22" horizontal="false" title="He Can Go About His Business"/>
+    <cardOutsideDeck blueprintId="13_30" horizontal="false" title="Let's Keep A Little Optimism Here"/>
+    <cardOutsideDeck blueprintId="221_68" horizontal="false" title="Only Jedi Carry That Weapon"/>
+    <cardOutsideDeck blueprintId="13_37" horizontal="false" title="Ounee Ta"/>
+    <cardOutsideDeck blueprintId="203_13" horizontal="false" title="Planetary Defenses"/>
+    <cardOutsideDeck blueprintId="200_28" horizontal="false" title="Simple Tricks And Nonsense"/>
+    <cardOutsideDeck blueprintId="200_29" horizontal="false" title="The Republic No Longer Functions"/>
+    <cardOutsideDeck blueprintId="209_15" horizontal="false" title="There Is Another"/>
+    <cardOutsideDeck blueprintId="220_10" horizontal="false" title="Thrown Back"/>
+    <cardOutsideDeck blueprintId="13_44" horizontal="false" title="Ultimatum"/>
+    <cardOutsideDeck blueprintId="13_47" horizontal="false" title="Wise Advice"/>
+    <cardOutsideDeck blueprintId="223_49" horizontal="false" title="Yavin Sentry &amp; Goldenrod"/>
+    <cardOutsideDeck blueprintId="200_32" horizontal="false" title="Your Insight Serves You Well"/>
+    <cardOutsideDeck blueprintId="301_5" horizontal="false" title="Your Ship?"/>
+    <cardOutsideDeck blueprintId="9_48" horizontal="false" title="Anakin Skywalker"/>
+</deck>

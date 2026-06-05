@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<deck>
+    <card blueprintId="9_97" horizontal="false" title="Admiral Chiraneau"/>
+    <card blueprintId="3_82" horizontal="false" title="Admiral Ozzel"/>
+    <card blueprintId="224_2" horizontal="false" title="Baron Soontir Fel"/>
+    <card blueprintId="221_10" horizontal="false" title="Captain Mod Terrik"/>
+    <card blueprintId="8_97" horizontal="false" title="Corporal Drelosyn"/>
+    <card blueprintId="221_16" horizontal="false" title="Corporal Oberk"/>
+    <card blueprintId="7_175" horizontal="false" title="Darth Vader, Dark Lord Of The Sith"/>
+    <card blueprintId="207_21" horizontal="false" title="Grand Admiral Thrawn"/>
+    <card blueprintId="200_82" horizontal="false" title="Grand Moff Tarkin"/>
+    <card blueprintId="223_15" horizontal="false" title="JS-1975"/>
+    <card blueprintId="200_85" horizontal="false" title="Maarek Stele, The Emperor's Reach"/>
+    <card blueprintId="212_2" horizontal="false" title="Moff Gideon"/>
+    <card blueprintId="208_36" horizontal="false" title="Myn Kyneugh"/>
+    <card blueprintId="8_111" horizontal="false" title="Sergeant Barich"/>
+    <card blueprintId="8_112" horizontal="false" title="Sergeant Elsek"/>
+    <card blueprintId="8_113" horizontal="false" title="Sergeant Irol"/>
+    <card blueprintId="221_30" horizontal="false" title="Sergeant Tarl"/>
+    <card blueprintId="8_115" horizontal="false" title="Sergeant Wallen"/>
+    <card blueprintId="204_44" horizontal="false" title="Stormtrooper Patrol"/>
+    <card blueprintId="204_44" horizontal="false" title="Stormtrooper Patrol"/>
+    <card blueprintId="204_44" horizontal="false" title="Stormtrooper Patrol"/>
+    <card blueprintId="223_23" horizontal="false" title="TD-110"/>
+    <card blueprintId="223_23" horizontal="false" title="TD-110"/>
+    <card blueprintId="221_38" horizontal="false" title="TD-4445"/>
+    <card blueprintId="219_19" horizontal="false" title="The Emperor, Relentless"/>
+    <card blueprintId="2_106" horizontal="false" title="Trooper Davin Felth"/>
+    <card blueprintId="203_29" horizontal="false" title="Deflector Shield Generators"/>
+    <card blueprintId="7_220" horizontal="false" title="Alert My Star Destroyer!"/>
+    <card blueprintId="201_29" horizontal="false" title="Endor Shield"/>
+    <card blueprintId="8_126" horizontal="false" title="Imperial Arrest Order"/>
+    <card blueprintId="200_108" horizontal="false" title="Imperial Decree"/>
+    <card blueprintId="201_30" horizontal="false" title="Imperial Enforcement"/>
+    <card blueprintId="200_110" horizontal="false" title="Knowledge And Defense"/>
+    <card blueprintId="221_29" horizontal="false" title="Send A Detachment Down"/>
+    <card blueprintId="200_112" horizontal="false" title="Something Special Planned For Them"/>
+    <card blueprintId="208_41" horizontal="false" title="Tarkin's Bounty"/>
+    <card blueprintId="221_32" horizontal="false" title="Tatooine Occupation"/>
+    <card blueprintId="221_32" horizontal="false" title="Tatooine Occupation"/>
+    <card blueprintId="221_39" horizontal="false" title="Tentacle"/>
+    <card blueprintId="225_2" horizontal="false" title="Blast Points"/>
+    <card blueprintId="226_3" horizontal="false" title="Endless Legions"/>
+    <card blueprintId="2_132" horizontal="false" title="Ghhhk"/>
+    <card blueprintId="2_132" horizontal="false" title="Ghhhk"/>
+    <card blueprintId="1_249" horizontal="false" title="Imperial Barrier"/>
+    <card blueprintId="1_249" horizontal="false" title="Imperial Barrier"/>
+    <card blueprintId="1_249" horizontal="false" title="Imperial Barrier"/>
+    <card blueprintId="9_137" horizontal="false" title="Imperial Command"/>
+    <card blueprintId="12_152" horizontal="false" title="Masterful Move &amp; Endor Occupation"/>
+    <card blueprintId="9_139" horizontal="false" title="Prepared Defenses"/>
+    <card blueprintId="5_159" horizontal="false" title="Trooper Assault"/>
+    <card blueprintId="5_159" horizontal="false" title="Trooper Assault"/>
+    <card blueprintId="203_33" horizontal="false" title="Tatooine"/>
+    <card blueprintId="225_30" horizontal="true" title="Tatooine: Desert Heart"/>
+    <card blueprintId="221_35" horizontal="true" title="Tatooine: Imperial Landing Site"/>
+    <card blueprintId="221_36" horizontal="true" title="Tatooine: Jawa Camp"/>
+    <card blueprintId="221_37" horizontal="true" title="Tatooine: Mos Eisley"/>
+    <card blueprintId="11_93" horizontal="true" title="Tatooine: Mos Espa"/>
+    <card blueprintId="201_39" horizontal="false" title="Imperial Entanglements"/>
+    <card blueprintId="216_8" horizontal="false" title="Devastator"/>
+    <card blueprintId="208_58" horizontal="false" title="Mara Jade In VT-49 Decimator"/>
+    <cardOutsideDeck blueprintId="13_51" horizontal="false" title="A Useless Gesture"/>
+    <cardOutsideDeck blueprintId="223_7" horizontal="false" title="A Useless Gesture &amp; Death Star Sentry"/>
+    <cardOutsideDeck blueprintId="13_52" horizontal="false" title="Allegations Of Corruption"/>
+    <cardOutsideDeck blueprintId="13_54" horizontal="false" title="Battle Order"/>
+    <cardOutsideDeck blueprintId="13_61" horizontal="false" title="Come Here You Big Coward"/>
+    <cardOutsideDeck blueprintId="225_3" horizontal="false" title="Come Here You Big Coward"/>
+    <cardOutsideDeck blueprintId="13_63" horizontal="false" title="Crossfire"/>
+    <cardOutsideDeck blueprintId="216_5" horizontal="false" title="Crossfire"/>
+    <cardOutsideDeck blueprintId="13_66" horizontal="false" title="Do They Have A Code Clearance?"/>
+    <cardOutsideDeck blueprintId="220_2" horizontal="false" title="Drop!"/>
+    <cardOutsideDeck blueprintId="213_13" horizontal="false" title="Failure At The Cave"/>
+    <cardOutsideDeck blueprintId="13_68" horizontal="false" title="Fanfare"/>
+    <cardOutsideDeck blueprintId="200_95" horizontal="false" title="Fanfare"/>
+    <cardOutsideDeck blueprintId="13_72" horizontal="false" title="Leave Them To Me"/>
+    <cardOutsideDeck blueprintId="13_78" horizontal="false" title="No Escape"/>
+    <cardOutsideDeck blueprintId="13_81" horizontal="false" title="Oppressive Enforcement"/>
+    <cardOutsideDeck blueprintId="13_84" horizontal="false" title="Resistance"/>
+    <cardOutsideDeck blueprintId="13_86" horizontal="false" title="Secret Plans"/>
+    <cardOutsideDeck blueprintId="13_90" horizontal="false" title="There Is No Try"/>
+    <cardOutsideDeck blueprintId="200_99" horizontal="false" title="Vote Of No Confidence"/>
+    <cardOutsideDeck blueprintId="13_96" horizontal="false" title="We'll Let Fate-a Decide, Huh?"/>
+    <cardOutsideDeck blueprintId="223_26" horizontal="false" title="We'll Let Fate-a Decide, Huh?"/>
+    <cardOutsideDeck blueprintId="13_95" horizontal="false" title="Weapon Of A Sith"/>
+    <cardOutsideDeck blueprintId="13_98" horizontal="false" title="Wipe Them Out, All Of Them"/>
+    <cardOutsideDeck blueprintId="13_99" horizontal="false" title="You Cannot Hide Forever"/>
+    <cardOutsideDeck blueprintId="200_100" horizontal="false" title="You Cannot Hide Forever"/>
+    <cardOutsideDeck blueprintId="13_100" horizontal="false" title="You've Never Won A Race?"/>
+    <cardOutsideDeck blueprintId="223_29" horizontal="false" title="You've Never Won A Race?"/>
+    <cardOutsideDeck blueprintId="7_312" horizontal="false" title="Dewback"/>
+</deck>

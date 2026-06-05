@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<deck>
+    <card blueprintId="203_1" horizontal="false" title="Admiral Ackbar"/>
+    <card blueprintId="209_1" horizontal="false" title="Admiral Raddus"/>
+    <card blueprintId="211_59" horizontal="false" title="Ahsoka Tano"/>
+    <card blueprintId="14_3" horizontal="false" title="Artoo, Brave Little Droid"/>
+    <card blueprintId="204_1" horizontal="false" title="BB-8 (Beebee-Ate)"/>
+    <card blueprintId="204_3" horizontal="false" title="Captain Hera Syndulla"/>
+    <card blueprintId="210_14" horizontal="false" title="Ezra Bridger"/>
+    <card blueprintId="207_5" horizontal="false" title="General Leia Organa"/>
+    <card blueprintId="226_18" horizontal="false" title="Kelleran Beq"/>
+    <card blueprintId="226_19" horizontal="false" title="Kelnacca"/>
+    <card blueprintId="200_21" horizontal="false" title="Luke Skywalker, Rebel Scout"/>
+    <card blueprintId="200_21" horizontal="false" title="Luke Skywalker, Rebel Scout"/>
+    <card blueprintId="200_21" horizontal="false" title="Luke Skywalker, Rebel Scout"/>
+    <card blueprintId="218_3" horizontal="false" title="Master Qui-Gon With Lightsaber"/>
+    <card blueprintId="108_4" horizontal="false" title="Obi-Wan With Lightsaber"/>
+    <card blueprintId="204_8" horizontal="false" title="Poe Dameron"/>
+    <card blueprintId="209_10" horizontal="false" title="Rey With Lightsaber"/>
+    <card blueprintId="223_46" horizontal="false" title="Sabine, Padawan Learner"/>
+    <card blueprintId="216_42" horizontal="false" title="Tarfful"/>
+    <card blueprintId="213_44" horizontal="false" title="Yoda, Master Of The Force"/>
+    <card blueprintId="221_4" horizontal="false" title="Han's Medal"/>
+    <card blueprintId="200_35" horizontal="false" title="Anger, Fear, Aggression"/>
+    <card blueprintId="12_39" horizontal="false" title="Another Pathetic Lifeform"/>
+    <card blueprintId="12_41" horizontal="false" title="Battle Plan &amp; Draw Their Fire"/>
+    <card blueprintId="218_26" horizontal="false" title="Ounee Ta"/>
+    <card blueprintId="200_47" horizontal="false" title="Wokling"/>
+    <card blueprintId="216_46" horizontal="false" title="Wookiee Homestead"/>
+    <card blueprintId="214_13" horizontal="false" title="Alter &amp; Friendly Fire"/>
+    <card blueprintId="7_84" horizontal="false" title="Balanced Attack"/>
+    <card blueprintId="6_61" horizontal="false" title="Blaster Deflection"/>
+    <card blueprintId="6_61" horizontal="false" title="Blaster Deflection"/>
+    <card blueprintId="201_13" horizontal="false" title="Hear Me Baby, Hold Together"/>
+    <card blueprintId="2_50" horizontal="false" title="Houjix"/>
+    <card blueprintId="225_8" horizontal="false" title="I Don't Need Their Scum, Either"/>
+    <card blueprintId="225_8" horizontal="false" title="I Don't Need Their Scum, Either"/>
+    <card blueprintId="215_16" horizontal="false" title="Let The Wookiee Win"/>
+    <card blueprintId="208_20" horizontal="false" title="Mandalorian Mishap"/>
+    <card blueprintId="209_21" horizontal="false" title="Odin Nesloor &amp; First Aid"/>
+    <card blueprintId="210_24" horizontal="false" title="Quite A Mercenary"/>
+    <card blueprintId="203_17" horizontal="false" title="Rebel Leadership"/>
+    <card blueprintId="203_17" horizontal="false" title="Rebel Leadership"/>
+    <card blueprintId="203_17" horizontal="false" title="Rebel Leadership"/>
+    <card blueprintId="1_109" horizontal="false" title="Sense"/>
+    <card blueprintId="10_23" horizontal="false" title="Sorry About The Mess &amp; Blaster Proficiency"/>
+    <card blueprintId="10_25" horizontal="false" title="The Bith Shuffle &amp; Desperate Reach"/>
+    <card blueprintId="10_25" horizontal="false" title="The Bith Shuffle &amp; Desperate Reach"/>
+    <card blueprintId="6_79" horizontal="false" title="Weapon Levitation"/>
+    <card blueprintId="2_64" horizontal="false" title="Kashyyyk"/>
+    <card blueprintId="226_17" horizontal="true" title="Kashyyyk: Chewie's Hut"/>
+    <card blueprintId="215_13" horizontal="true" title="Kashyyyk: Forest Depths"/>
+    <card blueprintId="215_14" horizontal="true" title="Kashyyyk: Kachirho"/>
+    <card blueprintId="216_32" horizontal="true" title="Kashyyyk: Sacred Falls (Forest)"/>
+    <card blueprintId="203_20" horizontal="false" title="Bright Hope"/>
+    <card blueprintId="205_7" horizontal="false" title="Han, Chewie, And The Falcon"/>
+    <card blueprintId="209_30" horizontal="false" title="Lightmaker"/>
+    <card blueprintId="204_33" horizontal="false" title="Masanya"/>
+    <card blueprintId="207_18" horizontal="false" title="Profundity"/>
+    <card blueprintId="211_33" horizontal="false" title="Jedi Lightsaber"/>
+    <card blueprintId="7_161" horizontal="false" title="Leia's Blaster Rifle"/>
+    <card blueprintId="9_90" horizontal="false" title="Luke's Lightsaber"/>
+    <cardOutsideDeck blueprintId="200_16" horizontal="false" title="The Mythrol"/>
+    <cardOutsideDeck blueprintId="13_1" horizontal="false" title="A Close Race"/>
+    <cardOutsideDeck blueprintId="223_30" horizontal="false" title="A Close Race"/>
+    <cardOutsideDeck blueprintId="13_3" horizontal="false" title="A Tragedy Has Occurred"/>
+    <cardOutsideDeck blueprintId="13_4" horizontal="false" title="Aim High"/>
+    <cardOutsideDeck blueprintId="13_6" horizontal="false" title="Another Pathetic Lifeform"/>
+    <cardOutsideDeck blueprintId="13_8" horizontal="false" title="Battle Plan"/>
+    <cardOutsideDeck blueprintId="13_15" horizontal="false" title="Do, Or Do Not"/>
+    <cardOutsideDeck blueprintId="13_16" horizontal="false" title="Don't Do That Again"/>
+    <cardOutsideDeck blueprintId="200_26" horizontal="false" title="Don't Do That Again"/>
+    <cardOutsideDeck blueprintId="13_22" horizontal="false" title="He Can Go About His Business"/>
+    <cardOutsideDeck blueprintId="13_30" horizontal="false" title="Let's Keep A Little Optimism Here"/>
+    <cardOutsideDeck blueprintId="225_51" horizontal="false" title="Let's Keep A Little Optimism Here"/>
+    <cardOutsideDeck blueprintId="13_35" horizontal="false" title="Only Jedi Carry That Weapon"/>
+    <cardOutsideDeck blueprintId="221_68" horizontal="false" title="Only Jedi Carry That Weapon"/>
+    <cardOutsideDeck blueprintId="13_37" horizontal="false" title="Ounee Ta"/>
+    <cardOutsideDeck blueprintId="13_38" horizontal="false" title="Planetary Defenses"/>
+    <cardOutsideDeck blueprintId="203_13" horizontal="false" title="Planetary Defenses"/>
+    <cardOutsideDeck blueprintId="200_28" horizontal="false" title="Simple Tricks And Nonsense"/>
+    <cardOutsideDeck blueprintId="200_29" horizontal="false" title="The Republic No Longer Functions"/>
+    <cardOutsideDeck blueprintId="209_15" horizontal="false" title="There Is Another"/>
+    <cardOutsideDeck blueprintId="220_10" horizontal="false" title="Thrown Back"/>
+    <cardOutsideDeck blueprintId="13_44" horizontal="false" title="Ultimatum"/>
+    <cardOutsideDeck blueprintId="13_47" horizontal="false" title="Wise Advice"/>
+    <cardOutsideDeck blueprintId="223_49" horizontal="false" title="Yavin Sentry &amp; Goldenrod"/>
+    <cardOutsideDeck blueprintId="13_49" horizontal="false" title="Your Insight Serves You Well"/>
+    <cardOutsideDeck blueprintId="200_32" horizontal="false" title="Your Insight Serves You Well"/>
+    <cardOutsideDeck blueprintId="13_50" horizontal="false" title="Your Ship?"/>
+    <cardOutsideDeck blueprintId="301_5" horizontal="false" title="Your Ship?"/>
+</deck>

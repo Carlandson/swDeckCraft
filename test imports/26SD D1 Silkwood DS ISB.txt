@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<deck>
+    <card blueprintId="3_82" horizontal="false" title="Admiral Ozzel"/>
+    <card blueprintId="203_22" horizontal="false" title="Agent Kallus"/>
+    <card blueprintId="203_22" horizontal="false" title="Agent Kallus"/>
+    <card blueprintId="224_2" horizontal="false" title="Baron Soontir Fel"/>
+    <card blueprintId="201_22" horizontal="false" title="Colonel Wullf Yularen"/>
+    <card blueprintId="201_22" horizontal="false" title="Colonel Wullf Yularen"/>
+    <card blueprintId="221_16" horizontal="false" title="Corporal Oberk"/>
+    <card blueprintId="201_23" horizontal="false" title="Corporal Vandolay"/>
+    <card blueprintId="7_175" horizontal="false" title="Darth Vader, Dark Lord Of The Sith"/>
+    <card blueprintId="202_10" horizontal="false" title="General Nevar"/>
+    <card blueprintId="208_32" horizontal="false" title="Kir Kanos"/>
+    <card blueprintId="221_25" horizontal="false" title="Lieutenant Dedra Meero"/>
+    <card blueprintId="221_25" horizontal="false" title="Lieutenant Dedra Meero"/>
+    <card blueprintId="201_26" horizontal="false" title="Lt. Pol Treidum"/>
+    <card blueprintId="201_26" horizontal="false" title="Lt. Pol Treidum"/>
+    <card blueprintId="221_26" horizontal="false" title="Major Partagaz"/>
+    <card blueprintId="211_1" horizontal="false" title="Mitth'raw'nuruodo"/>
+    <card blueprintId="212_2" horizontal="false" title="Moff Gideon"/>
+    <card blueprintId="208_36" horizontal="false" title="Myn Kyneugh"/>
+    <card blueprintId="2_98" horizontal="false" title="Officer Evax"/>
+    <card blueprintId="222_12" horizontal="false" title="Palpatine, Galactic Emperor"/>
+    <card blueprintId="222_12" horizontal="false" title="Palpatine, Galactic Emperor"/>
+    <card blueprintId="222_12" horizontal="false" title="Palpatine, Galactic Emperor"/>
+    <card blueprintId="222_12" horizontal="false" title="Palpatine, Galactic Emperor"/>
+    <card blueprintId="221_30" horizontal="false" title="Sergeant Tarl"/>
+    <card blueprintId="204_45" horizontal="false" title="Tarkin"/>
+    <card blueprintId="204_45" horizontal="false" title="Tarkin"/>
+    <card blueprintId="1_205" horizontal="false" title="Restraining Bolt"/>
+    <card blueprintId="200_106" horizontal="false" title="Establish Control"/>
+    <card blueprintId="8_126" horizontal="false" title="Imperial Arrest Order"/>
+    <card blueprintId="201_30" horizontal="false" title="Imperial Enforcement"/>
+    <card blueprintId="200_110^" horizontal="false" title="Knowledge And Defense"/>
+    <card blueprintId="208_41" horizontal="false" title="Tarkin's Bounty"/>
+    <card blueprintId="14_101" horizontal="false" title="Cease Fire!"/>
+    <card blueprintId="201_35" horizontal="false" title="Cold Feet"/>
+    <card blueprintId="221_17" horizontal="false" title="Dark Collaboration"/>
+    <card blueprintId="221_17" horizontal="false" title="Dark Collaboration"/>
+    <card blueprintId="221_17" horizontal="false" title="Dark Collaboration"/>
+    <card blueprintId="200_120" horizontal="false" title="Force Push"/>
+    <card blueprintId="2_132" horizontal="false" title="Ghhhk"/>
+    <card blueprintId="200_122" horizontal="false" title="Imbalance &amp; Kintan Strider"/>
+    <card blueprintId="9_137" horizontal="false" title="Imperial Command"/>
+    <card blueprintId="9_137" horizontal="false" title="Imperial Command"/>
+    <card blueprintId="12_152" horizontal="false" title="Masterful Move &amp; Endor Occupation"/>
+    <card blueprintId="12_152" horizontal="false" title="Masterful Move &amp; Endor Occupation"/>
+    <card blueprintId="1_261" horizontal="false" title="Nevar Yalnal"/>
+    <card blueprintId="223_1" horizontal="false" title="Not Within Sight Or Reach"/>
+    <card blueprintId="223_1" horizontal="false" title="Not Within Sight Or Reach"/>
+    <card blueprintId="9_139" horizontal="false" title="Prepared Defenses"/>
+    <card blueprintId="1_267" horizontal="false" title="Sense"/>
+    <card blueprintId="223_25" horizontal="false" title="The Empire's Back"/>
+    <card blueprintId="14_111" horizontal="true" title="Blockade Flagship: Docking Bay"/>
+    <card blueprintId="7_276" horizontal="true" title="Coruscant: Docking Bay"/>
+    <card blueprintId="7_278" horizontal="true" title="Coruscant: Imperial Square"/>
+    <card blueprintId="7_282" horizontal="true" title="Executor: Docking Bay"/>
+    <card blueprintId="7_283" horizontal="false" title="Fondor"/>
+    <card blueprintId="7_289" horizontal="true" title="Spaceport Docking Bay"/>
+    <card blueprintId="7_299" horizontal="false" title="ISB Operations"/>
+    <card blueprintId="223_12" horizontal="false" title="Eli Vanto In Dreadnaught"/>
+    <card blueprintId="208_58" horizontal="false" title="Mara Jade In VT-49 Decimator"/>
+    <cardOutsideDeck blueprintId="223_7" horizontal="false" title="A Useless Gesture &amp; Death Star Sentry"/>
+    <cardOutsideDeck blueprintId="13_52" horizontal="false" title="Allegations Of Corruption"/>
+    <cardOutsideDeck blueprintId="13_54" horizontal="false" title="Battle Order"/>
+    <cardOutsideDeck blueprintId="225_3" horizontal="false" title="Come Here You Big Coward"/>
+    <cardOutsideDeck blueprintId="216_5" horizontal="false" title="Crossfire"/>
+    <cardOutsideDeck blueprintId="13_66" horizontal="false" title="Do They Have A Code Clearance?"/>
+    <cardOutsideDeck blueprintId="220_2" horizontal="false" title="Drop!"/>
+    <cardOutsideDeck blueprintId="213_13" horizontal="false" title="Failure At The Cave"/>
+    <cardOutsideDeck blueprintId="200_95" horizontal="false" title="Fanfare"/>
+    <cardOutsideDeck blueprintId="13_72" horizontal="false" title="Leave Them To Me"/>
+    <cardOutsideDeck blueprintId="13_78" horizontal="false" title="No Escape"/>
+    <cardOutsideDeck blueprintId="13_81" horizontal="false" title="Oppressive Enforcement"/>
+    <cardOutsideDeck blueprintId="13_84" horizontal="false" title="Resistance"/>
+    <cardOutsideDeck blueprintId="13_86" horizontal="false" title="Secret Plans"/>
+    <cardOutsideDeck blueprintId="13_90" horizontal="false" title="There Is No Try"/>
+    <cardOutsideDeck blueprintId="200_99" horizontal="false" title="Vote Of No Confidence"/>
+    <cardOutsideDeck blueprintId="223_26" horizontal="false" title="We'll Let Fate-a Decide, Huh?"/>
+    <cardOutsideDeck blueprintId="13_95" horizontal="false" title="Weapon Of A Sith"/>
+    <cardOutsideDeck blueprintId="13_98" horizontal="false" title="Wipe Them Out, All Of Them"/>
+    <cardOutsideDeck blueprintId="200_100" horizontal="false" title="You Cannot Hide Forever"/>
+    <cardOutsideDeck blueprintId="223_29" horizontal="false" title="You've Never Won A Race?"/>
+    <cardOutsideDeck blueprintId="106_13" horizontal="false" title="Dreadnaught-Class Heavy Cruiser"/>
+</deck>

@@ -75,11 +75,16 @@ function searchDecks(event) {
         .then(results => {
             results.forEach(deck => {
                 let resultDeck = document.createElement('div');
-                let id = deck['id']
-                resultDeck.innerHTML = `<a href="/deckview/${id}" style="cursor:pointer" class="mb-1 focus:ring">${deck['name']} by ${deck['author']} - <i>${deck['side']} side</i></a>`
-                let name = deck['name'];
-                let type = deck['type']
-                //resultCard.addEventListener('click', () => addCard(name, type));
+                let id = deck['id'];
+                let link = document.createElement('a');
+                link.href = `/deckview/${id}`;
+                link.style.cursor = 'pointer';
+                link.className = 'mb-1 focus:ring';
+                link.append(document.createTextNode(`${deck['name']} by ${deck['author']} - `));
+                let sideLabel = document.createElement('i');
+                sideLabel.textContent = `${deck['side']} side`;
+                link.append(sideLabel);
+                resultDeck.append(link);
                 divChange.appendChild(resultDeck);
                 count++;
             });

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<deck>
+    <card blueprintId="3_82" horizontal="false" title="Admiral Ozzel"/>
+    <card blueprintId="12_97" horizontal="false" title="Aks Moe"/>
+    <card blueprintId="12_97" horizontal="false" title="Aks Moe"/>
+    <card blueprintId="222_2" horizontal="false" title="Ap'lek"/>
+    <card blueprintId="212_3" horizontal="false" title="Aurra Sing With Blaster Rifle"/>
+    <card blueprintId="12_98" horizontal="false" title="Baskol Yeesrim"/>
+    <card blueprintId="14_77" horizontal="false" title="Darth Maul With Lightsaber"/>
+    <card blueprintId="213_3^" horizontal="false" title="Darth Tyranus"/>
+    <card blueprintId="200_78" horizontal="false" title="Darth Vader"/>
+    <card blueprintId="10_37" horizontal="false" title="Dr. Evazan &amp; Ponda Baba"/>
+    <card blueprintId="12_105" horizontal="false" title="Edcel Bar Gane"/>
+    <card blueprintId="12_105" horizontal="false" title="Edcel Bar Gane"/>
+    <card blueprintId="209_37" horizontal="false" title="Kylo Ren With Lightsaber"/>
+    <card blueprintId="208_34" horizontal="false" title="Lord Maul With Lightsaber"/>
+    <card blueprintId="208_35^" horizontal="false" title="Lord Sidious"/>
+    <card blueprintId="12_110" horizontal="false" title="Lott Dod"/>
+    <card blueprintId="12_110" horizontal="false" title="Lott Dod"/>
+    <card blueprintId="12_110" horizontal="false" title="Lott Dod"/>
+    <card blueprintId="200_85^" horizontal="false" title="Maarek Stele, The Emperor's Reach"/>
+    <card blueprintId="200_86" horizontal="false" title="Mara Jade With Lightsaber"/>
+    <card blueprintId="211_1" horizontal="false" title="Mitth'raw'nuruodo"/>
+    <card blueprintId="210_40" horizontal="false" title="Nute Gunray"/>
+    <card blueprintId="210_40" horizontal="false" title="Nute Gunray"/>
+    <card blueprintId="12_113" horizontal="false" title="Orn Free Taa"/>
+    <card blueprintId="12_113" horizontal="false" title="Orn Free Taa"/>
+    <card blueprintId="12_113" horizontal="false" title="Orn Free Taa"/>
+    <card blueprintId="12_114" horizontal="false" title="P-59"/>
+    <card blueprintId="12_122" horizontal="false" title="Tikkes"/>
+    <card blueprintId="12_123" horizontal="false" title="Toonbuck Toora"/>
+    <card blueprintId="12_123" horizontal="false" title="Toonbuck Toora"/>
+    <card blueprintId="12_123" horizontal="false" title="Toonbuck Toora"/>
+    <card blueprintId="12_123" horizontal="false" title="Toonbuck Toora"/>
+    <card blueprintId="217_3" horizontal="false" title="Begin Landing Your Troops &amp; Fighters Straight Ahead"/>
+    <card blueprintId="201_29" horizontal="false" title="Endor Shield"/>
+    <card blueprintId="7_229" horizontal="false" title="First Strike"/>
+    <card blueprintId="200_110^" horizontal="false" title="Knowledge And Defense"/>
+    <card blueprintId="112_16" horizontal="false" title="No Escape"/>
+    <card blueprintId="14_100" horizontal="false" title="Senate Hovercam"/>
+    <card blueprintId="221_39" horizontal="false" title="Tentacle"/>
+    <card blueprintId="12_139" horizontal="false" title="The Phantom Menace"/>
+    <card blueprintId="225_36" horizontal="false" title="With Thunderous Applause"/>
+    <card blueprintId="225_2" horizontal="false" title="Blast Points"/>
+    <card blueprintId="200_119" horizontal="false" title="Force Field"/>
+    <card blueprintId="10_39" horizontal="false" title="Ghhhk &amp; Those Rebels Won't Escape Us"/>
+    <card blueprintId="225_25" horizontal="false" title="No Civility, Only Politics"/>
+    <card blueprintId="223_1" horizontal="false" title="Not Within Sight Or Reach"/>
+    <card blueprintId="223_1" horizontal="false" title="Not Within Sight Or Reach"/>
+    <card blueprintId="12_159" horizontal="false" title="Squabbling Delegates"/>
+    <card blueprintId="12_159" horizontal="false" title="Squabbling Delegates"/>
+    <card blueprintId="12_159" horizontal="false" title="Squabbling Delegates"/>
+    <card blueprintId="7_276" horizontal="true" title="Coruscant: Docking Bay"/>
+    <card blueprintId="12_167" horizontal="true" title="Coruscant: Galactic Senate"/>
+    <card blueprintId="216_4^" horizontal="true" title="Coruscant: The Works"/>
+    <card blueprintId="12_169" horizontal="false" title="Naboo"/>
+    <card blueprintId="12_173" horizontal="true" title="Naboo: Theed Palace Docking Bay"/>
+    <card blueprintId="12_179" horizontal="false" title="My Lord, Is That Legal?"/>
+    <card blueprintId="223_12" horizontal="false" title="Eli Vanto In Dreadnaught"/>
+    <card blueprintId="12_182" horizontal="false" title="Maul's Sith Infiltrator"/>
+    <card blueprintId="221_42" horizontal="false" title="Zuckuss And 4-LOM In Mist Hunter"/>
+    <card blueprintId="13_56" horizontal="false" title="Blizzard 4"/>
+    <cardOutsideDeck blueprintId="13_51" horizontal="false" title="A Useless Gesture"/>
+    <cardOutsideDeck blueprintId="223_7" horizontal="false" title="A Useless Gesture &amp; Death Star Sentry"/>
+    <cardOutsideDeck blueprintId="13_52" horizontal="false" title="Allegations Of Corruption"/>
+    <cardOutsideDeck blueprintId="13_54" horizontal="false" title="Battle Order"/>
+    <cardOutsideDeck blueprintId="13_61" horizontal="false" title="Come Here You Big Coward"/>
+    <cardOutsideDeck blueprintId="225_3" horizontal="false" title="Come Here You Big Coward"/>
+    <cardOutsideDeck blueprintId="13_63" horizontal="false" title="Crossfire"/>
+    <cardOutsideDeck blueprintId="216_5" horizontal="false" title="Crossfire"/>
+    <cardOutsideDeck blueprintId="13_66" horizontal="false" title="Do They Have A Code Clearance?"/>
+    <cardOutsideDeck blueprintId="220_2" horizontal="false" title="Drop!"/>
+    <cardOutsideDeck blueprintId="213_13" horizontal="false" title="Failure At The Cave"/>
+    <cardOutsideDeck blueprintId="13_68" horizontal="false" title="Fanfare"/>
+    <cardOutsideDeck blueprintId="200_95" horizontal="false" title="Fanfare"/>
+    <cardOutsideDeck blueprintId="13_72" horizontal="false" title="Leave Them To Me"/>
+    <cardOutsideDeck blueprintId="13_78" horizontal="false" title="No Escape"/>
+    <cardOutsideDeck blueprintId="13_81" horizontal="false" title="Oppressive Enforcement"/>
+    <cardOutsideDeck blueprintId="13_84" horizontal="false" title="Resistance"/>
+    <cardOutsideDeck blueprintId="13_86" horizontal="false" title="Secret Plans"/>
+    <cardOutsideDeck blueprintId="13_90" horizontal="false" title="There Is No Try"/>
+    <cardOutsideDeck blueprintId="200_99" horizontal="false" title="Vote Of No Confidence"/>
+    <cardOutsideDeck blueprintId="13_96" horizontal="false" title="We'll Let Fate-a Decide, Huh?"/>
+    <cardOutsideDeck blueprintId="223_26" horizontal="false" title="We'll Let Fate-a Decide, Huh?"/>
+    <cardOutsideDeck blueprintId="13_95" horizontal="false" title="Weapon Of A Sith"/>
+    <cardOutsideDeck blueprintId="13_98" horizontal="false" title="Wipe Them Out, All Of Them"/>
+    <cardOutsideDeck blueprintId="13_99" horizontal="false" title="You Cannot Hide Forever"/>
+    <cardOutsideDeck blueprintId="200_100" horizontal="false" title="You Cannot Hide Forever"/>
+    <cardOutsideDeck blueprintId="13_100" horizontal="false" title="You've Never Won A Race?"/>
+    <cardOutsideDeck blueprintId="223_29" horizontal="false" title="You've Never Won A Race?"/>
+</deck>

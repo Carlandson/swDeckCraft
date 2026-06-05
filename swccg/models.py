@@ -69,7 +69,8 @@ class starwarscard(models.Model):
             "forfeit" : self.forfeit,
             "set" : self.set,
             "icons" : self.icons,
-            "imageUrl" : self.imageUrl
+            "imageUrl" : self.imageUrl,
+            "isAlternateImage": "AlternateImage" in (self.imageUrl or "") or "_ai." in (self.imageUrl or ""),
         }
 
 class decklist(models.Model):
