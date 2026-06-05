@@ -26,7 +26,7 @@ class starwarscard(models.Model):
     set = models.CharField(max_length=200, null=True, default="", blank=True)
     rarity = models.CharField(max_length=200, null=True, default="", blank=True)
     conceptBy = models.TextField(max_length=200, null=True, default="", blank=True)
-    legacy = models.BooleanField(max_length=200, null=True, default="", blank=True)
+    legacy = models.BooleanField(null=True, default=False, blank=True)
     extraText = ArrayField(models.CharField(max_length=200, null=True, default=""), default=list, null=True, blank=True)
     uniqueness = models.CharField(max_length=200, null=True, default="", blank=True)
     armor = models.CharField(max_length=200, null=True, default="", blank=True)

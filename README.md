@@ -1,4 +1,42 @@
-#Star Wars Cards Database and Deckbuilder
+# Star Wars Cards Database and Deckbuilder
+
+## Local development setup
+
+**Requirements:** Python 3.13, PostgreSQL, Git
+
+1. **Create a virtual environment** (do not use a copied venv from another machine):
+
+```powershell
+py -3.13 -m venv venvDC
+.\venvDC\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+2. **Configure environment variables** — copy [`final/.env.example`](final/.env.example) to `final/.env` and fill in your values:
+
+- `SECRET_KEY` — random secret string
+- `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` — PostgreSQL credentials
+- `DEV_SERVER_PORT` — local port (default `8200`, avoids 8000/8100 conflicts)
+
+3. **Create the PostgreSQL database** (example):
+
+```sql
+CREATE DATABASE "StarWarsCCG";
+```
+
+4. **Run migrations and start the dev server:**
+
+```powershell
+python manage.py migrate
+.\run_dev.ps1
+```
+
+The app will be available at `http://127.0.0.1:8200` (or your chosen `DEV_SERVER_PORT`).
+
+**Note:** Never commit `venvDC/` or `.env` — both are listed in [`.gitignore`](.gitignore).
+
+---
 
 # Video Demo : TODO
 
