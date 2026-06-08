@@ -13,7 +13,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import environ
 import os
+import sys
 import dj_database_url
+from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +27,12 @@ IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ.get('SECRET_KEY')
+if not SECRET_KEY:
+    if 'collectstatic' in sys.argv:
+        SECRET_KEY = 'build-only-placeholder-not-used-at-runtime'
+    else:
+        raise ImproperlyConfigured('SECRET_KEY environment variable is required')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if IS_HEROKU_APP:  # Only enable SSL related settings on Heroku

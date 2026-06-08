@@ -17,7 +17,14 @@
             <input id="importDeck" type="file" accept=".txt,.html" class="hidden"/>
             <label for="importDeck" class="import bg-indigo-300 px-6">Import Deck</label>
             <button id="saveDeck" class="bg-teal-400 px-6">Save Deck</button>
-            <button id="randomHandButton">Generate Random Hand</button>
+            <div class="random-hand-controls">
+                <div class="hand-size-toggle" role="group" aria-label="Hand size">
+                    <button type="button" class="hand-size-btn" data-size="6">6</button>
+                    <button type="button" class="hand-size-btn active" data-size="8">8</button>
+                    <button type="button" class="hand-size-btn" data-size="12">12</button>
+                </div>
+                <button id="randomHandButton" type="button">Draw Hand</button>
+            </div>
         </div>
     </div>
     

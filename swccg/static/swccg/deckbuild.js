@@ -8,6 +8,7 @@ var deckOnDeck = [];
 var sixtyFirstCards = [];
 var cardsOutsideDeck = [];
 var randomHand = [];
+var randomHandSize = 8;
 var parameterArray = [];
 var parameterCount = 0;
 var currentSearchType = "Null";
@@ -586,6 +587,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#sortDeckByName').addEventListener('click', () => sortAlphabet());
     document.querySelector('#clearDeck').addEventListener('click', () => clearDeck());
     document.querySelector('#clearSixtyFirst').addEventListener('click', () => clearSixtyFirst());
+    initRandomHandControls();
     document.querySelector('#randomHandButton').addEventListener('click', () => randomStartingHand());
     // document.querySelector('#optionOne').addEventListener('change', () => typeFilter(tempDictionary, document.querySelector('#optionOne').value));
     document.querySelector('#optionOne').addEventListener('change', () => typeFilterTest(document.querySelector('#optionOne').value));
@@ -1592,38 +1594,60 @@ function clearSixtyFirst() {
     }
 }
 
-function randomStartingHand () {
-    var randomHandDiv = document.querySelector('#randomHand');
-    if (activeDiv == "deck") {
-        activeDiv = "random";
-        showFloatingPanel(randomHandDiv);
-        var tempArray = deckOnDeck;
-        var newArray = tempArray.filter(card => !card.startingCard);
-        var temp = [];
-        for(i=0;i<newArray.length;i++){
-            if(newArray[i].count > 0) {
-                var tempObject = newArray[i];
-                count = newArray[i].count
-                for(j=0; j < count; j++) {
-                    temp.push(tempObject);
-                }
-            } else{
-                temp.push(newArray[i]);
-            }
-        };
-        randomHand = [];
-        for(i=0; i<8; i++) {
-            var randomCard = Math.floor(Math.random() * temp.length);
-            randomHand.push(temp[randomCard]);
-            temp.splice(randomCard, 1);
-        };
-        deckPopulate(randomHand);
-        centerFloatingPanel(randomHandDiv);
-    } else if (randomHandDiv.style.display == 'flex') {
-        randomHandDiv.style.display = "none";
-        activeDiv = "deck";
-    };
-};
+function initRandomHandControls() {
+    document.querySelectorAll('.hand-size-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.hand-size-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            randomHandSize = parseInt(btn.dataset.size, 10);
+        });
+    });
+}
+
+function buildDeckPool(deckCards) {
+    const pool = [];
+    const eligible = deckCards.filter(card => !card.startingCard);
+    for (let i = 0; i < eligible.length; i++) {
+        const copies = eligible[i].count > 0 ? eligible[i].count : 1;
+        for (let j = 0; j < copies; j++) {
+            pool.push(eligible[i]);
+        }
+    }
+    return pool;
+}
+
+function updateRandomHandTitle(drawCount) {
+    const title = document.querySelector('#randomHand .panel-drag-title');
+    if (title) {
+        title.textContent = `Random Hand (${drawCount})`;
+    }
+}
+
+function randomStartingHand() {
+    const randomHandDiv = document.querySelector('#randomHand');
+    const pool = buildDeckPool(deckOnDeck);
+
+    if (!pool.length) {
+        alert('Add cards to your deck first.');
+        return;
+    }
+
+    const drawCount = Math.min(randomHandSize, pool.length);
+    const temp = pool.slice();
+    randomHand = [];
+
+    for (let i = 0; i < drawCount; i++) {
+        const randomCard = Math.floor(Math.random() * temp.length);
+        randomHand.push(temp[randomCard]);
+        temp.splice(randomCard, 1);
+    }
+
+    activeDiv = 'random';
+    showFloatingPanel(randomHandDiv);
+    deckPopulate(randomHand);
+    updateRandomHandTitle(drawCount);
+    centerFloatingPanel(randomHandDiv);
+}
 
 function replaceString(tempCard) {
     tempCard = tempCard.replace("â€¢", "");
